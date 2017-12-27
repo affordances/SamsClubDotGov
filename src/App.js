@@ -3,6 +3,7 @@ import Header from './Header.js';
 import ProductPage from './ProductPage';
 import ProductList from './ProductList';
 import Cart from './Cart.js';
+import Login from './Login.js';
 
 import {
   BrowserRouter as Router,
@@ -54,8 +55,7 @@ class App extends React.Component {
             <Cart cart = {this.state.cart}
                   deleteItemFromCart = {this.deleteItemFromCart} />} />
 
-          <Route path='/sign-in' component={SignIn} />
-          <Route path='/sign-up' component={SignUp} />
+          <Route path='/login' component={Login} />
         </div>
       </Router>
     );
@@ -67,16 +67,6 @@ class Home extends React.Component {
     return (
       <div className='body'>
         <ProductList products = {this.props.products} />
-      </div>
-    );
-  }
-}
-
-class SignIn extends React.Component {
-  render() {
-    return (
-      <div>
-        Sign in
       </div>
     );
   }
