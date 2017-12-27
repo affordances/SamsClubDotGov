@@ -6,7 +6,7 @@ import {
   Link,
 } from 'react-router-dom'
 
-class Login extends React.Component {
+class Register extends React.Component {
   state = {
     fields: {
       name: '',
@@ -48,7 +48,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className='login-form'>
-        Sign in
+        Create account
         <form onSubmit={this.onFormSubmit}>
 
           <input
@@ -76,11 +76,11 @@ class Login extends React.Component {
           <input type='submit' />
         </form>
         <div>
-          <Link to='/register'>Create account</Link>
+          Already have an account? <Link to='/login'>Sign in</Link>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+export default Register;

@@ -4,6 +4,7 @@ import ProductPage from './ProductPage';
 import ProductList from './ProductList';
 import Cart from './Cart.js';
 import Login from './Login.js';
+import Register from './Register';
 
 import {
   BrowserRouter as Router,
@@ -56,6 +57,7 @@ class App extends React.Component {
                   deleteItemFromCart = {this.deleteItemFromCart} />} />
 
           <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
         </div>
       </Router>
     );
@@ -67,16 +69,6 @@ class Home extends React.Component {
     return (
       <div className='body'>
         <ProductList products = {this.props.products} />
-      </div>
-    );
-  }
-}
-
-class SignUp extends React.Component {
-  render() {
-    return (
-      <div>
-        Sign up
       </div>
     );
   }
