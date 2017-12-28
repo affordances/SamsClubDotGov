@@ -22,6 +22,9 @@ class Header extends React.Component {
             </form>
           </div>
           <div>
+            <Link to='/profile'>My profile</Link>
+          </div>
+          <div>
             <Link to='/login'>Sign In / Register</Link>
           </div>
           <div>

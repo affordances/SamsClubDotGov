@@ -3,8 +3,10 @@ import Header from './Header.js';
 import ProductPage from './ProductPage';
 import ProductList from './ProductList';
 import Cart from './Cart.js';
+import Profile from './Profile.js';
 import Login from './Login.js';
 import Register from './Register';
+import { sampleUser, products } from './seed.js';
 
 import {
   BrowserRouter as Router,
@@ -13,18 +15,10 @@ import {
 
 class App extends React.Component {
   state = {
-    products: [],
+    products: products,
     cart: [],
+    sampleUser: sampleUser,
   };
-
-  componentDidMount() {
-    fetch('/api/product')
-      .then(response => response.json())
-      .then(json => {
-        this.setState( {products: json.products} );
-      }
-    );
-  }
 
   addItemToCart = (item) => {
     return () => {
@@ -55,6 +49,9 @@ class App extends React.Component {
           <Route path='/cart' render = { (props) =>
             <Cart cart = {this.state.cart}
                   deleteItemFromCart = {this.deleteItemFromCart} />} />
+
+          <Route path='/profile' render = { (props) =>
+            <Profile sampleUser = {this.state.sampleUser} />} />
 
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
