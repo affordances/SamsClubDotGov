@@ -8,17 +8,31 @@ import Login from './Login.js';
 import Register from './Register';
 import { sampleUser, products } from './seed.js';
 
+import persist from 'react-localstorage-hoc';
+
 import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
 
-class App extends React.Component {
+import { withRouter } from 'react-router'
+
+class StateProvider extends React.Component {
   state = {
     products: products,
     cart: [],
-    sampleUser: sampleUser,
+    user: null,
   };
+
+  onLogin = () => {
+    this.setState({ user: sampleUser });
+    this.props.history.push('/');
+  }
+
+  onLogout = () => {
+    this.setState({ user: null });
+    this.props.history.push('/');
+  }
 
   addItemToCart = (item) => {
     return () => {
@@ -33,30 +47,49 @@ class App extends React.Component {
   }
 
   render() {
+    const loggedIn = this.state.user ? true : false;
+
     return (
-      <Router>
-        <div>
-          <Header />
+      <div>
+        <Header loggedIn = {loggedIn}
+                onLogout = {this.onLogout}/>
 
-          <Route exact path='/' render = { (props) =>
-            <Home products = {this.state.products} />} />
+        <Route exact path='/' render = { (props) =>
+          <Home products = {this.state.products} />} />
 
-          <Route path='/product/:id' render = { (props) =>
-            <ProductPage products = {this.state.products}
-                         match = {props.match}
-                         addItemToCart = {this.addItemToCart} />} />
+        <Route path='/product/:id' render = { (props) =>
+          <ProductPage products = {this.state.products}
+                       match = {props.match}
+                       addItemToCart = {this.addItemToCart} />} />
 
-          <Route path='/cart' render = { (props) =>
-            <Cart cart = {this.state.cart}
-                  deleteItemFromCart = {this.deleteItemFromCart} />} />
+        <Route path='/cart' render = { (props) =>
+          <Cart cart = {this.state.cart}
+                deleteItemFromCart = {this.deleteItemFromCart} />} />
 
-          <Route path='/profile' render = { (props) =>
-            <Profile sampleUser = {this.state.sampleUser} />} />
+        <Route path='/profile' render = { (props) =>
+          <Profile user = {this.state.user}
+                   loggedIn = {loggedIn} />} />
 
-          <Route path='/login' component={Login} />
-          <Route path='/register' component={Register} />
-        </div>
-      </Router>
+        <Route path='/login' render = { (props) =>
+          <Login onLogin = {this.onLogin} />} />
+
+        <Route path='/register' component={Register} />
+      </div>
+    );
+  }
+}
+
+StateProvider = persist(StateProvider);
+StateProvider = withRouter(StateProvider);
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Router>
+          <StateProvider />
+        </Router>
+      </div>
     );
   }
 }

@@ -9,8 +9,6 @@
 # production
 /build
 
-/knexfile.js
-
 # misc
 .DS_Store
 .env.local

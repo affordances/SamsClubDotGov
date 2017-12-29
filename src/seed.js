@@ -1,7 +1,7 @@
 const sampleUser = {
   hin: '123ABC456-DE',
   email: 'email@website.com',
-  password_digest: '',
+  password: 'password',
   name: 'John Smith',
   marital_status: true,
   pregnant: false,
