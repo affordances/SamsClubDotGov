@@ -1,9 +1,14 @@
 import React from 'react';
 import './App.css';
 
+import {
+  Redirect,
+} from 'react-router-dom'
+
 class Cart extends React.Component {
   render() {
-    const cart = this.props.cart.map((item) => (
+    if (this.props.loggedIn)
+    {const cart = this.props.cart.map((item) => (
       <table>
         <tr>
           <td>{item.name}</td>
@@ -20,7 +25,10 @@ class Cart extends React.Component {
       <div>
         {cart}
       </div>
-    );
+    );}
+    else {return (
+      <Redirect to='/login'/>
+    );}
   }
 }
 

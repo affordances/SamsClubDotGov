@@ -20,7 +20,6 @@ import { withRouter } from 'react-router'
 class StateProvider extends React.Component {
   state = {
     products: products,
-    cart: [],
     user: null,
   };
 
@@ -31,18 +30,24 @@ class StateProvider extends React.Component {
 
   onLogout = () => {
     this.setState({ user: null });
-    this.props.history.push('/');
+    this.props.history.push('/login');
   }
 
   addItemToCart = (item) => {
     return () => {
-      this.setState( {cart: this.state.cart.concat([item]) });
+      const user = Object.assign({}, this.state.user);
+      user.cart = user.cart ? user.cart.concat([item]) : [item];
+      if (this.state.user !== null) {
+        this.setState( { user: user });
+      }
     }
   }
 
   deleteItemFromCart = (itemId) => {
     return () => {
-      this.setState( {cart: this.state.cart.filter(x => x.id !== itemId) });
+      const user = Object.assign({}, this.state.user);
+      user.cart = user.cart.filter(x => x.id !== itemId);
+      this.setState( { user: user });
     }
   }
 
@@ -60,10 +65,13 @@ class StateProvider extends React.Component {
         <Route path='/product/:id' render = { (props) =>
           <ProductPage products = {this.state.products}
                        match = {props.match}
-                       addItemToCart = {this.addItemToCart} />} />
+                       addItemToCart = {this.addItemToCart}
+                       cart = {this.state.user ? this.state.user.cart : []}
+                       loggedIn = {loggedIn} />} />
 
         <Route path='/cart' render = { (props) =>
-          <Cart cart = {this.state.cart}
+          <Cart cart = {this.state.user ? this.state.user.cart : null}
+                loggedIn = {loggedIn}
                 deleteItemFromCart = {this.deleteItemFromCart} />} />
 
         <Route path='/profile' render = { (props) =>
