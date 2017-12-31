@@ -11,6 +11,14 @@ const sampleUser = {
   cart: [],
 }
 
+const plans = [
+  {
+    name: 'Bronze',
+    discount: 100,
+    description: "Enjoy some health care... on us!",
+  },
+]
+
 const products = [
   {
     id: 1,
@@ -35,4 +43,4 @@ const products = [
   },
 ];
 
-export { sampleUser, products };
+export { sampleUser, products, plans };
