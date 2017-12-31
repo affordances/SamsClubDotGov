@@ -10,15 +10,7 @@ class ProductPage extends React.Component {
     const id = Number(this.props.match.params.id);
     const product = this.props.products.find(x => x.id === id);
     const alreadyInCart = !!this.props.cart.find(x => x.id === id);
-    const notAddedYet = <div><button onClick={this.props.addItemToCart(product)}>Add to cart</button></div>;
-    const alreadyAdded = <div><button>Added to cart</button></div>;
-    const loggedOutButton = <div><button><Link to='/login'>Add to cart</Link></button></div>;
-    const loggedInButton = alreadyInCart ? alreadyAdded : notAddedYet;
-    const button = this.props.loggedIn ? loggedInButton : loggedOutButton;
-    const loggedOutPrice = <div><Link to='/login'>Sign in to see HOT DEALS</Link></div>;
     const priceCalculation = product.listPrice - (product.listPrice * (this.props.plan.discount / 100));
-    const DiscountAndPrice = <div><div>Sam pays: {this.props.plan.discount}%</div><div>You pay: ${priceCalculation}</div></div>;
-    const loggedInDiscountAndPrice = this.props.loggedIn ? DiscountAndPrice : loggedOutPrice;
 
     return (
       <div className='product-page'>
@@ -31,11 +23,16 @@ class ProductPage extends React.Component {
         <div>
           List price: ${product.listPrice}
         </div>
-        {loggedInDiscountAndPrice}
+        {!this.props.loggedIn && <div><Link to='/login'>Sign in to see HOT DEALS</Link></div>}
+        {this.props.loggedIn && <div>Sam pays: {this.props.plan.discount}%</div>}
+        {this.props.loggedIn && <div>You pay: ${priceCalculation}</div>}
         <div>
           <img src={product.imagePath} alt='product' />
         </div>
-        {button}
+        {!this.props.loggedIn && <div><button><Link to='/login'>Add to cart</Link></button></div>}
+        {this.props.loggedIn && !alreadyInCart &&
+          <div><button onClick={this.props.addItemToCart(product)}>Add to cart</button></div>}
+        {this.props.loggedIn && alreadyInCart && <div><button>Added to cart</button></div>}
       </div>
     );
   }

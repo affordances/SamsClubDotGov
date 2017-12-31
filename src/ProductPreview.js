@@ -7,10 +7,8 @@ import {
 
 class ProductPreview extends React.Component {
   render() {
-    const priceCalculation = this.props.product.listPrice - (this.props.product.listPrice * (this.props.plan.discount / 100));
-    const loggedOutPrice = <li><Link to='/login'>Sign in to see HOT DEALS</Link></li>;
-    const DiscountAndPrice = <div><li>Sam pays: {this.props.plan.discount}%</li><li>You pay: ${priceCalculation}</li></div>;
-    const loggedInDiscountAndPrice = this.props.loggedIn ? DiscountAndPrice : loggedOutPrice;
+    const priceCalculation = this.props.product.listPrice -
+          (this.props.product.listPrice * (this.props.plan.discount / 100));
 
     return (
       <div>
@@ -20,9 +18,10 @@ class ProductPreview extends React.Component {
               {this.props.product.name}
             </Link>
           </li>
-          <li>{this.props.product.description}</li>
           <li>List price: ${this.props.product.listPrice}</li>
-          {loggedInDiscountAndPrice}
+          {!this.props.loggedIn && <li><Link to='/login'>Sign in to see HOT DEALS</Link></li>}
+          {this.props.loggedIn && <li>Sam pays: {this.props.plan.discount}%</li>}
+          {this.props.loggedIn  &&  <li>You pay: ${priceCalculation}</li>}
           <li><img src={this.props.product.imagePath} alt='product' /></li>
         </ul>
       </div>

@@ -82,7 +82,9 @@ class StateProvider extends React.Component {
         <Route path='/cart' render = { (props) =>
           <Cart cart = {this.state.user ? this.state.user.cart : null}
                 loggedIn = {loggedIn}
-                deleteItemFromCart = {this.deleteItemFromCart} />} />
+                deleteItemFromCart = {this.deleteItemFromCart}
+                user = {this.state.user}
+                plan = {this.state.plan} />} />
 
         <Route path='/profile' render = { (props) =>
           <Profile user = {this.state.user}
