@@ -5,6 +5,7 @@ import ProductList from './ProductList';
 import Cart from './Cart.js';
 import Profile from './Profile.js';
 import Login from './Login.js';
+import Scheduler from './Scheduler.js';
 import Register from './Register';
 import { sampleUser, products, plans } from './seed.js';
 
@@ -24,13 +25,13 @@ class StateProvider extends React.Component {
     plan: null,
   };
 
-  onLogin = () => {
+  onLogin = (e) => {
+    e.preventDefault();
     const user = Object.assign({}, sampleUser);
     const userPlan = user.plan;
     const plan = plans.find(x => x.name === userPlan);
     this.setState({ plan: plan, user: user });
-    this.props.history.push('/');
-    console.log(this.state.plan);
+    this.props.history.goBack();
   }
 
   onLogout = () => {
@@ -88,6 +89,10 @@ class StateProvider extends React.Component {
 
         <Route path='/profile' render = { (props) =>
           <Profile user = {this.state.user}
+                   loggedIn = {loggedIn} />} />
+
+        <Route path='/scheduler' render = { (props) =>
+          <Scheduler user = {this.state.user}
                    loggedIn = {loggedIn} />} />
 
         <Route path='/login' render = { (props) =>

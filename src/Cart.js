@@ -3,6 +3,7 @@ import './App.css';
 
 import {
   Redirect,
+  Link,
 } from 'react-router-dom'
 
 class Cart extends React.Component {
@@ -25,15 +26,18 @@ class Cart extends React.Component {
     ));
     const total = this.props.cart.map((item) => (
       item.listPrice - (item.listPrice * (this.props.plan.discount / 100))
-    )).reduce((a,b) => a+b, 0);
+    )).reduce((a, b) => a + b, 0);
     const amountSaved = this.props.cart.map((item) => (
       item.listPrice
-    )).reduce((a,b) => a+b, 0);
+    )).reduce((a, b) => a + b, 0);
     return (
       <div>
+        {cart.length === 0 && <div>There's nothing here!</div>}
         {cart}
         {cart.length > 0 && <div>Total: ${total}</div>}
         {cart.length > 0 && <div>Sam saved you ${amountSaved}</div>}
+        {cart.length > 0 && <button><Link to='/scheduler'>Checkout</Link></button>}
+        <div><Link to='/'>Continue shopping</Link></div>
       </div>
 
     );}
