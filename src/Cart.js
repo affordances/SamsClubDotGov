@@ -32,7 +32,7 @@ class Cart extends React.Component {
     )).reduce((a, b) => a + b, 0);
     return (
       <div>
-        {cart.length === 0 && <div>There's nothing here!</div>}
+        {cart.length === 0 && <div>Your cart is empty.</div>}
         {cart}
         {cart.length > 0 && <div>Total: ${total}</div>}
         {cart.length > 0 && <div>Sam saved you ${amountSaved}</div>}

@@ -12,12 +12,15 @@ class Header extends React.Component {
         <div className='header'>
           <div>
             <Link to='/'>
-              <img src="/logo.png" alt='logo' />
+              <img src="/logo.png"
+                   alt='logo' />
             </Link>
           </div>
           <div>
             <form>
-              <input type='text' placeholder='Search' spellCheck='false'
+              <input type='text'
+                     placeholder='Search'
+                     spellCheck='false'
               />
             </form>
           </div>
