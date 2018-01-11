@@ -75,7 +75,13 @@ table {
   align-items: center;
 }
 
+.schedulerContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 .loadingElement, .loadingElement, .mapElement {
   height: 300px;
   width: 500px;
+  border: 1px solid #c1c1c1;
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-import { StandaloneSearchBox } from "react-google-maps/lib/components/places/StandaloneSearchBox"
+import { withGoogleMap, GoogleMap } from 'react-google-maps'
+import PlacesAutocomplete from 'react-places-autocomplete'
+
 
 class Scheduler extends React.Component {
   render() {
     return (
-      <div>
-        You gotta make an appointment for that!
+      <div className='schedulerContainer'>
+        <LocationSearchBox/>
         <LocationPicker />
       </div>
     );
@@ -20,12 +21,12 @@ class LocationPicker extends React.Component {
   }
 
   render() {
-    const Map = withScriptjs(withGoogleMap((props) =>
+    const Map = withGoogleMap((props) =>
       <GoogleMap
         options={{
           styles: [
             {
-              featureType: "all",
+              featureType: 'all',
               stylers: [{ saturation: -100 }]
             },
             {
@@ -50,16 +51,9 @@ class LocationPicker extends React.Component {
       >
       </GoogleMap>
 
-    )); return (
+    ); return (
       <div>
-        <LocationSearchBox
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-         />
-
         <Map
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div className='loadingElement'/>}
           containerElement={<div className='containerElement'/>}
           mapElement={<div className='mapElement'/>}
@@ -70,51 +64,69 @@ class LocationPicker extends React.Component {
 }
 
 class LocationSearchBox extends React.Component {
-  refs = {}
-
-  state = {
-    places: [],
+  constructor(props) {
+    super(props)
+    this.state = {
+      address: '',
+    }
+    this.handleSelect = this.handleSelect.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  onSearchBoxMounted = (ref) => {
-    this.searchBox = ref;
-  }
-
-  onPlacesChanged = () => {
-    const places = this.refs.searchBox.getPlaces();
-
+  handleSelect(address) {
     this.setState({
-      places,
-    });
+      address,
+    })
+  }
+
+  handleChange(address) {
+    this.setState({
+      address,
+    })
   }
 
   render() {
+    const AutocompleteItem = ({ formattedSuggestion }) => (
+      <div>
+        {formattedSuggestion.mainText}{' '}{formattedSuggestion.secondaryText}
+      </div>)
+
+    const inputProps = {
+      type: "text",
+      value: this.state.address,
+      onChange: this.handleChange,
+      autoFocus: true,
+      placeholder: "Your location",
+      name: 'Demo__input',
+      id: "my-input-id",
+    }
+
+    const options = {
+      types: ['geocode'],
+      componentRestrictions: {country: 'us'},
+    }
+
+    const shouldFetchSuggestions = ({ value }) => value.length > 2
+
+    const onError = (status, clearSuggestions) => {
+      console.log('Error happened while fetching suggestions from Google Maps API', status)
+      clearSuggestions()
+    }
+
     return (
-      <div data-standalone-searchbox="">
-        <StandaloneSearchBox
-          ref={this.onSearchBoxMounted}
-          bounds={this.bounds}
-          onPlacesChanged={this.props.onPlacesChanged}
-        >
-          <input
-            type="text"
-            placeholder="Your location"
-          />
-        </StandaloneSearchBox>
-        <ol>
-          {this.state.places.map(({ place_id, formatted_address, geometry: { location } }) =>
-            <li key={place_id}>
-              {formatted_address}
-              {" at "}
-              ({location.lat()}, {location.lng()})
-            </li>
-          )}
-        </ol>
+      <div className='container'>
+        <PlacesAutocomplete
+          onSelect={this.handleSelect}
+          onError={onError}
+          renderSuggestion={AutocompleteItem}
+          onEnterKeyDown={this.handleSelect}
+          inputProps={inputProps}
+          options={options}
+          shouldFetchSuggestions={shouldFetchSuggestions}
+        />
       </div>
     );
   }
 }
-
-LocationSearchBox = withScriptjs(LocationSearchBox);
 
 export default Scheduler;
