@@ -1,27 +1,31 @@
 import React from 'react';
 import './App.css';
-import { withGoogleMap, GoogleMap } from 'react-google-maps'
-import PlacesAutocomplete from 'react-places-autocomplete'
+import { withGoogleMap, withScriptjs, GoogleMap, Marker } from 'react-google-maps'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
 class Scheduler extends React.Component {
+  state = {
+    location: null,
+  }
+
+  changeLocation = (location) => {
+    this.setState({ location: location });
+  }
+
   render() {
     return (
       <div className='schedulerContainer'>
-        <LocationSearchBox/>
-        <LocationPicker />
+        <LocationSearch changeLocation = {this.changeLocation} />
+        <MapComponent center = {this.state.location} />
       </div>
     );
   }
 }
 
-class LocationPicker extends React.Component {
-  state = {
-    userInput: '',
-  }
-
+class MapComponent extends React.Component {
   render() {
-    const Map = withGoogleMap((props) =>
+    const Map = withScriptjs(withGoogleMap((props) =>
       <GoogleMap
         options={{
           styles: [
@@ -48,12 +52,16 @@ class LocationPicker extends React.Component {
           streetViewControl: false,
           overviewMapControl: false,
         }}
+        defaultZoom={13}
+        center={this.props.center}
       >
+        {<Marker position={this.props.center} />}
       </GoogleMap>
 
-    ); return (
+    )); return (
       <div>
         <Map
+          googleMapURL="http://maps.googleapis.com/maps/api/js?v=3&libraries=places&sensor=false"
           loadingElement={<div className='loadingElement'/>}
           containerElement={<div className='containerElement'/>}
           mapElement={<div className='mapElement'/>}
@@ -63,7 +71,7 @@ class LocationPicker extends React.Component {
   }
 }
 
-class LocationSearchBox extends React.Component {
+class LocationSearch extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -77,6 +85,15 @@ class LocationSearchBox extends React.Component {
     this.setState({
       address,
     })
+
+    geocodeByAddress(address)
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat, lng }) => {
+        this.props.changeLocation({lat, lng});
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   handleChange(address) {
@@ -108,9 +125,8 @@ class LocationSearchBox extends React.Component {
 
     const shouldFetchSuggestions = ({ value }) => value.length > 2
 
-    const onError = (status, clearSuggestions) => {
+    const onError = (status) => {
       console.log('Error happened while fetching suggestions from Google Maps API', status)
-      clearSuggestions()
     }
 
     return (
