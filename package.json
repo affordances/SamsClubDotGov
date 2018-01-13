@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "history": "4.3.0",
+    "load-google-maps-api": "^1.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-google-maps": "^8.5.0",
