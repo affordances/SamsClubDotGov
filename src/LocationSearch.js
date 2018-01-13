@@ -38,7 +38,7 @@ class LocationSearch extends React.Component {
           places.forEach(place => {
             bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
           });
-          this.props.changeLocation(location, places, bounds)
+          this.props.changeLocation(location, places, JSON.parse(JSON.stringify(bounds)));
         }
       });
     }).catch((err) => {

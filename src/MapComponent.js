@@ -3,58 +3,18 @@ import './App.css';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 class MapComponent extends React.Component {
-  componentWillMount() {
-      const refs = {}
-
-      this.setState({
-        bounds: null,
-        center: {
-          lat: 41.9, lng: -87.624
-        },
-        markers: [],
-        onMapMounted: ref => {
-          refs.map = ref;
-        },
-        onBoundsChanged: () => {
-          this.setState({
-            bounds: refs.map.getBounds(),
-            center: refs.map.getCenter(),
-          })
-        },
-        onSearchBoxMounted: ref => {
-          refs.searchBox = ref;
-        },
-        onPlacesChanged: () => {
-          const places = refs.searchBox.getPlaces();
-          const bounds = new google.maps.LatLngBounds();
-
-          places.forEach(place => {
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport)
-            } else {
-              bounds.extend(place.geometry.location)
-            }
-          });
-          const nextMarkers = places.map(place => ({
-            position: place.geometry.location,
-          }));
-          const nextCenter = _.get(nextMarkers, '0.position', this.state.center);
-
-          this.setState({
-            center: nextCenter,
-            markers: nextMarkers,
-          });
-          // refs.map.fitBounds(bounds);
-        },
-      })
+  componentDidUpdate = () => {
+    if (this.map) {
+      this.map.fitBounds(JSON.parse(JSON.stringify(this.props.bounds)));
+      console.log(this.props.center);
+      console.log(this.props.bounds);
     }
+  }
 
   render() {
-    console.log(this.props.center);
-    if(this.props.places){console.log(this.props.places[0]);}
-    if(this.props.places){console.log(this.props.places[1]);}
     const Map = withGoogleMap((props) =>
       <GoogleMap
+        ref={(ref) => {this.map = ref;}}
         options={{
           styles: [
             {
@@ -84,6 +44,10 @@ class MapComponent extends React.Component {
         center={this.props.center}
       >
         <Marker position={this.props.center} />
+        {this.props.bounds && <Marker position={ {lat: this.props.bounds.north, lng: this.props.bounds.east} } />}
+        {this.props.bounds && <Marker position={ {lat: this.props.bounds.north, lng: this.props.bounds.west} } />}
+        {this.props.bounds && <Marker position={ {lat: this.props.bounds.south, lng: this.props.bounds.east} } />}
+        {this.props.bounds && <Marker position={ {lat: this.props.bounds.south, lng: this.props.bounds.west} } />}
         {this.props.places && <Marker position={JSON.parse(JSON.stringify(this.props.places[0].geometry.location))} />}
         {this.props.places && <Marker position={JSON.parse(JSON.stringify(this.props.places[1].geometry.location))} />}
       </GoogleMap>

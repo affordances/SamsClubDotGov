@@ -12,8 +12,8 @@ class Scheduler extends React.Component {
     bounds: null,
   }
 
-  changeLocation = (location, places) => {
-    this.setState({ location: location, places: places });
+  changeLocation = (location, places, bounds) => {
+    this.setState({ location: location, places: places, bounds: bounds });
   }
 
   render() {
@@ -21,7 +21,8 @@ class Scheduler extends React.Component {
       <div className='schedulerContainer'>
         <LocationSearch changeLocation = {this.changeLocation} />
         <MapComponent center = {this.state.location}
-                      places = {this.state.places} />
+                      places = {this.state.places}
+                      bounds = {this.state.bounds} />
       </div>
     );
   }
