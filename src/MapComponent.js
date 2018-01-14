@@ -4,11 +4,11 @@ import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 class MapComponent extends React.Component {
   componentDidUpdate = () => {
-    if (this.map) {
-      this.map.fitBounds(JSON.parse(JSON.stringify(this.props.bounds)));
-      console.log(this.props.center);
-      console.log(this.props.bounds);
-    }
+    setTimeout( () => {
+      if (this.map) {
+        this.map.fitBounds((this.props.bounds));
+      }
+    }, 0)
   }
 
   render() {
@@ -44,10 +44,6 @@ class MapComponent extends React.Component {
         center={this.props.center}
       >
         <Marker position={this.props.center} />
-        {this.props.bounds && <Marker position={ {lat: this.props.bounds.north, lng: this.props.bounds.east} } />}
-        {this.props.bounds && <Marker position={ {lat: this.props.bounds.north, lng: this.props.bounds.west} } />}
-        {this.props.bounds && <Marker position={ {lat: this.props.bounds.south, lng: this.props.bounds.east} } />}
-        {this.props.bounds && <Marker position={ {lat: this.props.bounds.south, lng: this.props.bounds.west} } />}
         {this.props.places && <Marker position={JSON.parse(JSON.stringify(this.props.places[0].geometry.location))} />}
         {this.props.places && <Marker position={JSON.parse(JSON.stringify(this.props.places[1].geometry.location))} />}
       </GoogleMap>
