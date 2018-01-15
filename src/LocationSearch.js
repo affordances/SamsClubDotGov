@@ -9,6 +9,60 @@ class LocationSearch extends React.Component {
     address: '',
   }
 
+  componentDidMount() {
+      const that = this.autocomplete;
+
+      that.autocompleteCallback = function(predictions, status) {
+        if (status !== that.autocompleteOK) {
+          that.props.onError(status, that.clearSuggestions)
+          return
+        }
+
+        const countPlaces = (location, googleMaps) => {
+          const placesService = new googleMaps.places.PlacesService(document.createElement('div'));
+            return new Promise(function(resolve) {
+              placesService.search({
+                location: location,
+                rankBy: googleMaps.places.RankBy.DISTANCE,
+                types: ['fire_station']
+              }, (places, status) => {
+                resolve(places.length >= 6);
+              })
+            }
+          );
+        }
+
+        loadGoogleMapsAPI().then((googleMaps) => {
+          return Promise.all(predictions.map(prediction => geocodeByAddress(prediction.description)
+            .then((results) => getLatLng(results[0]))
+            .then(({lat, lng}) => countPlaces({
+              lat, lng
+            }, googleMaps))
+            )).then(stencil => {
+                console.log("stencil", stencil);
+                const formattedSuggestion = structured_formatting => ({
+                  mainText: structured_formatting.main_text,
+                  secondaryText: structured_formatting.secondary_text,
+                })
+
+                const {highlightFirstSuggestion} = that.props
+
+                that.setState({
+                  autocompleteItems: predictions.map((p, idx) => ({
+                    suggestion: p.description,
+                    placeId: p.place_id,
+                    active: highlightFirstSuggestion && idx === 0 ? true : false,
+                    index: idx,
+                    formattedSuggestion: formattedSuggestion(p.structured_formatting),
+                  })),
+                });
+              });
+            }).catch((error) => {
+              console.log(error)
+            });
+    }
+  }
+
   handleSelect = (address) => {
     this.setState({
       address,
@@ -17,7 +71,7 @@ class LocationSearch extends React.Component {
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
       .then(({ lat, lng }) => {
-        this.findPlaces({lat, lng});
+        this.findPlaces({ lat, lng });
       })
       .catch((error) => {
         console.log(error)
@@ -34,7 +88,6 @@ class LocationSearch extends React.Component {
         types: ['fire_station']
       }, (places, status) => {
         if (status === googleMaps.places.PlacesServiceStatus.OK) {
-          places = [places[0], places[6]];
           places.forEach(place => {
             bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
           });
@@ -82,6 +135,7 @@ class LocationSearch extends React.Component {
     return (
       <div className='container'>
         <PlacesAutocomplete
+          ref={ ref => {this.autocomplete = ref} }
           onSelect={this.handleSelect}
           onError={onError}
           renderSuggestion={AutocompleteItem}
