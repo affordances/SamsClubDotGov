@@ -3,8 +3,8 @@ body {
 }
 
 input {
-  border: 1px solid #1b4b99;
-  width: 600px;
+  border: none;
+  width: 100%;
   height: 39px;
   padding: 15px;
 }
@@ -75,13 +75,43 @@ table {
   align-items: center;
 }
 
-.schedulerContainer {
+.form-group {
   display: flex;
-  flex-direction: row;
+  width: 100%;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0px !important;
+}
+
+.form-control {
+  border: none;
+  padding: none;
+  outline: none;
+}
+
+.autocompleteContainer {
+  position: 'absolute';
+  top: '100%';
+  background-color: 'red';
+  width: '100%';
+}
+
+.input-id {
+  width: 100%;
+}
+
+.schedulerContainer {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loadingElement, .loadingElement, .mapElement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 300px;
   width: 500px;
-  border: 1px solid #c1c1c1;
 }

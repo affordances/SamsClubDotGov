@@ -6,7 +6,7 @@ class MapComponent extends React.Component {
   componentDidUpdate = () => {
     setTimeout( () => {
       if (this.map) {
-        this.map.fitBounds((this.props.bounds));
+        this.map.fitBounds(this.props.bounds);
       }
     }, 0)
   }
@@ -40,12 +40,12 @@ class MapComponent extends React.Component {
           streetViewControl: false,
           overviewMapControl: false,
         }}
-        defaultZoom={13}
+        defaultZoom={16}
         center={this.props.center}
       >
         <Marker position={this.props.center} />
-        {this.props.places && <Marker position={JSON.parse(JSON.stringify(this.props.places[0].geometry.location))} />}
-        {this.props.places && <Marker position={JSON.parse(JSON.stringify(this.props.places[1].geometry.location))} />}
+        {this.props.places && this.props.places[3] && <Marker position={JSON.parse(JSON.stringify(this.props.places[3].geometry.location))} />}
+        {this.props.places && this.props.places[6] && <Marker position={JSON.parse(JSON.stringify(this.props.places[6].geometry.location))} />}
       </GoogleMap>
 
     ); return (
