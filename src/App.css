@@ -3,6 +3,14 @@ body {
   overflow: hidden;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/*#content {
+  width: 100%;
+}*/
+
 input {
   border: none;
   width: 100%;
@@ -19,27 +27,61 @@ table {
   table-layout: fixed;
 }
 
-* {
-  box-sizing: border-box;
+button {
+  outline: none;
+  border-radius: 3px;
+  text-align: center;
+  width: 120px;
+  color: white !important;
+  background-color: #388cd1;
+  padding: 15px 32px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-#content {
-  width: 100%;
+button a {
+  color: white !important;
 }
 
-a {
-  color: red;
+a, .on-click-link {
+  cursor: pointer;
+  color: #666666;
   text-decoration: none;
 
   &:visited {
-    color: red;
+    cursor: pointer;
+    color: #666666;
     text-decoration: none;
   }
+}
 
-  &:hover {
-    color: #5D6E69;
-    cursor: pointer;
-  }
+.checkout-button {
+  outline: none;
+  border-radius: 3px;
+  text-align: center;
+  width: 120px;
+  color: white !important;
+  background-color: #388cd1;
+  padding: 15px 25px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+a:hover {
+  cursor: pointer;
+  color: #378ace;
+  text-decoration: none;
+}
+
+.on-click-link:hover {
+  cursor: pointer;
+  color: #378ace;
+  text-decoration: none;
+}
+
+
+ul {
+  list-style-type: none;
 }
 
 
@@ -59,7 +101,7 @@ a {
   overflow: hidden;
   padding: 20px 30px;
   display: flex;
-  margin: 0 auto;
+  margin-bottom: 20px;
   align-items: center;
   justify-content: space-between;
   background-color: #255e96;
@@ -80,9 +122,31 @@ a {
   justify-content: space-between;
 }
 
+.product-preview {
+  position: relative;
+}
+
+.product-text-overlay {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  color: white !important;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
 .product-page {
   font-size: 30px;
   padding: 20px;
+}
+
+.continue-shopping {
+  margin-top: 20px;
 }
 
 .login-form {
@@ -126,13 +190,8 @@ a {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-#PlacesAutocomplete__google-logo {
-  display: none;
-}
-
-.dropdown-footer {
-  background-image: none !important;
-  height: 0px;
-  padding: 0;
-  margin: 0;
+#PlacesAutocomplete__autocomplete-container {
+  position: absolute;
+  z-index: 500;
+  width: 500px;
 }

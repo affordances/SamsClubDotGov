@@ -28,7 +28,7 @@ class Header extends React.Component {
             {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : <div></div>}
           </div>
           <div>
-            {this.props.loggedIn ? <div style = {{cursor:'pointer'}} onClick={this.props.onLogout}>Sign Out</div> :
+            {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
                                    <Link to='/login'>Sign In</Link>}
           </div>
           <div>

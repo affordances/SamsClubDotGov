@@ -36,8 +36,8 @@ class Cart extends React.Component {
         {cart}
         {cart.length > 0 && <div>Total: ${total}</div>}
         {cart.length > 0 && <div>Sam saved you ${amountSaved}</div>}
-        {cart.length > 0 && <button><Link to='/scheduler'>Checkout</Link></button>}
-        <div><Link to='/'>Continue shopping</Link></div>
+        {cart.length > 0 && <button className='checkout-button'><Link to='/scheduler'>Checkout</Link></button>}
+        <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
       </div>
 
     );}

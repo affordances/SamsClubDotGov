@@ -58,7 +58,7 @@ class LocationSearch extends React.Component {
   render() {
     const inputProps = {
       type: "text",
-      value: this.state.address,
+      value: this.state.address.replace(', United States', ''),
       onChange: this.handleChange,
       autoFocus: true,
       placeholder: "Your location",
@@ -72,8 +72,9 @@ class LocationSearch extends React.Component {
       autocompleteContainer: 'autocomplete-container'
     }
 
-    const Footer = () => (
+    const autocompleteItem = ({ suggestion }) => (
       <div>
+        {suggestion.replace(', United States', '')}
       </div>
     )
 
@@ -99,7 +100,8 @@ class LocationSearch extends React.Component {
           options={options}
           classNames={cssClasses}
           shouldFetchSuggestions={shouldFetchSuggestions}
-          renderFooter={Footer}
+          autocompleteItem={autocompleteItem}
+          googleLogo={false}
         />
       </div>
     );
