@@ -9,6 +9,8 @@ import Scheduler from './Scheduler.js';
 import Register from './Register';
 import { sampleUser, products, plans } from './seed.js';
 
+import './App.css';
+
 import persist from 'react-localstorage-hoc';
 
 import {
@@ -122,7 +124,7 @@ class App extends React.Component {
 class Home extends React.Component {
   render() {
     return (
-      <div className='body'>
+      <div>
         <ProductList products = {this.props.products}
                      loggedIn = {this.props.loggedIn}
                      user = {this.props.user}

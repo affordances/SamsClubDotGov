@@ -18,11 +18,13 @@ class Scheduler extends React.Component {
 
   render() {
     return (
-      <div className='schedulerContainer'>
-        <LocationSearch changeLocation = {this.changeLocation} />
-        <MapComponent center = {this.state.location}
-                      places = {this.state.places}
-                      bounds = {this.state.bounds} />
+      <div className='scheduler-container'>
+        <div className='location-search-and-map-container'>
+          <LocationSearch changeLocation = {this.changeLocation} />
+          <MapComponent center = {this.state.location}
+                        places = {this.state.places}
+                        bounds = {this.state.bounds} />
+        </div>
       </div>
     );
   }

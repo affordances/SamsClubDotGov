@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 input {
@@ -10,7 +11,7 @@ input {
 }
 
 input:focus {
-  outline: none;
+  outline: none !important;
 }
 
 table {
@@ -18,11 +19,34 @@ table {
   table-layout: fixed;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+#content {
+  width: 100%;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+
+  &:visited {
+    color: red;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: #5D6E69;
+    cursor: pointer;
+  }
+}
+
+
 .header {
   overflow: hidden;
   padding: 20px 30px;
   display: flex;
-  width: 100%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
@@ -35,12 +59,11 @@ table {
   overflow: hidden;
   padding: 20px 30px;
   display: flex;
-  width: 100%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
   background-color: #255e96;
-  height: 48px;
+  height: 30px;
   color: white;
   font-size: 20px;
   letter-spacing: 0.10em;
@@ -52,7 +75,6 @@ table {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
@@ -75,43 +97,42 @@ table {
   align-items: center;
 }
 
-.form-group {
+.scheduler-container {
   display: flex;
-  width: 100%;
-  z-index: 1;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0px !important;
 }
 
-.form-control {
-  border: none;
-  padding: none;
-  outline: none;
-}
-
-.autocompleteContainer {
-  position: 'absolute';
-  top: '100%';
-  background-color: 'red';
-  width: '100%';
-}
-
-.input-id {
-  width: 100%;
-}
-
-.schedulerContainer {
+.location-search-and-map-container {
   width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .loadingElement, .loadingElement, .mapElement {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 300px;
   width: 500px;
+}
+
+.form-group {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px !important;
+}
+
+.form-control {
+}
+
+.autocomplete-container {
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#PlacesAutocomplete__google-logo {
+  display: none;
+}
+
+.dropdown-footer {
+  background-image: none !important;
+  height: 0px;
+  padding: 0;
+  margin: 0;
 }

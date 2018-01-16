@@ -72,6 +72,11 @@ class LocationSearch extends React.Component {
       autocompleteContainer: 'autocomplete-container'
     }
 
+    const Footer = () => (
+      <div>
+      </div>
+    )
+
     const options = {
       types: ['(cities)'],
       componentRestrictions: {country: 'us'},
@@ -94,6 +99,7 @@ class LocationSearch extends React.Component {
           options={options}
           classNames={cssClasses}
           shouldFetchSuggestions={shouldFetchSuggestions}
+          renderFooter={Footer}
         />
       </div>
     );

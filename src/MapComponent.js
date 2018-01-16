@@ -43,7 +43,6 @@ class MapComponent extends React.Component {
         defaultZoom={16}
         center={this.props.center}
       >
-        <Marker position={this.props.center} />
         {this.props.places && this.props.places[3] && <Marker position={JSON.parse(JSON.stringify(this.props.places[3].geometry.location))} />}
         {this.props.places && this.props.places[6] && <Marker position={JSON.parse(JSON.stringify(this.props.places[6].geometry.location))} />}
       </GoogleMap>
