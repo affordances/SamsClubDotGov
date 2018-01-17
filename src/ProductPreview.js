@@ -7,8 +7,8 @@ import {
 
 class ProductPreview extends React.Component {
   render() {
-    const priceCalculation = this.props.product.listPrice -
-          (this.props.product.listPrice * (this.props.plan.discount / 100));
+    // const priceCalculation = this.props.product.listPrice -
+    //       (this.props.product.listPrice * (this.props.plan.discount / 100));
 
     return (
       <div className='product-preview'>

@@ -171,9 +171,33 @@ ul {
   width: 500px;
 }
 
-.loadingElement, .loadingElement, .mapElement {
+/*.loadingElement {
   height: 300px;
   width: 500px;
+}*/
+
+.containerElement {
+  height: 300px;
+  width: 500px;
+}
+
+.mapElement {
+  height: 300px;
+  width: 500px;
+}
+
+.map-error-text {
+  height: 300px;
+  width: 500px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: red;
+}
+
+.gm-style {
+ background-color: white;
 }
 
 .form-group {
@@ -188,9 +212,6 @@ ul {
 .autocomplete-container {
   border-top: 1px solid #e6e6e6;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-#PlacesAutocomplete__autocomplete-container {
   position: absolute;
   z-index: 500;
   width: 500px;

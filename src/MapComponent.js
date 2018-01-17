@@ -49,12 +49,17 @@ class MapComponent extends React.Component {
 
     ); return (
       <div>
-        <Map
-          googleMapURL="http://maps.googleapis.com/maps/api/js?v=3&libraries=places&sensor=false"
-          loadingElement={<div className='loadingElement'/>}
-          containerElement={<div className='containerElement'/>}
-          mapElement={<div className='mapElement'/>}
-        />
+        {(this.props.errorText) ?
+          <div className='map-error-text'>
+            {this.props.errorText}
+          </div> :
+          <Map
+            googleMapURL="http://maps.googleapis.com/maps/api/js?v=3&libraries=places&sensor=false"
+            loadingElement={<div className='loadingElement'/>}
+            containerElement={<div className='containerElement'/>}
+            mapElement={<div className='mapElement'/>}
+          />
+        }
       </div>
     );
   }

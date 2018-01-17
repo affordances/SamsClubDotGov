@@ -33,15 +33,17 @@ class LocationSearch extends React.Component {
         rankBy: googleMaps.places.RankBy.DISTANCE,
         types: ['fire_station']
       }, (places, status) => {
-        if (status === googleMaps.places.PlacesServiceStatus.OK) {
-          if (places.length > 7) {
+        if (status === googleMaps.places.PlacesServiceStatus.OK && places.length >= 3) {
+          if (places.length >= 7) {
             places = places.slice(0, 7);
           }
-          console.log(places);
           places.forEach(place => {
             bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
           });
           this.props.changeLocation(location, places, JSON.parse(JSON.stringify(bounds)));
+        } else {
+          const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
+          this.props.changeLocation(null, null, null, errorText);
         }
       });
     }).catch((err) => {
@@ -61,7 +63,8 @@ class LocationSearch extends React.Component {
       value: this.state.address.replace(', United States', ''),
       onChange: this.handleChange,
       autoFocus: true,
-      placeholder: "Your location",
+      placeholder: "Enter your city",
+      spellCheck: false,
       name: 'input',
       id: "input-id",
     }
