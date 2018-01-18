@@ -33,13 +33,12 @@ class LocationSearch extends React.Component {
         rankBy: googleMaps.places.RankBy.DISTANCE,
         types: ['fire_station']
       }, (places, status) => {
-        if (status === googleMaps.places.PlacesServiceStatus.OK && places.length >= 3) {
-          if (places.length >= 7) {
-            places = places.slice(0, 7);
-          }
+        if (status === googleMaps.places.PlacesServiceStatus.OK && places.length >= 7) {
+          places = [places[0], places[6]];
           places.forEach(place => {
             bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
           });
+          console.log(places);
           this.props.changeLocation(location, places, JSON.parse(JSON.stringify(bounds)));
         } else {
           const errorText = "Sorry, we don't have a store in this area! Please try a different location.";

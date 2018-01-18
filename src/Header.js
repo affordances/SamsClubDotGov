@@ -8,7 +8,7 @@ import {
 class Header extends React.Component {
   render() {
     return (
-      <div>
+      <div className='header-and-searchbar-container'>
         <div className='header'>
           <div>
             <Link to='/'>
@@ -16,34 +16,18 @@ class Header extends React.Component {
                    alt='logo' />
             </Link>
           </div>
-          <div>
-            <form>
-              <input type='text'
-                     placeholder='Search'
-                     spellCheck='false'
-              />
-            </form>
-          </div>
-          <div>
-            {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : <div></div>}
-          </div>
-          <div>
+            {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : null}
             {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
                                    <Link to='/login'>Sign In</Link>}
-          </div>
-          <div>
-            <Link to='/cart'>
-              Cart
-            </Link>
-          </div>
+            {this.props.loggedIn ? <Link to='/cart'>Cart</Link> : null}
         </div>
-        <div className='navbar'>
-          <div>Med 1</div>
-          <div>Med 2</div>
-          <div>Med 3</div>
-          <div>Med 4</div>
-          <div>Med 5</div>
-          <div>Med 6</div>
+        <div className='searchbar'>
+          <form>
+            <input type='text'
+                   placeholder='Search'
+                   spellCheck='false'
+            />
+          </form>
         </div>
       </div>
     );

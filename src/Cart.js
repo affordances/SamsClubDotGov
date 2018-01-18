@@ -31,12 +31,12 @@ class Cart extends React.Component {
       item.listPrice
     )).reduce((a, b) => a + b, 0);
     return (
-      <div>
+      <div className='cart-container'>
         {cart.length === 0 && <div>Your cart is empty.</div>}
         {cart}
         {cart.length > 0 && <div>Total: ${total}</div>}
         {cart.length > 0 && <div>Sam saved you ${amountSaved}</div>}
-        {cart.length > 0 && <button className='checkout-button'><Link to='/scheduler'>Checkout</Link></button>}
+        {cart.length > 0 && <button onClick={this.props.proceedToCheckout}>Checkout</button>}
         <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
       </div>
 

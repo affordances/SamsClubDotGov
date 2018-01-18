@@ -41,6 +41,10 @@ class StateProvider extends React.Component {
     this.props.history.push('/login');
   }
 
+  proceedToCheckout = () => {
+    this.props.history.push('/scheduler');
+  }
+
   addItemToCart = (item) => {
     return () => {
       const user = Object.assign({}, this.state.user);
@@ -63,7 +67,7 @@ class StateProvider extends React.Component {
     const loggedIn = this.state.user ? true : false;
 
     return (
-      <div>
+      <div className='main-container'>
         <Header loggedIn = {loggedIn}
                 onLogout = {this.onLogout} />
 
@@ -86,6 +90,7 @@ class StateProvider extends React.Component {
           <Cart cart = {this.state.user ? this.state.user.cart : null}
                 loggedIn = {loggedIn}
                 deleteItemFromCart = {this.deleteItemFromCart}
+                proceedToCheckout = {this.proceedToCheckout}
                 user = {this.state.user}
                 plan = {this.state.plan} />} />
 
@@ -124,7 +129,7 @@ class App extends React.Component {
 class Home extends React.Component {
   render() {
     return (
-      <div>
+      <div className='home'>
         <ProductList products = {this.props.products}
                      loggedIn = {this.props.loggedIn}
                      user = {this.props.user}

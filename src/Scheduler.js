@@ -20,9 +20,34 @@ class Scheduler extends React.Component {
   render() {
     return (
       <div className='scheduler-container'>
-        <div className='location-search-and-map-container'>
+        <div className='location-search-and-results-container'>
           <LocationSearch changeLocation = {this.changeLocation}
                           errorText = {this.state.errorText}/>
+          {this.state.places ?
+            <div className='results-container'>
+              <div className='location-search-result-container'>
+                <div className='location-search-result'>
+                  <div className='location-search-result-name'>Uncle Sam's Club</div>
+                  <div className='location-search-result-address'>{this.state.places[0].vicinity}</div>
+                  <div className='location-search-result-phone'>1-800-555-SAMS</div>
+                </div>
+                <div className='location-search-result-button'>
+                  <button>Select</button>
+                </div>
+              </div>
+              <div className='location-search-result-container'>
+                <div className='location-search-result'>
+                  <div className='location-search-result-name'>Uncle Sam's Club</div>
+                  <div className='location-search-result-address'>{this.state.places[1].vicinity}</div>
+                  <div className='location-search-result-phone'>1-800-555-SAMS</div>
+                </div>
+                <div className='location-search-result-button'>
+                  <button>Select</button>
+                </div>
+              </div>
+            </div> : null}
+        </div>
+        <div className='map-container'>
           <MapComponent center = {this.state.location}
                         places = {this.state.places}
                         bounds = {this.state.bounds}
