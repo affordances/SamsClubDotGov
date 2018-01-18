@@ -90,7 +90,6 @@ ul {
 }
 
 .header {
-  overflow: hidden;
   width: 1015px;
   padding: 20px 30px;
   display: flex;
@@ -194,17 +193,34 @@ ul {
 }
 
 .results-container {
-  /*border-top: 5px solid #666666;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%
+}
+
+.location-search-result-container-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 15px;
+  width: 500px;
 }
 
 .location-search-result-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  padding: 15px;
+  width: 100%;
 }
 
 .location-search-result {
+}
+
+.location-search-result-number {
+  font-weight: bold;
+  padding: 20px;
 }
 
 .location-search-result-name {
