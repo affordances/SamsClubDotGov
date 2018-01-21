@@ -1,25 +1,27 @@
 import React from 'react';
 import './App.css';
+import FontAwesome from 'react-fontawesome';
 
 import {
   Link,
 } from 'react-router-dom'
+
+// <FontAwesome name='fa-shopping-cart' size='2x' />
 
 class Header extends React.Component {
   render() {
     return (
       <div className='header-and-searchbar-container'>
         <div className='header'>
-          <div>
+          <div className='logo'>
             <Link to='/'>
-              <img src="/logo.png"
-                   alt='logo' />
+              Uncle Sam's Club
             </Link>
           </div>
             {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : null}
-            {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
-                                   <Link to='/login'>Sign In</Link>}
             {this.props.loggedIn ? <Link to='/cart'>Cart</Link> : null}
+            {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
+                                   <Link to='/login'>Sign in</Link>}
         </div>
         <div className='searchbar'>
           <form>

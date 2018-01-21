@@ -13,8 +13,7 @@ class ProductPreview extends React.Component {
     return (
       <div className='product-preview'>
         <Link to={ 'product/' + this.props.product.id }>
-          <img src={this.props.product.imagePath} alt='product'></img>
-            <div className='product-text-overlay'>
+            <div className='product-preview-name'>
               {this.props.product.name}
             </div>
         </Link>

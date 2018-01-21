@@ -32,14 +32,19 @@ class Cart extends React.Component {
     )).reduce((a, b) => a + b, 0);
     return (
       <div className='cart-container'>
-        {cart.length === 0 && <div>Your cart is empty.</div>}
-        {cart}
-        {cart.length > 0 && <div>Total: ${total}</div>}
-        {cart.length > 0 && <div>Sam saved you ${amountSaved}</div>}
-        {cart.length > 0 && <button onClick={this.props.proceedToCheckout}>Checkout</button>}
-        <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
+        {(cart.length > 0) ?
+          <div className='cart-with-items'>
+            {cart}
+            <div>Total: ${total}</div>
+            <div>Sam saved you: ${amountSaved}</div>
+            <button onClick={this.props.proceedToCheckout}>Checkout</button>
+          </div> :
+          <div className='empty-cart'>
+            <div className='your-cart-is-empty'>Your cart is empty!</div>
+            <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
+          </div>
+        }
       </div>
-
     );}
     else {return (
       <Redirect to='/login'/>

@@ -27,21 +27,24 @@ const products = [
     name: 'Checkup',
     description: 'The doctor uses a stethoscope on you.',
     listPrice: 100,
-    imagePath: '/checkup.jpg',
   },
   {
     id: 2,
     name: 'Ambulance Ride',
     description: 'The siren goes weeeeoooo weeeeoooo.',
     listPrice: 1000,
-    imagePath: '/ambulance.jpg',
   },
   {
     id: 3,
     name: 'X-ray',
     description: 'The technician zaps you with rays.',
     listPrice: 500,
-    imagePath: '/x-ray.jpg',
+  },
+  {
+    id: 4,
+    name: 'Physical Therapy',
+    description: 'You learn to walk again.',
+    listPrice: 250,
   },
 ];
 

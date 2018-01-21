@@ -14,7 +14,7 @@ class ProductList extends React.Component {
       />
     ));
     return (
-      <div className='product-list'>
+      <div className='products-container'>
         {products}
       </div>
     );
