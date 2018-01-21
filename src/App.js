@@ -22,10 +22,14 @@ import { withRouter } from 'react-router'
 
 class StateProvider extends React.Component {
   state = {
-    products: products,
+    products: null,
     user: null,
     plan: null,
   };
+
+  componentDidMount = () => {
+    this.setState({ products: products })
+  }
 
   onLogin = (e) => {
     e.preventDefault();

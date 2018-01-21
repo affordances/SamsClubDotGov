@@ -19,7 +19,7 @@ class Header extends React.Component {
             </Link>
           </div>
             {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : null}
-            {this.props.loggedIn ? <Link to='/cart'>Cart</Link> : null}
+            {this.props.loggedIn ? <Link to='/cart'><FontAwesome name='shopping-cart' size='2x'></FontAwesome></Link> : null}
             {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
                                    <Link to='/login'>Sign in</Link>}
         </div>

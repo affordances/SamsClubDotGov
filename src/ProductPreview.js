@@ -11,13 +11,13 @@ class ProductPreview extends React.Component {
     //       (this.props.product.listPrice * (this.props.plan.discount / 100));
 
     return (
-      <div className='product-preview'>
-        <Link to={ 'product/' + this.props.product.id }>
+      <Link to={ 'product/' + this.props.product.id }>
+        <div className='product-preview'>
             <div className='product-preview-name'>
               {this.props.product.name}
             </div>
-        </Link>
-      </div>
+        </div>
+      </Link>
     );
   }
 }

@@ -134,6 +134,10 @@ ul {
   justify-content: flex-end;
 }
 
+.product-preview:hover {
+  border: 5px solid #378ace;
+}
+
 .product-preview-name {
   margin-bottom: 15px;
 }
@@ -175,11 +179,12 @@ ul {
 .cart-container {
   border: 5px solid #666666;
   width: 1015px;
-  height: 310px;
+  min-height: 310px;
+  padding: 20px;
 }
 
 .empty-cart {
-  margin-top: 100px;
+  margin-top: 85px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,7 +257,6 @@ input[type=submit]:hover {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
 }
 
 .location-search-and-results-container {
