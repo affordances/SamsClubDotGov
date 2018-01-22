@@ -12,30 +12,34 @@ class Login extends React.Component {
   render() {
     return (
       <div className='login-form-container'>
+        <div className='login-form-header'>Sign in</div>
         <div className='login-form'>
-          <div className='login-form-header'>Sign in</div>
           <form onSubmit={this.props.onLogin}>
 
-            <input
-              className='login-form-input'
-              name='email'
-              value={this.state.email}
-              readOnly={true}
-            />
+            <div className='login-form-input'>
+              <input
+                name='email'
+                value={this.state.email}
+                readOnly={true}
+              />
+            </div>
 
-            <input
-              className='login-form-input'
-              type='password'
-              name='password'
-              value={this.state.password}
-              readOnly={true}
-            />
+            <div className='login-form-input'>
+              <input
+                type='password'
+                name='password'
+                value={this.state.password}
+                readOnly={true}
+              />
+            </div>
 
-            <input
-              className='login-form-submit'
-              type='submit'
-              value='Submit'
-            />
+            <div className='login-form-submit'>
+              <input
+
+                type='submit'
+                value='Submit'
+              />
+            </div>
           </form>
         </div>
       </div>

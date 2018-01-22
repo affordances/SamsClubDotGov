@@ -24,18 +24,32 @@ class ProductPage extends React.Component {
           </div>
         </div>
         <div className='pricing-and-button-container'>
-          {!this.props.loggedIn && <div className='product-page-hot-deals'>
-            <Link to='/login'>Sign in for HOT DEALS</Link></div>}
+          {!this.props.loggedIn &&
+            <div className='product-page-hot-deals-container'>
+              <div className='product-page-hot-deals'>
+                <Link to='/login' style={{ color: 'red' }}>Sign in for HOT DEALS</Link>
+              </div>
+            </div>}
           {this.props.loggedIn &&
-            <div className='pricing-and-button'>
-              <div className='product-page-list-price'>List price: ${product.listPrice}</div>
-              <div>Sam pays: {this.props.plan.discount}%</div>
-              <div>You pay: ${priceCalculation}</div>
+            <div className='pricing-container'>
+              <div className='product-page-list-price-container'>
+                <div>List price:</div>
+                <div className='product-page-list-price'>${product.listPrice}</div>
+              </div>
+              <div className='product-page-discount-container'>
+                <div>Sam pays:</div>
+                <div className='product-page-discount'>{this.props.plan.discount}%</div>
+              </div>
+              <div className='product-page-final-price-container'>
+                <div>You pay:</div>
+                <div className='product-page-final-price'>${priceCalculation}</div>
+              </div>
             </div>}
           {this.props.loggedIn && !alreadyInCart &&
-            <div><button onClick={this.props.addItemToCart(product)}>Add to cart</button></div>}
+            <div className='add-to-cart-button'>
+              <button onClick={this.props.addItemToCart(product)}>Add to cart</button></div>}
           {this.props.loggedIn && alreadyInCart &&
-            <div><button>Added to cart</button></div>}
+            <div id='added-to-cart-button'><button>Added to cart</button></div>}
         </div>
       </div>
     );
