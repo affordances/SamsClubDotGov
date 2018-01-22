@@ -25,25 +25,25 @@ const products = [
   {
     id: 1,
     name: 'Checkup',
-    description: 'The doctor uses a stethoscope on you.',
+    description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 100,
   },
   {
     id: 2,
     name: 'Ambulance Ride',
-    description: 'The siren goes weeeeoooo weeeeoooo.',
+    description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 1000,
   },
   {
     id: 3,
     name: 'X-ray',
-    description: 'The technician zaps you with rays.',
+    description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 500,
   },
   {
     id: 4,
     name: 'Physical Therapy',
-    description: 'You learn to walk again.',
+    description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 250,
   },
 ];

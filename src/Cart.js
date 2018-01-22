@@ -48,6 +48,7 @@ class Cart extends React.Component {
             </div>
             <hr/>
             {cart}
+            <hr/>
             <div className='cart-totals-and-checkout-button-container'>
               <div className='cart-total-container'>
                 <div>Total:</div>

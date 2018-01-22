@@ -23,8 +23,9 @@ input:focus {
 }
 
 hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
 }
 
 button {
@@ -162,7 +163,9 @@ ul {
 
 .product-description {
   margin-top: 15px;
-  font-size: 20px;
+  font-size: 17px;
+  text-align: justify;
+  color: #bebfbf;
 }
 
 .pricing-and-button-container {
@@ -206,6 +209,7 @@ ul {
 .cart-titles {
   display: flex;
   flex-direction: row;
+  color: #bebfbf;
 }
 
 .cart-item-container {
@@ -220,8 +224,9 @@ ul {
 .cart-item-remove-button {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 50px;
-  color: #dedfdf
+  color: #bebfbf;
 }
 
 .cart-item-remove-button:hover {
@@ -244,7 +249,7 @@ ul {
 }
 
 .cart-totals-and-checkout-button-container {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

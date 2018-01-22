@@ -73,7 +73,8 @@ class StateProvider extends React.Component {
     return (
       <div className='main-container'>
         <Header loggedIn = {loggedIn}
-                onLogout = {this.onLogout} />
+                onLogout = {this.onLogout}
+                cart = {this.state.user ? this.state.user.cart : []} />
 
         <Route exact path='/' render = { (props) =>
           <Home products = {this.state.products}

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import FontAwesome from 'react-fontawesome';
+import NotificationBadge from 'react-notification-badge';
 
 import {
   Link,
@@ -19,7 +20,13 @@ class Header extends React.Component {
             </Link>
           </div>
             {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : null}
-            {this.props.loggedIn ? <Link to='/cart'><FontAwesome name='shopping-cart' size='2x'></FontAwesome></Link> : null}
+            {this.props.loggedIn ? <Link to='/cart' style={{ display: 'inline-block', height: '50px', width: '44px', }}>
+                                      <FontAwesome name='shopping-cart' style={{float:'left'}} size='2x'></FontAwesome>
+                                      <NotificationBadge
+                                        count={this.props.cart.length}
+                                        effect={[null, null, {}, {}]}
+                                      />
+                                   </Link> : null}
             {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
                                    <Link to='/login'>Sign in</Link>}
         </div>
