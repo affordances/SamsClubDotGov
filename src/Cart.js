@@ -49,13 +49,13 @@ class Cart extends React.Component {
             {cart}
             <hr/>
             <div className='cart-totals-and-checkout-button-container'>
-              <div className='cart-total-container'>
-                <div>Total:</div>
-                <div className='cart-total'>${total}</div>
-              </div>
               <div className='cart-total-savings-container'>
                 <div>Sam saved you:</div>
                 <div className='cart-total-savings'>${amountSaved}</div>
+              </div>
+              <div className='cart-total-container'>
+                <div>You pay:</div>
+                <div className='cart-total'>${total}</div>
               </div>
               <div className='checkout-button'><button onClick={this.props.proceedToCheckout}>Checkout</button></div>
             </div>

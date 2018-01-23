@@ -49,6 +49,10 @@ button {
   cursor: pointer;
 }
 
+/*button:hover {
+  background-color: #5a9fd8;
+}*/
+
 button a {
   color: white !important;
 }
@@ -119,7 +123,6 @@ ul {
   height: 50px;
   color: white;
   font-size: 20px;
-  letter-spacing: 0.10em;
 }
 
 .products-container {
@@ -231,22 +234,28 @@ ul {
   color: red;
 }
 
-/*.added-to-cart-button {
-  background-color: #5e5f60;
-}*/
+.added-to-cart-button {
+  background-color: #bebfbf;
+}
 
 .product-page-hot-deals-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: 100%;
+  width: 100%;
 }
 
 .product-page-hot-deals {
-  text-align: center;
-  width: 100%;
+  color: red;
   font-size: 75px;
+}
+
+a.product-page-hot-deals:hover {
+  background-color: red;
+  color: white;
 }
 
 .cart-container {

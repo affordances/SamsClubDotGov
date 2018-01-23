@@ -26,9 +26,7 @@ class ProductPage extends React.Component {
         <div className='pricing-and-button-container'>
           {!this.props.loggedIn &&
             <div className='product-page-hot-deals-container'>
-              <div className='product-page-hot-deals'>
-                <Link to='/login' style={{ color: 'red' }}>Sign in for HOT DEALS</Link>
-              </div>
+              <Link to='/login' className='product-page-hot-deals'>Sign in for HOT DEALS</Link>
             </div>}
           {this.props.loggedIn &&
             <div className='pricing-container'>
@@ -45,11 +43,16 @@ class ProductPage extends React.Component {
                 <div className='product-page-final-price'>${priceCalculation}</div>
               </div>
             </div>}
-          {this.props.loggedIn && !alreadyInCart &&
+          {this.props.loggedIn &&
             <div className='add-to-cart-button'>
-              <button onClick={this.props.addItemToCart(product)}>Add to cart</button></div>}
-          {this.props.loggedIn && alreadyInCart &&
-            <div id='added-to-cart-button'><button>Added to cart</button></div>}
+              <button
+                className={alreadyInCart ? 'added-to-cart-button' : ''}
+                disabled={alreadyInCart}
+                onClick={this.props.addItemToCart(product)}
+              >
+                {alreadyInCart ? "Added" : "Add"} to cart
+              </button>
+            </div>}
         </div>
       </div>
     );
