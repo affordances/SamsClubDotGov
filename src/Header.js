@@ -20,7 +20,7 @@ class Header extends React.Component {
             </Link>
           </div>
             {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : null}
-            {this.props.loggedIn ? <Link to='/cart' style={{ display: 'inline-block', height: '50px', width: '44px', }}>
+            {this.props.loggedIn ? <Link to='/cart' style={{ display: 'inline-block', height: '45px', width: '44px', }}>
                                       <FontAwesome name='shopping-cart' style={{float:'left'}} size='2x'></FontAwesome>
                                       <NotificationBadge
                                         count={this.props.cart.length}

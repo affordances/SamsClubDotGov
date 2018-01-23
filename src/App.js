@@ -108,7 +108,8 @@ class StateProvider extends React.Component {
                    loggedIn = {loggedIn} />} />
 
         <Route path='/login' render = { (props) =>
-          <Login onLogin = {this.onLogin} />} />
+          <Login onLogin = {this.onLogin}
+                 loggedIn = {loggedIn} />} />
 
         <Route path='/register' component={Register} />
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+import { Redirect } from 'react-router-dom'
 import { sampleUser } from './seed.js';
 
 class Login extends React.Component {
@@ -10,9 +11,9 @@ class Login extends React.Component {
   }
 
   render() {
+    if (!this.props.loggedIn) {
     return (
       <div className='login-form-container'>
-        <div className='login-form-header'>Sign in</div>
         <div className='login-form'>
           <form onSubmit={this.props.onLogin}>
 
@@ -37,13 +38,17 @@ class Login extends React.Component {
               <input
 
                 type='submit'
-                value='Submit'
+                value="Let's go!"
               />
             </div>
           </form>
         </div>
       </div>
-    );
+    );} else {
+      return (
+        <Redirect to='/'/>
+        );
+    }
   }
 }
 

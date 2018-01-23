@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import FontAwesome from 'react-fontawesome';
 
-import { Redirect, Link,
-} from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 class Cart extends React.Component {
   render() {
