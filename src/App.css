@@ -469,6 +469,7 @@ input[type=submit]:hover {
   justify-content: flex-start;
   padding: 15px;
   width: 500px;
+  margin-left: 5px;
 }
 
 .location-search-result-container {
@@ -477,26 +478,29 @@ input[type=submit]:hover {
   justify-content: space-between;
   padding: 15px;
   width: 100%;
+  margin-left: 15px;
 }
 
 .location-search-result {
+  color: #5e5f60;
 }
 
 .location-search-result-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
   font-weight: bold;
   padding: 20px;
+  color: red;
 }
 
-.location-search-result-name {
-  font-weight: bold;
-}
-
-.location-search-result-address {
-
-}
-
-.location-search-result-phone {
-  font-weight: bold;
+.location-search-result-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /*.loadingElement {

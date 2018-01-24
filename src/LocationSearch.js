@@ -38,11 +38,11 @@ class LocationSearch extends React.Component {
           places.forEach(place => {
             bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
           });
-          console.log(places);
-          this.props.changeLocation(location, places, JSON.parse(JSON.stringify(bounds)));
+          const address = this.state.address.replace(', United States', '');
+          this.props.changeLocation(address, location, places, JSON.parse(JSON.stringify(bounds)));
         } else {
           const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
-          this.props.changeLocation(null, null, null, errorText);
+          this.props.changeLocation(null, null, null, null, errorText);
         }
       });
     }).catch((err) => {

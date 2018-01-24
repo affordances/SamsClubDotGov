@@ -9,14 +9,15 @@ import { Redirect } from 'react-router-dom'
 class Scheduler extends React.Component {
 
   state = {
+    address: null,
     location: null,
     places: null,
     bounds: null,
     errorText: null,
   }
 
-  changeLocation = (location, places, bounds, errorText) => {
-    this.setState({ location: location, places: places,
+  changeLocation = (address, location, places, bounds, errorText) => {
+    this.setState({ address: address, location: location, places: places,
                     bounds: bounds, errorText: errorText });
   }
 
@@ -29,7 +30,7 @@ class Scheduler extends React.Component {
             <div className='location-search-and-results-container'>
               <LocationSearch changeLocation = {this.changeLocation}
                               errorText = {this.state.errorText}/>
-              {this.state.places ? <LocationResults /> : null}
+                            {this.state.places ? <LocationResults city = {this.state.address} /> : null}
             </div>
             <div className='map-container'>
               <MapComponent center = {this.state.location}
