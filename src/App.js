@@ -16,6 +16,8 @@ import persist from 'react-localstorage-hoc';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
+  Link,
 } from 'react-router-dom'
 
 import { withRouter } from 'react-router'
@@ -75,43 +77,46 @@ class StateProvider extends React.Component {
         <Header loggedIn = {loggedIn}
                 onLogout = {this.onLogout}
                 cart = {this.state.user ? this.state.user.cart : []} />
+        <Switch>
+          <Route exact path='/' render = { (props) =>
+            <Home products = {this.state.products}
+                  loggedIn = {loggedIn}
+                  user = {this.state.user}
+                  plan = {this.state.plan} />} />
 
-        <Route exact path='/' render = { (props) =>
-          <Home products = {this.state.products}
-                loggedIn = {loggedIn}
-                user = {this.state.user}
-                plan = {this.state.plan} />} />
+          <Route path='/product/:id' render = { (props) =>
+            <ProductPage products = {this.state.products}
+                         match = {props.match}
+                         addItemToCart = {this.addItemToCart}
+                         cart = {this.state.user ? this.state.user.cart : []}
+                         loggedIn = {loggedIn}
+                         user = {this.state.user}
+                         plan = {this.state.plan} />} />
 
-        <Route path='/product/:id' render = { (props) =>
-          <ProductPage products = {this.state.products}
-                       match = {props.match}
-                       addItemToCart = {this.addItemToCart}
-                       cart = {this.state.user ? this.state.user.cart : []}
-                       loggedIn = {loggedIn}
-                       user = {this.state.user}
-                       plan = {this.state.plan} />} />
+          <Route path='/cart' render = { (props) =>
+            <Cart cart = {this.state.user ? this.state.user.cart : null}
+                  loggedIn = {loggedIn}
+                  deleteItemFromCart = {this.deleteItemFromCart}
+                  proceedToCheckout = {this.proceedToCheckout}
+                  user = {this.state.user}
+                  plan = {this.state.plan} />} />
 
-        <Route path='/cart' render = { (props) =>
-          <Cart cart = {this.state.user ? this.state.user.cart : null}
-                loggedIn = {loggedIn}
-                deleteItemFromCart = {this.deleteItemFromCart}
-                proceedToCheckout = {this.proceedToCheckout}
-                user = {this.state.user}
-                plan = {this.state.plan} />} />
+          <Route path='/profile' render = { (props) =>
+            <Profile user = {this.state.user}
+                     loggedIn = {loggedIn} />} />
 
-        <Route path='/profile' render = { (props) =>
-          <Profile user = {this.state.user}
+          <Route path='/scheduler' render = { (props) =>
+            <Scheduler user = {this.state.user}
+                       cart = {this.state.user ? this.state.user.cart : []} />} />
+
+          <Route path='/login' render = { (props) =>
+            <Login onLogin = {this.onLogin}
                    loggedIn = {loggedIn} />} />
 
-        <Route path='/scheduler' render = { (props) =>
-          <Scheduler user = {this.state.user}
-                   loggedIn = {loggedIn} />} />
+          <Route path='/register' component={Register} />
 
-        <Route path='/login' render = { (props) =>
-          <Login onLogin = {this.onLogin}
-                 loggedIn = {loggedIn} />} />
-
-        <Route path='/register' component={Register} />
+          <Route component={NoMatch}/>
+        </Switch>
       </div>
     );
   }
@@ -135,13 +140,24 @@ class App extends React.Component {
 class Home extends React.Component {
   render() {
     return (
-      <div className='home'>
+      <div>
         <ProductList products = {this.props.products}
                      loggedIn = {this.props.loggedIn}
                      user = {this.props.user}
                      plan = {this.props.plan} />
       </div>
     );
+  }
+}
+
+class NoMatch extends React.Component {
+  render() {
+    return (
+      <div className='page-error-container'>
+        <div className='page-error'>This page does not exist!</div>
+        <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
+      </div>
+    )
   }
 }
 

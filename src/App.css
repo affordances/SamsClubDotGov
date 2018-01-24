@@ -422,6 +422,20 @@ input[type=submit]:hover {
 }
 
 .scheduler-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-header {
+  font-size: 30px;
+  color: #5e5f60;
+  /*margin-top: 20px;*/
+  margin-bottom: 20px;
+}
+
+.location-search-and-results-container-container {
   border: 2px solid #5e5f60;
   width: 1015px;
   height: 304px;
@@ -527,4 +541,23 @@ input[type=submit]:hover {
   position: absolute;
   z-index: 500;
   width: 500px;
+}
+
+.page-error-container {
+  border: 2px solid #5e5f60;
+  width: 1015px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+
+.page-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  width: 400px;
 }

@@ -16,7 +16,7 @@ class Header extends React.Component {
         <div className='header'>
           <div className='logo'>
             <Link to='/'>
-              Uncle Sam's Club
+              {"Uncle Sam's Club"}
             </Link>
           </div>
             {this.props.loggedIn ? <Link to='/profile'>My profile</Link> : null}
