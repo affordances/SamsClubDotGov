@@ -4,7 +4,7 @@ import './App.css';
 class LocationResults extends React.Component {
   createAddress = (array) => {
     const streetTypes = ['St', 'Ave'];
-    const number = Math.floor(Math.random() * 1000);
+    const number = Math.floor(Math.random() * 1000) + 1;
     const street = array[Math.floor(Math.random() * array.length)];
     const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
     return number + ' ' + street + ' ' + streetType;

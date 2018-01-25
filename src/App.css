@@ -93,7 +93,7 @@ ul {
 }
 
 .header-and-searchbar-container {
-  width: 1015px;
+  width: 1000px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -102,7 +102,7 @@ ul {
 }
 
 .header {
-  width: 1015px;
+  width: 1000px;
   padding: 20px 30px;
   display: flex;
   align-items: center;
@@ -119,14 +119,14 @@ ul {
 .searchbar {
   margin-bottom: 20px;
   border: 2px solid #5e5f60;
-  width: 1015px;
+  width: 1000px;
   height: 50px;
   color: white;
   font-size: 20px;
 }
 
 .products-container {
-  width: 1015px;
+  width: 1000px;
   height: 310px;
   overflow: hidden;
   display: flex;
@@ -155,7 +155,7 @@ ul {
 }
 
 .product-container {
-  width: 1015px;
+  width: 1000px;
   min-height: 310px;
   display: flex;
   flex-direction: row;
@@ -260,7 +260,7 @@ a.product-page-hot-deals:hover {
 
 .cart-container {
   border: 2px solid #5e5f60;
-  width: 1015px;
+  width: 1000px;
   min-height: 250px;
   padding: 20px;
 }
@@ -364,7 +364,7 @@ a.product-page-hot-deals:hover {
 }
 
 .login-form-container {
-  width: 1015px;
+  width: 1000px;
   height: 310px;
   display: flex;
   flex-direction: column;
@@ -437,8 +437,8 @@ input[type=submit]:hover {
 
 .location-search-and-results-container-container {
   border: 2px solid #5e5f60;
-  width: 1015px;
-  height: 304px;
+  width: 1000px;
+  height: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -447,6 +447,7 @@ input[type=submit]:hover {
 
 .location-search-and-results-container {
   height: 300px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -532,7 +533,7 @@ input[type=submit]:hover {
 }
 
 .form-group {
-  width: 508px;
+  width: 500px;
   border-bottom: 1px solid #5e5f60 !important;
 }
 
@@ -549,7 +550,7 @@ input[type=submit]:hover {
 
 .page-error-container {
   border: 2px solid #5e5f60;
-  width: 1015px;
+  width: 1000px;
   min-height: 250px;
   display: flex;
   flex-direction: column;
