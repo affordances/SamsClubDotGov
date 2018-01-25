@@ -26,6 +26,11 @@ class LocationSearch extends React.Component {
 
   findPlaces = (location) => {
     loadGoogleMapsAPI().then((googleMaps) => {
+      const streetNames = ['Second', 'Third', 'First', 'Fourth', 'Park', 'Fifth',
+                           'Main', 'Sixth', 'Oak', 'Seventh', 'Pine', 'Maple',
+                           'Cedar', 'Eighth', 'Elm', 'View', 'Washington',
+                           'Ninth', 'Lake', 'Hill'];
+
       const placesService = new googleMaps.places.PlacesService(document.createElement('div'));
       const bounds = new googleMaps.LatLngBounds(location);
       placesService.search({
@@ -38,7 +43,8 @@ class LocationSearch extends React.Component {
           places.forEach(place => {
             bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
           });
-          const address = this.state.address.replace(', United States', '');
+
+          const address = [this.createAddress(streetNames), this.createAddress(streetNames)];
           this.props.changeLocation(address, location, places, JSON.parse(JSON.stringify(bounds)));
         } else {
           const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
@@ -54,6 +60,14 @@ class LocationSearch extends React.Component {
     this.setState({
       address,
     })
+  }
+
+  createAddress = (array) => {
+    const streetTypes = ['St', 'Ave'];
+    const number = Math.floor(Math.random() * 1000) + 1;
+    const street = array[Math.floor(Math.random() * array.length)];
+    const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
+    return <div><div>{number + ' ' + street + ' ' + streetType}</div><div>{this.state.address.replace(', United States', '')}</div></div>;
   }
 
   render() {

@@ -30,7 +30,7 @@ class Scheduler extends React.Component {
             <div className='location-search-and-results-container'>
               <LocationSearch changeLocation = {this.changeLocation}
                               errorText = {this.state.errorText}/>
-                            {this.state.places ? <LocationResults city = {this.state.address} /> : null}
+                            {this.state.places ? <LocationResults address = {this.state.address} /> : null}
             </div>
             <div className='map-container'>
               <MapComponent center = {this.state.location}
