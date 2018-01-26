@@ -434,22 +434,39 @@ input[type=submit]:hover {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
+  /*padding-left: 100px;
+  padding-right: 100px;*/
 }
 
 .active-step {
-  font-size: 30px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 333px;
   color: #5e5f60;
 }
 
 .inactive-step {
-  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 333px;
   color: #bebfbf;
 }
 
 .clickable-step {
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 333px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #bebfbf;
 }
 
 .location-search-and-results-container-container {
@@ -566,6 +583,26 @@ input[type=submit]:hover {
   position: absolute;
   z-index: 500;
   width: 500px;
+}
+
+.datepicker-container {
+  border: 2px solid #5e5f60;
+  width: 1000px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.timepicker-container {
+  border: 2px solid #5e5f60;
+  width: 1000px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-error-container {

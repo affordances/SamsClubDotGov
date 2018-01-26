@@ -6,6 +6,8 @@ import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
 
+import FontAwesome from 'react-fontawesome';
+
 import { Redirect } from 'react-router-dom'
 
 class Scheduler extends React.Component {
@@ -26,10 +28,7 @@ class Scheduler extends React.Component {
   render() {
     const formatAddress = ({ number, street, streetType, townAndCity }) => {
       return (
-        <div>
-          <div>{number + ' ' + street + ' ' + streetType}</div>
-          <div>{townAndCity}</div>
-        </div>
+        <div>{number + ' ' + street + ' ' + streetType + ', ' + townAndCity}</div>
       )
     }
 
@@ -40,8 +39,10 @@ class Scheduler extends React.Component {
             {this.props.checkoutStep === 1 ?
               <div className='active-step'>Step 1: Pick a location</div> :
                 this.props.ticket.address ?
-                  <div className='clickable-step' onClick={this.props.updateCheckout(1)}>{formatAddress(this.props.ticket.address)}</div> :
-                  <div className='inactive-step'>Step 1</div>
+                  <div className='clickable-step' onClick={this.props.updateCheckout(1)}>
+
+                      {formatAddress(this.props.ticket.address)}
+                    </div> : <div className='inactive-step'>Step 1</div>
             }
             {this.props.checkoutStep === 2 ?
               <div className='active-step'>Step 2: Pick a date</div> :
@@ -71,8 +72,14 @@ class Scheduler extends React.Component {
                               errorText = {this.state.errorText} />
               </div>
             </div> : null}
-          {this.props.checkoutStep === 2 ? <DatePicker /> : null}
-          {this.props.checkoutStep === 3 ? <TimePicker /> : null}
+          {this.props.checkoutStep === 2 ?
+            <div className='datepicker-container'>
+              <DatePicker />
+            </div> : null}
+          {this.props.checkoutStep === 3 ?
+            <div className='timepicker-container'>
+              <TimePicker />
+            </div> : null}
         </div>
       );} else {
         return (

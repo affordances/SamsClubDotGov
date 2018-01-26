@@ -59,7 +59,6 @@ class StateProvider extends React.Component {
       const ticket = Object.assign({}, this.state.ticket);
       ticket.address = address;
       this.setState({ checkoutStep: step, ticket: ticket });
-      console.log(this.state.ticket.address);
     }
   }
 
