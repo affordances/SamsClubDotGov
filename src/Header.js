@@ -7,8 +7,6 @@ import {
   Link,
 } from 'react-router-dom'
 
-// <FontAwesome name='fa-shopping-cart' size='2x' />
-
 class Header extends React.Component {
   render() {
     return (

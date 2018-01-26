@@ -27,6 +27,8 @@ class StateProvider extends React.Component {
     products: null,
     user: null,
     plan: null,
+    ticket: { address: null, date: null, time: null },
+    checkoutStep: 1,
   };
 
   componentDidMount = () => {
@@ -49,6 +51,14 @@ class StateProvider extends React.Component {
 
   proceedToCheckout = () => {
     this.props.history.push('/scheduler');
+  }
+
+  updateCheckout = (step, address) => {
+    return () => {
+      const ticket = Object.assign({}, this.state.ticket);
+      ticket[address] = address;
+      this.setState({ checkoutStep: step, ticket: ticket });
+    }
   }
 
   addItemToCart = (item) => {
@@ -107,6 +117,9 @@ class StateProvider extends React.Component {
 
           <Route path='/scheduler' render = { (props) =>
             <Scheduler user = {this.state.user}
+                       checkoutStep = {this.state.checkoutStep}
+                       updateCheckout = {this.updateCheckout}
+                       ticket = {this.state.ticket}
                        cart = {this.state.user ? this.state.user.cart : []} />} />
 
           <Route path='/login' render = { (props) =>

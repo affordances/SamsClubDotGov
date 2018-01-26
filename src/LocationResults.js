@@ -13,7 +13,7 @@ class LocationResults extends React.Component {
               {this.props.address[0]}
             </div>
             <div className='location-search-result-button'>
-              <button>Select</button>
+              <button onClick={this.props.updateCheckout(2, this.props.address[0])}>Select</button>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@ class LocationResults extends React.Component {
               {this.props.address[1]}
             </div>
             <div className='location-search-result-button'>
-              <button>Select</button>
+              <button onClick={this.props.updateCheckout(2, this.props.address[1])}>Select</button>
             </div>
           </div>
         </div>

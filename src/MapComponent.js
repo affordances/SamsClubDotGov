@@ -31,6 +31,7 @@ class MapComponent extends React.Component {
               stylers: [{visibility: 'off'}]
             },
           ],
+          gestureHandling: 'greedy',
           fullscreenControl: false,
           clickableIcons: false,
           mapTypeControl: false,
