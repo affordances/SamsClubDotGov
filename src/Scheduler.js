@@ -4,6 +4,7 @@ import LocationSearch from './LocationSearch.js';
 import MapComponent from './MapComponent.js';
 import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
+import TimePicker from './TimePicker.js';
 
 import { Redirect } from 'react-router-dom'
 
@@ -23,16 +24,37 @@ class Scheduler extends React.Component {
   }
 
   render() {
+    const formatAddress = ({ number, street, streetType, townAndCity }) => {
+      return (
+        <div>
+          <div>{number + ' ' + street + ' ' + streetType}</div>
+          <div>{townAndCity}</div>
+        </div>
+      )
+    }
+
     if (this.props.cart.length > 0) {
       return (
         <div className='scheduler-container'>
           <div className='step-container'>
-            {this.props.checkoutStep === 1 ? <div className='active-step'>
-              Step 1: Pick a location</div> : <div className='inactive-step'>Step 1</div>}
-            {this.props.checkoutStep === 2 ? <div className='active-step'>
-              Step 2: Pick a date</div> : <div className='inactive-step'>Step 2</div>}
-            {this.props.checkoutStep === 3 ? <div className='active-step'>
-              Step 3: Pick a time</div> : <div className='inactive-step'>Step 3</div>}
+            {this.props.checkoutStep === 1 ?
+              <div className='active-step'>Step 1: Pick a location</div> :
+                this.props.ticket.address ?
+                  <div className='clickable-step' onClick={this.props.updateCheckout(1)}>{formatAddress(this.props.ticket.address)}</div> :
+                  <div className='inactive-step'>Step 1</div>
+            }
+            {this.props.checkoutStep === 2 ?
+              <div className='active-step'>Step 2: Pick a date</div> :
+                this.props.ticket.date ?
+                  <div className='clickable-step'>{this.props.ticket.date}</div> :
+                  <div className='inactive-step'>Step 2</div>
+            }
+            {this.props.checkoutStep === 3 ?
+              <div className='active-step'>Step 3: Pick a time</div> :
+                this.props.ticket.time ?
+                  <div className='clickable-step'>{this.props.ticket.time}</div> :
+                  <div className='inactive-step'>Step 3</div>
+            }
           </div>
           {this.props.checkoutStep === 1 ?
             <div className='location-search-and-results-container-container'>
@@ -50,6 +72,7 @@ class Scheduler extends React.Component {
               </div>
             </div> : null}
           {this.props.checkoutStep === 2 ? <DatePicker /> : null}
+          {this.props.checkoutStep === 3 ? <TimePicker /> : null}
         </div>
       );} else {
         return (

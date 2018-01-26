@@ -448,6 +448,10 @@ input[type=submit]:hover {
   color: #bebfbf;
 }
 
+.clickable-step {
+  
+}
+
 .location-search-and-results-container-container {
   overflow: hidden;
   border: 2px solid #5e5f60;

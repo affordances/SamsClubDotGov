@@ -45,19 +45,21 @@ class StateProvider extends React.Component {
   }
 
   onLogout = () => {
-    this.setState({ user: null });
+    this.setState({ user: null, checkoutStep: 1 });
     this.props.history.push('/login');
   }
 
   proceedToCheckout = () => {
+    this.setState({ checkoutStep: 1, ticket: { address: null, date: null, time: null } });
     this.props.history.push('/scheduler');
   }
 
   updateCheckout = (step, address) => {
     return () => {
       const ticket = Object.assign({}, this.state.ticket);
-      ticket[address] = address;
+      ticket.address = address;
       this.setState({ checkoutStep: step, ticket: ticket });
+      console.log(this.state.ticket.address);
     }
   }
 
