@@ -3,10 +3,21 @@ import './App.css';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 class MapComponent extends React.Component {
+
   componentDidUpdate = () => {
     setTimeout( () => {
       if (this.map) {
         this.map.fitBounds(this.props.bounds);
+        console.log(this.props.bounds);
+      }
+    }, 0)
+  }
+
+  componentDidMount = () => {
+    setTimeout( () => {
+      if (this.map) {
+        this.map.fitBounds(this.props.bounds);
+        console.log(this.props.bounds);
       }
     }, 0)
   }

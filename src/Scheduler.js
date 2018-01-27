@@ -39,9 +39,9 @@ class Scheduler extends React.Component {
             {this.props.checkoutStep === 1 ?
               <div className='active-step'>Step 1: Pick a location</div> :
                 this.props.ticket.address ?
-                  <div className='clickable-step' onClick={this.props.updateCheckout(1)}>
-
+                  <div className='clickable-step'>
                       {formatAddress(this.props.ticket.address)}
+                      <FontAwesome className='step-edit-button' name='times' onClick={this.props.updateCheckout(1)}></FontAwesome>
                     </div> : <div className='inactive-step'>Step 1</div>
             }
             {this.props.checkoutStep === 2 ?
@@ -74,11 +74,11 @@ class Scheduler extends React.Component {
             </div> : null}
           {this.props.checkoutStep === 2 ?
             <div className='datepicker-container'>
-              <DatePicker />
+              <DatePicker updateCheckout = {this.props.updateCheckout} />
             </div> : null}
           {this.props.checkoutStep === 3 ?
             <div className='timepicker-container'>
-              <TimePicker />
+              <TimePicker updateCheckout = {this.props.updateCheckout} />
             </div> : null}
         </div>
       );} else {

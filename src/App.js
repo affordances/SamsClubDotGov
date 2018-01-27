@@ -54,11 +54,20 @@ class StateProvider extends React.Component {
     this.props.history.push('/scheduler');
   }
 
-  updateCheckout = (step, address) => {
+  updateCheckout = (step, update, updateType) => {
     return () => {
       const ticket = Object.assign({}, this.state.ticket);
-      ticket.address = address;
+      if (updateType === 'address') {
+        ticket.address = update;
+      }
+      if (updateType === 'date') {
+        ticket.date = update;
+      }
+      if (updateType === 'time') {
+        ticket.time = update;
+      }
       this.setState({ checkoutStep: step, ticket: ticket });
+      console.log(this.state.ticket);
     }
   }
 
