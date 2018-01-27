@@ -66,8 +66,8 @@ class StateProvider extends React.Component {
       if (updateType === 'time') {
         ticket.time = update;
       }
+      console.log(ticket);
       this.setState({ checkoutStep: step, ticket: ticket });
-      console.log(this.state.ticket);
     }
   }
 

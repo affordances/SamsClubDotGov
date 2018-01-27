@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import DayPicker from 'react-day-picker';
+
 import 'react-day-picker/lib/style.css';
 
 class DatePicker extends React.Component {
@@ -10,16 +11,19 @@ class DatePicker extends React.Component {
     selectedDay: null,
   }
 
-  handleDayClick = (day, { disabled, selected }) => {
+  handleDayClick = (day, { disabled }) => {
     if (disabled) {
       return;
     }
-    this.setState({ selectedDay: selected ? undefined : day });
-    this.props.updateCheckout(3, day, 'date');
+    this.setState({ selectedDay: day });
+    setTimeout( () => {
+      this.props.updateCheckout(3, this.state.selectedDay.toLocaleDateString(), 'date');
+    }, 0)
   }
 
   render() {
     const today = new Date();
+
     return (
       <div className='datepicker'>
         <DayPicker
