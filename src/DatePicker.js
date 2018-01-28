@@ -7,29 +7,31 @@ import 'react-day-picker/lib/style.css';
 
 class DatePicker extends React.Component {
 
-  state = {
-    selectedDay: null,
-  }
-
-  handleDayClick = (day, { disabled }) => {
+  handleDayClick = (day, { disabled, selected }) => {
     if (disabled) {
       return;
     }
-    this.setState({ selectedDay: day });
+    const dateString = day.toString();
+
     setTimeout( () => {
-      this.props.updateCheckout(3, this.state.selectedDay.toLocaleDateString(), 'date');
+      this.props.updateCheckout(3, dateString, 'date')();
     }, 0)
   }
 
   render() {
     const today = new Date();
+    let date = null;
+    if (this.props.ticket.date) {
+      date = new Date(this.props.ticket.date);
+    }
 
     return (
       <div className='datepicker'>
         <DayPicker
           fromMonth={today}
+          initialMonth={date ? date : today}
           disabledDays={{ before: today }}
-          selectedDays={this.state.selectedDay}
+          selectedDays={date}
           onDayClick={this.handleDayClick}
         />
       </div>

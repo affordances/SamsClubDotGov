@@ -434,8 +434,6 @@ input[type=submit]:hover {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
-  /*padding-left: 100px;
-  padding-right: 100px;*/
 }
 
 .active-step {
@@ -445,20 +443,6 @@ input[type=submit]:hover {
   justify-content: center;
   align-items: center;
   width: 333px;
-  color: red;
-}
-
-.step-edit-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 100%;
-  color: #bebfbf;
-}
-
-.step-edit-button:hover {
   color: red;
 }
 
@@ -477,17 +461,21 @@ input[type=submit]:hover {
   justify-content: center;
   align-items: center;
   width: 333px;
+  height: 35px;
+  border: 2px solid #5e5f60;
+  background-color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #bebfbf;
+  font-size: 15px;
+  color: black;
 }
 
-/*.clickable-step:hover {
-  background-color: red;
-  color: white;
-  box-shadow: 5px 10px #888888;
-}*/
+.clickable-step:hover {
+  /*background-color: red;*/
+  color: red;
+  border: 2px solid #378ace;
+}
 
 .location-search-and-results-container-container {
   overflow: hidden;
@@ -636,7 +624,8 @@ input[type=submit]:hover {
 
 .DayPicker:not(.DayPicker--interactionDisabled)
   .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #f0f8ff;
+  background-color: #378ace !important;
+  color: white !important;
   border-radius: 0 !important;
 }
 

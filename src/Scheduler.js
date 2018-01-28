@@ -6,8 +6,6 @@ import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
 
-import FontAwesome from 'react-fontawesome';
-
 import { Redirect } from 'react-router-dom'
 
 class Scheduler extends React.Component {
@@ -25,10 +23,6 @@ class Scheduler extends React.Component {
                     bounds: bounds, errorText: errorText });
   }
 
-  eatShit = () => {
-    console.log('fuck you');
-  }
-
   render() {
     const formatAddress = ({ number, street, streetType, townAndCity }) => {
       return (
@@ -37,25 +31,25 @@ class Scheduler extends React.Component {
     }
 
     if (this.props.cart.length > 0) {
+      const date = new Date(this.props.ticket.date);
+
       return (
         <div className='scheduler-container'>
           <div className='step-container'>
             {this.props.checkoutStep === 1 ?
               <div className='active-step'>Step 1: Pick a location</div> :
                 this.props.ticket.address ?
-                  <div className='clickable-step'>
-                      {formatAddress(this.props.ticket.address)}
-                      <FontAwesome className='step-edit-button'
-                                   name='times'
-                                   onClick={this.props.updateCheckout(1)}>
-
-                      </FontAwesome>
-                    </div> : <div className='inactive-step'>Step 1</div>
+                  <div className='clickable-step' onClick={this.props.updateCheckout(1)}>
+                    {formatAddress(this.props.ticket.address)}
+                  </div> :
+                  <div className='inactive-step'>Step 1</div>
             }
             {this.props.checkoutStep === 2 ?
               <div className='active-step'>Step 2: Pick a date</div> :
                 this.props.ticket.date ?
-                  <div className='clickable-step'>{this.props.ticket.date}</div> :
+                  <div className='clickable-step' onClick={this.props.updateCheckout(2)}>
+                    {date.toLocaleDateString()}
+                  </div> :
                   <div className='inactive-step'>Step 2</div>
             }
             {this.props.checkoutStep === 3 ?
@@ -83,7 +77,7 @@ class Scheduler extends React.Component {
           {this.props.checkoutStep === 2 ?
             <div className='datepicker-container'>
               <DatePicker updateCheckout = {this.props.updateCheckout}
-                          eatShit = {this.props.eatShit} />
+                          ticket = {this.props.ticket} />
             </div> : null}
           {this.props.checkoutStep === 3 ?
             <div className='timepicker-container'>
