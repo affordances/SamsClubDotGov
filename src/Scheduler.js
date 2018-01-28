@@ -10,19 +10,6 @@ import { Redirect } from 'react-router-dom'
 
 class Scheduler extends React.Component {
 
-  state = {
-    address: null,
-    location: null,
-    places: null,
-    bounds: null,
-    errorText: null,
-  }
-
-  changeLocation = (address, location, places, bounds, errorText) => {
-    this.setState({ address: address, location: location, places: places,
-                    bounds: bounds, errorText: errorText });
-  }
-
   render() {
     const formatAddress = ({ number, street, streetType, townAndCity }) => {
       return (
@@ -62,16 +49,16 @@ class Scheduler extends React.Component {
           {this.props.checkoutStep === 1 ?
             <div className='location-search-and-results-container-container'>
               <div className='location-search-and-results-container'>
-                <LocationSearch changeLocation = {this.changeLocation}
-                                errorText = {this.state.errorText}/>
-                              {this.state.places ? <LocationResults address = {this.state.address}
+                <LocationSearch changeLocation = {this.props.changeLocation}
+                                errorText = {this.props.locationSearch.errorText}/>
+                              {this.props.locationSearch.places ? <LocationResults address = {this.props.locationSearch.address}
                                                                     updateCheckout = {this.props.updateCheckout} /> : null}
               </div>
               <div className='map-container'>
-                <MapComponent center = {this.state.location}
-                              places = {this.state.places}
-                              bounds = {this.state.bounds}
-                              errorText = {this.state.errorText} />
+                <MapComponent center = {this.props.locationSearch.location}
+                              places = {this.props.locationSearch.places}
+                              bounds = {this.props.locationSearch.bounds}
+                              errorText = {this.props.locationSearch.errorText} />
               </div>
             </div> : null}
           {this.props.checkoutStep === 2 ?

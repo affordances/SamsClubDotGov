@@ -28,6 +28,7 @@ class StateProvider extends React.Component {
     user: null,
     plan: null,
     ticket: { address: null, date: null, time: null },
+    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
     checkoutStep: 1,
   };
 
@@ -50,8 +51,21 @@ class StateProvider extends React.Component {
   }
 
   proceedToCheckout = () => {
-    this.setState({ checkoutStep: 1, ticket: { address: null, date: null, time: null } });
+    this.setState({ checkoutStep: 1,
+                    ticket: { address: null, date: null, time: null },
+                    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null }
+                  });
     this.props.history.push('/scheduler');
+  }
+
+  changeLocation = (address, location, places, bounds, errorText) => {
+    const locationSearch = Object.assign({}, this.state.locationSearch);
+    locationSearch.address = address;
+    locationSearch.location = location;
+    locationSearch.places = places;
+    locationSearch.bounds = bounds;
+    locationSearch.errorText = errorText;
+    this.setState({ locationSearch: locationSearch });
   }
 
   updateCheckout = (step, update, updateType) => {
@@ -129,6 +143,8 @@ class StateProvider extends React.Component {
                        checkoutStep = {this.state.checkoutStep}
                        updateCheckout = {this.updateCheckout}
                        ticket = {this.state.ticket}
+                       changeLocation = {this.changeLocation}
+                       locationSearch = {this.state.locationSearch}
                        cart = {this.state.user ? this.state.user.cart : []} />} />
 
           <Route path='/login' render = { (props) =>
