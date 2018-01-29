@@ -23,7 +23,7 @@ class Scheduler extends React.Component {
       return (
         <div className='scheduler-container'>
           <div className='step-container'>
-            {this.props.checkoutStep === 1 ?
+            {this.props.ticket.checkoutStep === 1 ?
               <div className='active-step'>Step 1: Pick a location</div> :
                 this.props.ticket.address ?
                   <div className='clickable-step' onClick={this.props.updateCheckout(1)}>
@@ -31,7 +31,7 @@ class Scheduler extends React.Component {
                   </div> :
                   <div className='inactive-step'>Step 1</div>
             }
-            {this.props.checkoutStep === 2 ?
+            {this.props.ticket.checkoutStep === 2 ?
               <div className='active-step'>Step 2: Pick a date</div> :
                 this.props.ticket.date ?
                   <div className='clickable-step' onClick={this.props.updateCheckout(2)}>
@@ -39,14 +39,16 @@ class Scheduler extends React.Component {
                   </div> :
                   <div className='inactive-step'>Step 2</div>
             }
-            {this.props.checkoutStep === 3 ?
+            {this.props.ticket.checkoutStep === 3 ?
               <div className='active-step'>Step 3: Pick a time</div> :
                 this.props.ticket.time ?
-                  <div className='clickable-step'>{this.props.ticket.time}</div> :
+                  <div className='clickable-step' onClick={this.props.updateCheckout(3)}>
+                    {this.props.ticket.time}
+                  </div> :
                   <div className='inactive-step'>Step 3</div>
             }
           </div>
-          {this.props.checkoutStep === 1 ?
+          {this.props.ticket.checkoutStep === 1 ?
             <div className='location-search-and-results-container-container'>
               <div className='location-search-and-results-container'>
                 <LocationSearch changeLocation = {this.props.changeLocation}
@@ -61,14 +63,20 @@ class Scheduler extends React.Component {
                               errorText = {this.props.locationSearch.errorText} />
               </div>
             </div> : null}
-          {this.props.checkoutStep === 2 ?
+          {this.props.ticket.checkoutStep === 2 ?
             <div className='datepicker-container'>
               <DatePicker updateCheckout = {this.props.updateCheckout}
                           ticket = {this.props.ticket} />
             </div> : null}
-          {this.props.checkoutStep === 3 ?
-            <div className='timepicker-container'>
-              <TimePicker updateCheckout = {this.props.updateCheckout} />
+          {this.props.ticket.checkoutStep === 3 ?
+            <div className='timepicker-container-container'>
+              <TimePicker updateCheckout = {this.props.updateCheckout}
+                          ticket = {this.props.ticket} />
+            </div> : null}
+          {this.props.ticket.checkoutStep === 4 ?
+            <div className='final-container'>
+              <div>Ticket summary</div>
+              <button>Ok</button>
             </div> : null}
         </div>
       );} else {

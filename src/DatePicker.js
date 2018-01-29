@@ -30,7 +30,7 @@ class DatePicker extends React.Component {
         <DayPicker
           fromMonth={today}
           initialMonth={date ? date : today}
-          disabledDays={{ before: today }}
+          disabledDays={[{ daysOfWeek: [0, 6] }, { before: today }]}
           selectedDays={date}
           onDayClick={this.handleDayClick}
         />

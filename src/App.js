@@ -27,9 +27,8 @@ class StateProvider extends React.Component {
     products: null,
     user: null,
     plan: null,
-    ticket: { address: null, date: null, time: null },
+    ticket: { checkoutStep: 1, appointmentTimes: null, address: null, date: null, time: null },
     locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
-    checkoutStep: 1,
   };
 
   componentDidMount = () => {
@@ -46,14 +45,16 @@ class StateProvider extends React.Component {
   }
 
   onLogout = () => {
-    this.setState({ user: null, checkoutStep: 1 });
+    const ticket = Object.assign({}, this.state.ticket);
+    ticket.checkoutStep = 1;
+    this.setState({ user: null, ticket: ticket });
     this.props.history.push('/login');
   }
 
   proceedToCheckout = () => {
-    this.setState({ checkoutStep: 1,
-                    ticket: { address: null, date: null, time: null },
-                    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null }
+    const times = this.generateAppointments();
+    this.setState({ ticket: { checkoutStep: 1, appointmentTimes: times, address: null, date: null, time: null },
+                    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
                   });
     this.props.history.push('/scheduler');
   }
@@ -68,9 +69,29 @@ class StateProvider extends React.Component {
     this.setState({ locationSearch: locationSearch });
   }
 
+  generateAppointments = () => {
+    let appointments = [];
+    while (appointments.length < 3) {
+      const appointment = Math.floor(Math.random() * (18 - 7 + 1)) + 7;
+      if (!appointments.includes(appointment))
+      appointments.push(appointment);
+    }
+    return appointments.map((appointment) => {
+      let time = ((appointment - 1) % 12) + 1;
+      const amArray = [':00 AM', ':30 AM'];
+      const pmArray = [':00 PM', ':30 PM'];
+      const randomAm = amArray[Math.floor(Math.random() * amArray.length)];
+      const randomPm = pmArray[Math.floor(Math.random() * pmArray.length)];
+      time = time + ((appointment < 12) ? randomAm : randomPm);
+      return time;
+      }
+    )
+  }
+
   updateCheckout = (step, update, updateType) => {
     return () => {
       const ticket = Object.assign({}, this.state.ticket);
+      ticket.checkoutStep = step;
       if (updateType === 'address') {
         ticket.address = update;
       }
@@ -80,7 +101,7 @@ class StateProvider extends React.Component {
       if (updateType === 'time') {
         ticket.time = update;
       }
-      this.setState({ checkoutStep: step, ticket: ticket });
+      this.setState({ ticket: ticket });
     }
   }
 
@@ -140,7 +161,6 @@ class StateProvider extends React.Component {
 
           <Route path='/scheduler' render = { (props) =>
             <Scheduler user = {this.state.user}
-                       checkoutStep = {this.state.checkoutStep}
                        updateCheckout = {this.updateCheckout}
                        ticket = {this.state.ticket}
                        changeLocation = {this.changeLocation}

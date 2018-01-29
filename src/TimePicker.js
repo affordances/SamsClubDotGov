@@ -2,30 +2,33 @@ import React from 'react';
 import './App.css';
 
 class TimePicker extends React.Component {
-
-  generateAppointments = () => {
-    let appointments = [];
-    while (appointments.length < 3) {
-      const appointment = Math.floor(Math.random() * 24) + 1;
-      if (!appointments.includes(appointment))
-      appointments.push(appointment);
-    }
-    return appointments.map((appointment) => {
-      let time = ((appointment - 1) % 12) + 1;
-      time = time + ((appointment <= 12) ? ':00 AM' : ':00 PM');
-      return time;
-      }
-    )
-  }
-
   render() {
-    const appointments = this.generateAppointments();
-
     return (
-      <div>
-        <div>{appointments[0]}</div>
-        <div>{appointments[1]}</div>
-        <div>{appointments[2]}</div>
+      <div className='timepicker-container'>
+        <div className='time-option-container'>
+          <div className='time-option'>{this.props.ticket.appointmentTimes[0]}</div>
+            <div className='time-option-button'>
+              <button onClick={this.props.updateCheckout(4, this.props.ticket.appointmentTimes[0], 'time')}>
+                Select
+              </button>
+            </div>
+        </div>
+        <div className='time-option-container'>
+          <div className='time-option'>{this.props.ticket.appointmentTimes[1]}</div>
+            <div className='time-option-button'>
+              <button onClick={this.props.updateCheckout(4, this.props.ticket.appointmentTimes[1], 'time')}>
+                Select
+              </button>
+            </div>
+        </div>
+        <div className='time-option-container'>
+          <div className='time-option'>{this.props.ticket.appointmentTimes[2]}</div>
+          <div className='time-option-button'>
+            <button onClick={this.props.updateCheckout(4, this.props.ticket.appointmentTimes[2], 'time')}>
+              Select
+            </button>
+          </div>
+        </div>
       </div>
       );
   }

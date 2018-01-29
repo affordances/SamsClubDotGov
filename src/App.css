@@ -442,7 +442,7 @@ input[type=submit]:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 333px;
+  width: 320px;
   color: red;
 }
 
@@ -451,7 +451,7 @@ input[type=submit]:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 333px;
+  width: 320px;
   color: #bebfbf;
 }
 
@@ -460,7 +460,7 @@ input[type=submit]:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 333px;
+  width: 320px;
   height: 35px;
   border: 2px solid #5e5f60;
   background-color: white;
@@ -468,7 +468,7 @@ input[type=submit]:hover {
   flex-direction: row;
   align-items: center;
   font-size: 15px;
-  color: black;
+  color: #5e5f60;
 }
 
 .clickable-step:hover {
@@ -641,12 +641,50 @@ input[type=submit]:hover {
   color: #5e5f60 !important;
 }
 
-.timepicker-container {
+.timepicker-container-container {
   border: 2px solid #5e5f60;
   width: 1000px;
   height: 300px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.timepicker-container {
+  color: #5e5f60;
+  font-size: 30px;
+}
+
+.time-option-container {
+  width: 333px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  margin-right: 15px;
+}
+
+.time-option-button {
+  width: 50%;
+  margin-left: 15px;
+}
+
+.final-container {
+  border: 2px solid #5e5f60;
+  width: 1000px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
