@@ -28,14 +28,7 @@ class Header extends React.Component {
             {this.props.loggedIn ? <div className='on-click-link' onClick={this.props.onLogout}>Sign out</div> :
                                    <Link to='/login'>Sign in</Link>}
         </div>
-        <div className='searchbar'>
-          <form>
-            <input type='text'
-                   placeholder='Search'
-                   spellCheck='false'
-            />
-          </form>
-        </div>
+
       </div>
     );
   }

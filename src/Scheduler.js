@@ -6,6 +6,7 @@ import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
 
+import html2pdf from 'html2pdf.js';
 import jsPDF from 'jspdf';
 
 import { Redirect } from 'react-router-dom'
@@ -33,6 +34,13 @@ class Scheduler extends React.Component {
     doc.text(ticketBody, 10, 10);
     doc.save('ticket.pdf');
     console.log(cart);
+  }
+
+  makePDF2 = () => {
+    let el = document.getElementById('ticket');
+    html2pdf(el, {
+      html2canvas:  { dpi: 192, letterRendering: true },
+    });
   }
 
   render() {
@@ -101,7 +109,7 @@ class Scheduler extends React.Component {
           {this.props.ticket.checkoutStep === 4 ?
             <div className='final-container'>
               <div id='ticket'>Ticket summary</div>
-              <button onClick={this.makePDF}>Ok</button>
+              <button onClick={this.makePDF2}>Ok</button>
             </div> : null}
         </div>
       );} else {
