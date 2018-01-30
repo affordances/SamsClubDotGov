@@ -6,9 +6,34 @@ import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
 
+import jsPDF from 'jspdf';
+
 import { Redirect } from 'react-router-dom'
 
 class Scheduler extends React.Component {
+
+  makePDF = () => {
+    var doc = new jsPDF();
+
+    const formatAddress = ({ number, street, streetType, townAndCity }) => {
+      return number.toString() + ' ' + street.toString() + ' ' +
+             streetType.toString() + ', ' + townAndCity.toString();
+    }
+
+    const name = this.props.user.name;
+    const hin = this.props.user.hin;
+    const address = formatAddress(this.props.ticket.address);
+    const date = new Date(this.props.ticket.date);
+    const formattedDate = date.toLocaleDateString();
+    const time = this.props.ticket.time;
+    const cart = this.props.cart;
+
+    const ticketBody = `${name}\n${hin}\n${address}\n${formattedDate}\n${time}\n${cart}`;
+
+    doc.text(ticketBody, 10, 10);
+    doc.save('ticket.pdf');
+    console.log(cart);
+  }
 
   render() {
     const formatAddress = ({ number, street, streetType, townAndCity }) => {
@@ -75,8 +100,8 @@ class Scheduler extends React.Component {
             </div> : null}
           {this.props.ticket.checkoutStep === 4 ?
             <div className='final-container'>
-              <div>Ticket summary</div>
-              <button>Ok</button>
+              <div id='ticket'>Ticket summary</div>
+              <button onClick={this.makePDF}>Ok</button>
             </div> : null}
         </div>
       );} else {
