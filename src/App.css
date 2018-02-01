@@ -678,11 +678,25 @@ input[type=submit]:hover {
 .final-container {
   border: 2px solid #5e5f60;
   width: 1000px;
-  height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#ticket-container {
+  border-bottom: 2px solid #5e5f60;
+  width: 1000px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-download-button {
+  margin: 20px;
 }
 
 .page-error-container {

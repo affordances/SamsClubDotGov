@@ -7,37 +7,14 @@ import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
 
 import html2pdf from 'html2pdf.js';
-import jsPDF from 'jspdf';
 
 import { Redirect } from 'react-router-dom'
 
 class Scheduler extends React.Component {
 
-  makePDF = () => {
-    var doc = new jsPDF();
-
-    const formatAddress = ({ number, street, streetType, townAndCity }) => {
-      return number.toString() + ' ' + street.toString() + ' ' +
-             streetType.toString() + ', ' + townAndCity.toString();
-    }
-
-    const name = this.props.user.name;
-    const hin = this.props.user.hin;
-    const address = formatAddress(this.props.ticket.address);
-    const date = new Date(this.props.ticket.date);
-    const formattedDate = date.toLocaleDateString();
-    const time = this.props.ticket.time;
-    const cart = this.props.cart;
-
-    const ticketBody = `${name}\n${hin}\n${address}\n${formattedDate}\n${time}\n${cart}`;
-
-    doc.text(ticketBody, 10, 10);
-    doc.save('ticket.pdf');
-    console.log(cart);
-  }
-
   makePDF2 = () => {
-    let el = document.getElementById('ticket');
+    let el = document.getElementById('ticket-container');
+
     html2pdf(el, {
       html2canvas:  { dpi: 192, letterRendering: true },
     });
@@ -49,6 +26,21 @@ class Scheduler extends React.Component {
         <div>{number + ' ' + street + ' ' + streetType + ', ' + townAndCity}</div>
       )
     }
+    const date = new Date(this.props.ticket.date);
+    const name = <div>{this.props.user.name}</div>;
+    const hin = <div>{this.props.user.hin}</div>;
+    const address = <div>{formatAddress(this.props.ticket.address)}</div>;
+    const formattedDate = <div>{date.toLocaleDateString()}</div>;
+    const time = <div>{this.props.ticket.time}</div>;
+
+    const cart = this.props.cart.map((item) => (
+      <div>
+        <div>{item.name}</div>
+        <div>${item.listPrice}</div>
+      </div>
+    ));
+
+    const ticketBody = [name, hin, address, formattedDate, time, cart];
 
     if (this.props.cart.length > 0) {
       const date = new Date(this.props.ticket.date);
@@ -108,8 +100,10 @@ class Scheduler extends React.Component {
             </div> : null}
           {this.props.ticket.checkoutStep === 4 ?
             <div className='final-container'>
-              <div id='ticket'>Ticket summary</div>
-              <button onClick={this.makePDF2}>Ok</button>
+              <div id='ticket-container'>{ticketBody}</div>
+              <div className='ticket-download-button'>
+                <button onClick={this.makePDF2}>Download</button>
+              </div>
             </div> : null}
         </div>
       );} else {
