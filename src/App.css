@@ -51,7 +51,7 @@ button a {
 
 a, .on-click-link {
   cursor: pointer;
-  color: #5e5f60 !important;
+  color: #5e5f60;
   text-decoration: none;
 
   &:visited {
@@ -395,7 +395,7 @@ a.product-page-hot-deals:hover {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #5e5f60;;
+  border-bottom: 4px solid #5e5f60;
 }
 
 .login-form-submit {
@@ -727,8 +727,8 @@ input[type=submit]:hover {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #000;
-  background-color: #fefefe;
+  color: #5e5f60;
+  background-color: white;
   border: 2px solid #5e5f60;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.29);
 }

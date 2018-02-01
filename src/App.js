@@ -76,6 +76,7 @@ class StateProvider extends React.Component {
       if (!appointments.includes(appointment))
       appointments.push(appointment);
     }
+    appointments.sort(function(a, b){return a - b});
     return appointments.map((appointment) => {
       let time = ((appointment - 1) % 12) + 1;
       const amArray = [':00 AM', ':30 AM'];
