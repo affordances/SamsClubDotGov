@@ -30,15 +30,16 @@ class UserDropdown extends React.Component {
       toggle: <FontAwesome name='user' onClick={this.toggle} style={{
         color: '#5e5f60'
       }} size='2x'></FontAwesome>,
-      textAlign: 'right',
-      size: 'sm',
-      animate: false
+      animate: false,
+      align: 'right',
+      textAlign: 'center',
+      size: 'sm'
     };
 
     return (
       <DropdownMenu {...menuOptions}>
-        <li><Link to='/profile'>My profile</Link></li>
-        <li className='on-click-link' onClick={this.props.onLogout}>Sign out</li>
+        <li><Link to='/profile' className='on-click-link'>My profile</Link></li>
+        <li><div className='on-click-link' onClick={this.props.onLogout}>Sign out</div></li>
       </DropdownMenu>
       );
   }
