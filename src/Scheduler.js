@@ -5,42 +5,17 @@ import MapComponent from './MapComponent.js';
 import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
-
-import html2pdf from 'html2pdf.js';
+import Ticket from './Ticket.js';
 
 import { Redirect } from 'react-router-dom'
 
 class Scheduler extends React.Component {
-
-  makePDF2 = () => {
-    let el = document.getElementById('ticket-container');
-
-    html2pdf(el, {
-      html2canvas:  { dpi: 192, letterRendering: true },
-    });
-  }
-
   render() {
     const formatAddress = ({ number, street, streetType, townAndCity }) => {
       return (
         <div>{number + ' ' + street + ' ' + streetType + ', ' + townAndCity}</div>
       )
     }
-    const date = new Date(this.props.ticket.date);
-    const name = <div>{this.props.user.name}</div>;
-    const hin = <div>{this.props.user.hin}</div>;
-    const address = <div>{formatAddress(this.props.ticket.address)}</div>;
-    const formattedDate = <div>{date.toLocaleDateString()}</div>;
-    const time = <div>{this.props.ticket.time}</div>;
-
-    const cart = this.props.cart.map((item) => (
-      <div>
-        <div>{item.name}</div>
-        <div>${item.listPrice}</div>
-      </div>
-    ));
-
-    const ticketBody = [name, hin, address, formattedDate, time, cart];
 
     if (this.props.cart.length > 0) {
       const date = new Date(this.props.ticket.date);
@@ -99,11 +74,11 @@ class Scheduler extends React.Component {
                           ticket = {this.props.ticket} />
             </div> : null}
           {this.props.ticket.checkoutStep === 4 ?
-            <div className='final-container'>
-              <div id='ticket-container'>{ticketBody}</div>
-              <div className='ticket-download-button'>
-                <button onClick={this.makePDF2}>Download</button>
-              </div>
+            <div className='final-container-container'>
+              <Ticket user = {this.props.user}
+                      ticket = {this.props.ticket}
+                      emptyCart = {this.props.emptyCart}
+                      cart = {this.props.user ? this.props.user.cart : []} />
             </div> : null}
         </div>
       );} else {

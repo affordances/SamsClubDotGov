@@ -124,6 +124,12 @@ class StateProvider extends React.Component {
     }
   }
 
+  emptyCart = () => {
+    const user = Object.assign({}, this.state.user);
+    user.cart = [];
+    this.setState( { user: user });
+  }
+
   render() {
     const loggedIn = this.state.user ? true : false;
 
@@ -166,6 +172,7 @@ class StateProvider extends React.Component {
                        ticket = {this.state.ticket}
                        changeLocation = {this.changeLocation}
                        locationSearch = {this.state.locationSearch}
+                       emptyCart = {this.emptyCart}
                        cart = {this.state.user ? this.state.user.cart : []} />} />
 
           <Route path='/login' render = { (props) =>

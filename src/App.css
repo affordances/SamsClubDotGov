@@ -676,7 +676,7 @@ input[type=submit]:hover {
 }
 
 .final-container {
-  border: 2px solid #5e5f60;
+  /*border: 2px solid #5e5f60;*/
   width: 1000px;
   min-height: 300px;
   display: flex;
@@ -686,7 +686,7 @@ input[type=submit]:hover {
 }
 
 #ticket-container {
-  border-bottom: 2px solid #5e5f60;
+  border: 2px solid #5e5f60;
   width: 1000px;
   min-height: 300px;
   display: flex;
