@@ -74,12 +74,10 @@ class Scheduler extends React.Component {
                           ticket = {this.props.ticket} />
             </div> : null}
           {this.props.ticket.checkoutStep === 4 ?
-            <div className='final-container-container'>
               <Ticket user = {this.props.user}
                       ticket = {this.props.ticket}
                       emptyCart = {this.props.emptyCart}
-                      cart = {this.props.user ? this.props.user.cart : []} />
-            </div> : null}
+                      cart = {this.props.user ? this.props.user.cart : []} /> : null}
         </div>
       );} else {
         return (

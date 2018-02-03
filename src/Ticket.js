@@ -8,10 +8,11 @@ class Ticket extends React.Component {
     let el = document.getElementById('ticket-container');
 
     html2pdf(el, {
-      html2canvas:  { dpi: 192, letterRendering: true },
+      filename: 'ticket.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { dpi: 192, letterRendering: true },
+      jsPDF: { unit: 'in', orientation: 'portrait', format: [8.5, 11] }
     });
-
-    this.props.emptyCart();
   }
 
   render() {
@@ -38,8 +39,10 @@ class Ticket extends React.Component {
     const ticketBody = [name, hin, address, formattedDate, time, cart];
 
     return (
-      <div className='final-container'>
-        <div id='ticket-container'>{ticketBody}</div>
+      <div className='final-container-container'>
+        <div className='final-container'>
+          <div id='ticket-container'>{ticketBody}</div>
+        </div>
         <div className='ticket-download-button'>
           <button onClick={this.makePDF2}>Download</button>
         </div>
