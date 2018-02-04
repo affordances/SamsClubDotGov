@@ -61,7 +61,7 @@ class Ticket extends React.Component {
             <div id='ticket-container'>
               <div className='ticket-body'>
                 <div className='ticket-header'>
-                  <div className='ticket-logo'>Uncle Sam's Club</div>
+                  <div className='ticket-logo'>{"Uncle Sam's Club"}</div>
                   <div className='ticket-member-info'>
                     <div className='ticket-name'>{name}</div>
                     <div className='ticket-hin'>HIN: {hin}</div>

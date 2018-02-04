@@ -10,7 +10,6 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log(this.props.products);
     return (
       <div className='searchbar'>
         <Autocomplete
@@ -22,7 +21,11 @@ class Search extends React.Component {
           }
 
           renderItem={(item, isHighlighted) =>
-            <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+            <div style={{ background: isHighlighted ? '#fafafa' : 'white',
+                          padding: '10px',
+                          color: '#555555',
+                          cursor: 'pointer'
+                       }}>
               {item.name}
             </div>
           }
@@ -36,6 +39,18 @@ class Search extends React.Component {
           onSelect={(val) =>
             this.setState({ value: val })
           }
+
+          menuStyle={{
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+            background: 'rgba(255, 255, 255, 0.9)',
+            position: 'fixed',
+            paddingBottom: '0px',
+            overflow: 'auto',
+            input: { width: '100%' },
+            borderBottom: '2px solid #5e5f60',
+            borderRight: '2px solid #5e5f60',
+            borderLeft: '2px solid #5e5f60',
+          }}
         />
       </div>
     )
