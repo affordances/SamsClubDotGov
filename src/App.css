@@ -773,6 +773,14 @@ input[type=submit]:hover {
 
 .ticket-download-button {
   margin: 20px;
+  font-size: 20px;
+  color: #5e5f60;
+}
+
+.final-step-header {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #5e5f60;
 }
 
 .page-error-container {

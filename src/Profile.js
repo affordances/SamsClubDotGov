@@ -10,12 +10,6 @@ class Profile extends React.Component {
     if (this.props.loggedIn)
     {return (
       <div>
-        <div>
-          {this.props.user.name}
-        </div>
-        <div>
-          {this.props.user.plan} plan
-        </div>
       </div>
     );}
     else {return (

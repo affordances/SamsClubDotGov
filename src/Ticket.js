@@ -112,7 +112,7 @@ class Ticket extends React.Component {
           </div>
         </div>
         <div className='ticket-download-button'>
-          <button onClick={this.makePDF2}>Download</button>
+          <button onClick={this.makePDF2}>Download</button> or <button onClick={this.props.updateCheckout(1)}>Change</button>
         </div>
       </div>
     )

@@ -22,32 +22,37 @@ class Scheduler extends React.Component {
 
       return (
         <div className='scheduler-container'>
-          <div className='step-container'>
-            {this.props.ticket.checkoutStep === 1 ?
-              <div className='active-step'>Step 1: Pick a location</div> :
-                this.props.ticket.address ?
-                  <div className='clickable-step' onClick={this.props.updateCheckout(1)}>
-                    {formatAddress(this.props.ticket.address)}
-                  </div> :
-                  <div className='inactive-step'>Step 1</div>
-            }
-            {this.props.ticket.checkoutStep === 2 ?
-              <div className='active-step'>Step 2: Pick a date</div> :
-                this.props.ticket.date ?
-                  <div className='clickable-step' onClick={this.props.updateCheckout(2)}>
-                    {date.toLocaleDateString()}
-                  </div> :
-                  <div className='inactive-step'>Step 2</div>
-            }
-            {this.props.ticket.checkoutStep === 3 ?
-              <div className='active-step'>Step 3: Pick a time</div> :
-                this.props.ticket.time ?
-                  <div className='clickable-step' onClick={this.props.updateCheckout(3)}>
-                    {this.props.ticket.time}
-                  </div> :
-                  <div className='inactive-step'>Step 3</div>
-            }
-          </div>
+          {this.props.ticket.checkoutStep === 4 ?
+            <div>
+              <div className='final-step-header'>Your ticket</div>
+            </div> :
+            <div className='step-container'>
+              {this.props.ticket.checkoutStep === 1 ?
+                <div className='active-step'>Step 1: Pick a location</div> :
+                  this.props.ticket.address ?
+                    <div className='clickable-step' onClick={this.props.updateCheckout(1)}>
+                      {formatAddress(this.props.ticket.address)}
+                    </div> :
+                    <div className='inactive-step'>Step 1</div>
+              }
+              {this.props.ticket.checkoutStep === 2 ?
+                <div className='active-step'>Step 2: Pick a date</div> :
+                  this.props.ticket.date ?
+                    <div className='clickable-step' onClick={this.props.updateCheckout(2)}>
+                      {date.toLocaleDateString()}
+                    </div> :
+                    <div className='inactive-step'>Step 2</div>
+              }
+              {this.props.ticket.checkoutStep === 3 ?
+                <div className='active-step'>Step 3: Pick a time</div> :
+                  this.props.ticket.time ?
+                    <div className='clickable-step' onClick={this.props.updateCheckout(3)}>
+                      {this.props.ticket.time}
+                    </div> :
+                    <div className='inactive-step'>Step 3</div>
+              }
+            </div>
+          }
           {this.props.ticket.checkoutStep === 1 ?
             <div className='location-search-and-results-container-container'>
               <div className='location-search-and-results-container'>
@@ -78,6 +83,7 @@ class Scheduler extends React.Component {
                       ticket = {this.props.ticket}
                       emptyCart = {this.props.emptyCart}
                       plan = {this.props.plan}
+                      updateCheckout = {this.props.updateCheckout}
                       cart = {this.props.user ? this.props.user.cart : []} /> : null}
         </div>
       );} else {
