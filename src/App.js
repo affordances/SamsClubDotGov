@@ -173,6 +173,7 @@ class StateProvider extends React.Component {
                        changeLocation = {this.changeLocation}
                        locationSearch = {this.state.locationSearch}
                        emptyCart = {this.emptyCart}
+                       plan = {this.state.plan}
                        cart = {this.state.user ? this.state.user.cart : []} />} />
 
           <Route path='/login' render = { (props) =>

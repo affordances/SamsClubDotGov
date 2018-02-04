@@ -24,12 +24,15 @@ class Cart extends React.Component {
           </div>
         </div>
       ));
+
       const total = this.props.cart.map((item) => (
         item.listPrice - (item.listPrice * (this.props.plan.discount / 100))
       )).reduce((a, b) => a + b, 0);
+
       const amountSaved = this.props.cart.map((item) => (
-      item.listPrice
+        item.listPrice
       )).reduce((a, b) => a + b, 0);
+
       return (
         <div className='cart-container'>
         {(cart.length > 0) ?
