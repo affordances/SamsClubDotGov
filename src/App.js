@@ -136,6 +136,7 @@ class StateProvider extends React.Component {
     return (
       <div className='main-container'>
         <Header loggedIn = {loggedIn}
+                products = {this.state.products}
                 onLogout = {this.onLogout}
                 cart = {this.state.user ? this.state.user.cart : []} />
         <Switch>

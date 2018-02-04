@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import UserDropdown from './UserDropdown.js';
+import Search from './Search.js';
 
 import FontAwesome from 'react-fontawesome';
 import NotificationBadge from 'react-notification-badge';
@@ -20,19 +21,12 @@ class Header extends React.Component {
                 {"Uncle Sam's Club"}
               </Link>
             </div>
-            <div className='searchbar'>
-              <form>
-                <input type='text'
-                       placeholder='Search'
-                       spellCheck='false'
-                />
-              </form>
-            </div>
+            <Search products = {this.props.products} />
           </div>
 
             {this.props.loggedIn ? <div className='cart-and-user-icon-container'>
-                                    <Link to='/cart' style={{ display: 'inline-block', height: '45px', width: '44px', }}>
-                                     <FontAwesome name='shopping-cart' style={{float:'left'}} size='2x'></FontAwesome>
+                                     <Link to='/cart' style={{ display: 'inline-block', height: '45px', width: '44px', }}>
+                                       <FontAwesome name='shopping-cart' style={{float:'left'}} size='2x'></FontAwesome>
                                        <NotificationBadge
                                          count={this.props.cart.length}
                                          effect={[null, null, {}, {}]}
