@@ -7,9 +7,6 @@ import {
 
 class ProductPreview extends React.Component {
   render() {
-    // const priceCalculation = this.props.product.listPrice -
-    //       (this.props.product.listPrice * (this.props.plan.discount / 100));
-
     return (
       <Link to={ 'product/' + this.props.product.id }>
         <div className='product-preview'>

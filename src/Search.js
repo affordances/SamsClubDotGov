@@ -2,16 +2,23 @@ import React from 'react';
 import './App.css';
 
 import Autocomplete from 'react-autocomplete';
+import { withRouter } from 'react-router';
 
 class Search extends React.Component {
   state = {
     value: ''
   }
 
+  goToProductPage = () => {
+    const product = this.props.products.find(x => x.name === this.state.value);
+    this.props.history.push('/product/' + product.id);
+  }
+
   render() {
     return (
       <div className='searchbar'>
-        <form>
+        <form onSubmit={this.goToProductPage}>
+
           <Autocomplete
             getItemValue={(item) => item.name}
               items={this.props.products}
@@ -67,5 +74,7 @@ class Search extends React.Component {
     )
   }
 }
+
+Search = withRouter(Search);
 
 export default Search;
