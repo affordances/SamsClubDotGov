@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 
 import Autocomplete from 'react-autocomplete';
-import FontAwesome from 'react-fontawesome';
 
 class Search extends React.Component {
   state = {
