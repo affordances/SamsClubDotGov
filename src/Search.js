@@ -12,46 +12,58 @@ class Search extends React.Component {
   render() {
     return (
       <div className='searchbar'>
-        <Autocomplete
-          getItemValue={(item) => item.name}
-            items={this.props.products}
+        <form>
+          <Autocomplete
+            getItemValue={(item) => item.name}
+              items={this.props.products}
 
-          shouldItemRender={(item, string) =>
-            string.length > 0 && item.name.toLowerCase().indexOf(string.toLowerCase()) !== -1
-          }
+            shouldItemRender={(item, string) =>
+              string.length > 0 && item.name.toLowerCase().indexOf(string.toLowerCase()) !== -1
+            }
 
-          renderItem={(item, isHighlighted) =>
-            <div style={{ background: isHighlighted ? '#fafafa' : 'white',
-                          padding: '10px',
-                          color: '#555555',
-                          cursor: 'pointer'
-                       }}>
-              {item.name}
-            </div>
-          }
+            renderItem={(item, isHighlighted) =>
+              <div style={{ background: isHighlighted ? '#fafafa' : 'white',
+                            padding: '10px',
+                            color: '#555555',
+                            cursor: 'pointer'
+                         }}>
+                {item.name}
+              </div>
+            }
 
-          value={this.state.value}
+            renderMenu={(items, value) => {
+              const style = { borderBottom: '2px solid #5e5f60',
+                              borderRight: '2px solid #5e5f60',
+                              borderLeft: '2px solid #5e5f60',
+                              position: 'absolute',
+                              width: '300px',
+                              marginLeft: '-2px',
+                              marginTop: '5px',
+                              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                            };
+              const styleNoBorder = { border: 'none' };
+              return <div style={items.length === 0 ? styleNoBorder : style} children={items} />
+            }}
 
-          onChange={(e) =>
-            this.setState({ value: e.target.value })
-          }
+            value={this.state.value}
 
-          onSelect={(val) =>
-            this.setState({ value: val })
-          }
+            onChange={(e) =>
+              this.setState({ value: e.target.value })
+            }
 
-          menuStyle={{
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-            background: 'rgba(255, 255, 255, 0.9)',
-            position: 'fixed',
-            paddingBottom: '0px',
-            overflow: 'auto',
-            input: { width: '100%' },
-            borderBottom: '2px solid #5e5f60',
-            borderRight: '2px solid #5e5f60',
-            borderLeft: '2px solid #5e5f60',
-          }}
-        />
+            onSelect={(val) =>
+              this.setState({ value: val })
+            }
+
+            inputProps={{
+              type: 'text',
+              placeholder: 'Search',
+              spellCheck: 'false',
+            }}
+
+            wrapperStyle={{}}
+          />
+        </form>
       </div>
     )
   }
