@@ -159,6 +159,21 @@ ul {
   color: red;
 }
 
+.product-preview-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 140px;
+  height: 140px;
+}
+
+.product-preview-image {
+  width: 125px;
+  height: 125px;
+  /*border: 1px solid black;*/
+}
+
 .product-preview-name {
   margin-bottom: 15px;
 }

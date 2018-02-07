@@ -65,7 +65,7 @@ class LocationSearch extends React.Component {
     const number = Math.floor(Math.random() * 1000) + 1;
     const street = streetNames[Math.floor(Math.random() * streetNames.length)];
     const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
-    const townAndCity = this.state.address.replace(', United States', '');
+    const townAndCity = this.state.address.replace(', USA', '');
     const address = { number: number, street: street, streetType: streetType, townAndCity: townAndCity }
     return address;
   }
@@ -73,7 +73,7 @@ class LocationSearch extends React.Component {
   render() {
     const inputProps = {
       type: "text",
-      value: this.state.address.replace(', United States', ''),
+      value: this.state.address.replace(', USA', ''),
       onChange: this.handleChange,
       autoFocus: true,
       placeholder: "Enter your city",
@@ -90,7 +90,7 @@ class LocationSearch extends React.Component {
 
     const autocompleteItem = ({ suggestion }) => (
       <div>
-        {suggestion.replace(', United States', '')}
+        {suggestion.replace(', USA', '')}
       </div>
     )
 
