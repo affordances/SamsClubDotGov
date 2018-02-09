@@ -34,18 +34,21 @@ const products = [
     name: 'Blood Test',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 75,
+    imagePath: '/bloodtest.svg',
   },
   {
     id: 3,
     name: 'X-ray',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 500,
+    imagePath: '/xray.svg',
   },
   {
     id: 4,
-    name: 'Physical Therapy',
+    name: 'Vaccinations',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 250,
+    imagePath: '/vaccinations.svg',
   },
 ];
 

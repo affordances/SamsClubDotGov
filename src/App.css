@@ -171,7 +171,12 @@ ul {
 .product-preview-image {
   width: 110px;
   height: 110px;
-  border: 1px solid black;
+  background-color: #5e5f60;
+  -webkit-mask-size: contain !important;
+}
+
+.product-preview:hover .product-preview-image {
+  background-color: red;
 }
 
 .product-preview-name {
