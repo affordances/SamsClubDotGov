@@ -27,6 +27,7 @@ const products = [
     name: 'Checkup',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
     listPrice: 100,
+    imagePath: '/checkup.svg',
   },
   {
     id: 2,
