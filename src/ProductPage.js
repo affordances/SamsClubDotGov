@@ -9,6 +9,9 @@ class ProductPage extends React.Component {
   render() {
     const id = Number(this.props.match.params.id);
     const product = this.props.products.find(x => x.id === id);
+
+    if (!product){return (<NoProduct />)}
+
     const alreadyInCart = !!this.props.cart.find(x => x.id === id);
     const priceCalculation = product.listPrice - (product.listPrice * (this.props.plan.discount / 100));
 
@@ -56,6 +59,17 @@ class ProductPage extends React.Component {
         </div>
       </div>
     );
+  }
+}
+
+class NoProduct extends React.Component {
+  render() {
+    return (
+      <div className='page-error-container'>
+        <div className='page-error'>This product does not exist!</div>
+        <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
+      </div>
+    )
   }
 }
 
