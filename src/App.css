@@ -44,6 +44,10 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #4d98d6;
+}
+
 button a {
   color: white !important;
 }
@@ -136,12 +140,69 @@ ul {
 
 .footer-container {
   width: 1000px;
+  height: 250px;
   margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  color: #5e5f60;
   border-top: 2px solid #5e5f60;
+}
+
+.company-masthead-container {
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+}
+
+.company-name-and-icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 19px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hat-icon {
+  background-color: #5e5f60;
+  width: 30px;
+  height: 30px;
+  -webkit-mask-size: contain !important;
+}
+
+.company-masthead-item {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #bebfbf;
+}
+
+.footer-menus-container {
+  width: 750px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-menu {
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  margin-left: 30px;
+}
+
+.footer-menu-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-menu-item {
+  margin-bottom: 5px;
+  color: #bebfbf;
 }
 
 .products-container {
@@ -275,6 +336,10 @@ ul {
 }
 
 .added-to-cart-button {
+  background-color: #bebfbf;
+}
+
+.added-to-cart-button:hover {
   background-color: #bebfbf;
 }
 
@@ -493,8 +558,8 @@ input[type=submit]:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   width: 320px;
-  height: 35px;
   border: 2px solid #5e5f60;
   background-color: white;
   display: flex;

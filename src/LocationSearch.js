@@ -7,11 +7,17 @@ class LocationSearch extends React.Component {
 
   state = {
     address: '',
+    lastAddress: '',
   }
 
   handleSelect = (address) => {
+    if (address.replace(', USA', '') === this.state.lastAddress.replace(', USA', '')) {
+      return;
+    };
+
     this.setState({
-      address,
+      address: address,
+      lastAddress: address,
     })
 
     geocodeByAddress(address)

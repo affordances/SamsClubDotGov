@@ -28,7 +28,8 @@ class UserDropdown extends React.Component {
       isOpen: this.state.isMenuOpen,
       close: this.close,
       toggle: <FontAwesome name='user' onClick={this.toggle} style={{
-        color: '#5e5f60'
+        color: '#5e5f60',
+        cursor: 'pointer'
       }} size='2x'></FontAwesome>,
       animate: false,
       align: 'right',
