@@ -9,7 +9,7 @@ class Profile extends React.Component {
   render() {
     if (this.props.loggedIn)
     {return (
-      <div>
+      <div className='profile-container'>
       </div>
     );}
     else {return (

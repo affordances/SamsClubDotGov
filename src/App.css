@@ -134,9 +134,19 @@ ul {
   height: 50px;
 }
 
+.footer-container {
+  width: 1000px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid #5e5f60;
+}
+
 .products-container {
   width: 1000px;
-  height: 310px;
+  min-height: 310px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -145,8 +155,9 @@ ul {
 }
 
 .product-preview {
-  width: 200px;
-  height: 200px;
+  width: 205px;
+  height: 205px;
+  margin-bottom: 20px;
   border: 2px solid #5e5f60;
   display: flex;
   flex-direction: column;
@@ -186,6 +197,7 @@ ul {
 .product-container {
   width: 1000px;
   min-height: 310px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   color: #5e5f60;
@@ -290,6 +302,7 @@ a.product-page-hot-deals:hover {
   border: 2px solid #5e5f60;
   width: 1000px;
   min-height: 250px;
+  margin-bottom: 20px;
   padding: 20px;
 }
 
@@ -384,6 +397,15 @@ a.product-page-hot-deals:hover {
   color: red;
 }
 
+.profile-container {
+  width: 1000px;
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .login-form-container {
   width: 1000px;
   height: 310px;
@@ -432,6 +454,7 @@ input[type=submit]:hover {
 
 .scheduler-container {
   width: 1000px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -786,7 +809,9 @@ input[type=submit]:hover {
 }
 
 .ticket-download-button {
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-size: 20px;
   color: #5e5f60;
 }

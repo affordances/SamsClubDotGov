@@ -43,6 +43,7 @@ class Search extends React.Component {
                               borderLeft: '2px solid #5e5f60',
                               position: 'absolute',
                               width: '300px',
+                              zIndex: '2',
                               marginLeft: '-2px',
                               marginTop: '5px',
                               boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',

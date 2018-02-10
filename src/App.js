@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header.js';
+import Footer from './Footer.js';
 import ProductPage from './ProductPage';
 import ProductList from './ProductList';
 import Cart from './Cart.js';
@@ -185,6 +186,7 @@ class StateProvider extends React.Component {
 
           <Route component={NoMatch}/>
         </Switch>
+        <Footer />
       </div>
     );
   }
