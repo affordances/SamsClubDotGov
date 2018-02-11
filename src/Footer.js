@@ -19,10 +19,10 @@ class Footer extends React.Component {
             </div>
             <div>{"Uncle Sam's Club"}</div>
           </div>
-          <div className='company-masthead-item'><FontAwesome name='phone'></FontAwesome>1-800-CALL-SAM</div>
-          <div className='company-masthead-item'><FontAwesome name='envelope'></FontAwesome>help@samsclub.gov</div>
-          <div className='company-masthead-item'>© 2018 {"Uncle Sam's Club"}</div>
-          <div className='company-masthead-item'>All rights reserved</div>
+          <div className='phone-container'><FontAwesome name='phone' style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>1-800-CALL-SAM</div>
+          <div className='email-container'><FontAwesome name='envelope'style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>help@samsclub.gov</div>
+          <div className='company-masthead-item'>© 2018 {"Uncle Sam's Club."}</div>
+          <div className='company-masthead-item'>All rights reserved.</div>
         </div>
         <div className='footer-menus-container'>
           <div className='footer-menu'>

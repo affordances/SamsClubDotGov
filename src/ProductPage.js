@@ -29,7 +29,13 @@ class ProductPage extends React.Component {
         <div className='pricing-and-button-container'>
           {!this.props.loggedIn &&
             <div className='product-page-hot-deals-container'>
-              <Link to='/login' className='product-page-hot-deals'>Sign in for HOT DEALS</Link>
+              <Link to='/login'>
+                <div className='product-page-hat-icon'
+                  style={{mask: 'url(/hat.svg) no-repeat center',
+                        WebkitMask: 'url(/hat.svg) no-repeat center'}}>
+                </div>
+                <div className='product-page-sign-in'>{"Sign in to see Sam's price"}</div>
+              </Link>
             </div>}
           {this.props.loggedIn &&
             <div className='pricing-container'>

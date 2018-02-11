@@ -160,9 +160,9 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-size: 19px;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   font-weight: bold;
 }
 
@@ -170,12 +170,31 @@ ul {
   background-color: #5e5f60;
   width: 30px;
   height: 30px;
+  margin-right: 8px;
   -webkit-mask-size: contain !important;
 }
 
+.phone-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+
+.email-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+
 .company-masthead-item {
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 5px;
+  font-size: 15px;
   color: #bebfbf;
 }
 
@@ -201,7 +220,8 @@ ul {
 }
 
 .footer-menu-item {
-  margin-bottom: 5px;
+  font-size: 12px;
+  margin-bottom: 8px;
   color: #bebfbf;
 }
 
@@ -348,19 +368,33 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   height: 100%;
   width: 100%;
+  color: #5e5f60;
 }
 
-.product-page-hot-deals {
-  color: red;
-  font-size: 75px;
+.product-page-hat-icon {
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  background-color: #5e5f60;
+  -webkit-mask-size: contain !important;
 }
 
-a.product-page-hot-deals:hover {
+.product-page-sign-in {
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.product-page-hot-deals-container:hover {
   background-color: red;
-  color: white;
+}
+.product-page-hot-deals-container:hover .product-page-sign-in{
+  color: white !important;
+}
+
+.product-page-hot-deals-container:hover .product-page-hat-icon {
+  background-color: white;
 }
 
 .cart-container {
