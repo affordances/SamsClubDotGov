@@ -363,7 +363,7 @@ ul {
   background-color: #bebfbf;
 }
 
-.product-page-hot-deals-container {
+.product-page-sign-in-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -386,14 +386,14 @@ ul {
   font-size: 25px;
 }
 
-.product-page-hot-deals-container:hover {
+.product-page-sign-in-container:hover {
   background-color: red;
 }
-.product-page-hot-deals-container:hover .product-page-sign-in{
+.product-page-sign-in-container:hover .product-page-sign-in{
   color: white !important;
 }
 
-.product-page-hot-deals-container:hover .product-page-hat-icon {
+.product-page-sign-in-container:hover .product-page-hat-icon {
   background-color: white;
 }
 
