@@ -151,9 +151,10 @@ ul {
 }
 
 .company-masthead-container {
-  width: 250px;
+  width: 205px;
   height: 100%;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .company-name-and-icon-container {
@@ -198,20 +199,11 @@ ul {
   color: #bebfbf;
 }
 
-.footer-menus-container {
-  width: 750px;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .footer-menu {
-  width: 250px;
+  width: 205px;
   height: 100%;
-  padding: 20px;
-  margin-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .footer-menu-header {
@@ -223,6 +215,34 @@ ul {
   font-size: 12px;
   margin-bottom: 8px;
   color: #bebfbf;
+}
+
+.about-container {
+  width: 1000px;
+  min-height: 310px;
+  color: #5e5f60;
+  border: 2px solid #5e5f60;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.about-header {
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+
+.about-item {
+  margin-bottom: 10px;
 }
 
 .products-container {
@@ -248,7 +268,7 @@ ul {
 
 .product-preview:hover {
   border: 2px solid #378ace;
-  color: red;
+  color: #378ace;
 }
 
 .product-preview-image-container {
@@ -268,7 +288,7 @@ ul {
 }
 
 .product-preview:hover .product-preview-image {
-  background-color: red;
+  background-color: #378ace;
 }
 
 .product-preview-name {
@@ -288,11 +308,26 @@ ul {
 .product-name-and-description-container {
   padding: 20px;
   width: 650px;
-  height: 310px;
+  min-height: 310px;
+}
+
+.product-name-and-icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .product-name {
   font-size: 35px;
+  margin-left: 15px;
+}
+
+.product-page-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #5e5f60;
+  -webkit-mask-size: contain !important;
 }
 
 .product-description {
@@ -308,7 +343,7 @@ ul {
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
-  margin-left: 50px;
+  margin-left: 25px;
   padding: 20px;
 }
 
@@ -386,15 +421,12 @@ ul {
   font-size: 25px;
 }
 
-.product-page-sign-in-container:hover {
-  background-color: red;
-}
 .product-page-sign-in-container:hover .product-page-sign-in{
-  color: white !important;
+  color: #378ace !important;
 }
 
 .product-page-sign-in-container:hover .product-page-hat-icon {
-  background-color: white;
+  background-color: #378ace;
 }
 
 .cart-container {
@@ -464,12 +496,34 @@ ul {
   justify-content: space-between;
 }
 
+.cart-totals-and-disclaimer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #5e5f60;
+}
+
 .cart-totals-and-checkout-button-container {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   color: #5e5f60;
+}
+
+.disclaimer-container {
+  margin-right: 50px;
+  width: 750px;
+}
+
+.disclaimer-header {
+  font-size: 20px;
+  border-bottom:
+}
+
+.disclaimer-text {
+  font-size: 10px;
+  text-align: justify;
 }
 
 .cart-total-container {
@@ -511,17 +565,19 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  justify-content: center;
+  border: 2px solid #5e5f60;
+  margin-bottom: 20px;
 }
 
 .login-form {
-  margin-top: 10px;
   height: 250px;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .login-form-input {
@@ -548,7 +604,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  color: red;
+  color: #378ace;
 }
 
 .scheduler-container {
@@ -679,11 +735,6 @@ input[type=submit]:hover {
   align-items: center;
   justify-content: center;
 }
-
-/*.loadingElement {
-  height: 300px;
-  width: 500px;
-}*/
 
 .containerElement {
   height: 300px;
@@ -985,7 +1036,6 @@ input[type=submit]:hover {
 .dd-menu .dd-menu-items ul li > *:focus, .dd-menu .dd-menu-items ol li:hover:not([role="separator"]):not(.separator),
 .dd-menu .dd-menu-items ol li > *:focus {
   color: #000;
-  /*background-color: #bdc3c7;*/
   outline: none;
 }
 

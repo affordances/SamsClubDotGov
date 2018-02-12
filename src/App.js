@@ -7,6 +7,7 @@ import Cart from './Cart.js';
 import Profile from './Profile.js';
 import Login from './Login.js';
 import Scheduler from './Scheduler.js';
+import About from './About.js';
 import Register from './Register';
 import { sampleUser, products, plans } from './seed.js';
 
@@ -146,6 +147,8 @@ class StateProvider extends React.Component {
                   loggedIn = {loggedIn}
                   user = {this.state.user}
                   plan = {this.state.plan} />} />
+
+          <Route path='/about' component={About} />
 
           <Route path='/product/:id' render = { (props) =>
             <ProductPage products = {this.state.products}

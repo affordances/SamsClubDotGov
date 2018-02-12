@@ -15,15 +15,22 @@ class ProductPage extends React.Component {
     const alreadyInCart = !!this.props.cart.find(x => x.id === id);
     const priceCalculation = product.listPrice - (product.listPrice * (this.props.plan.discount / 100));
 
+    const image = product.imagePath;
+
     return (
       <div className='product-container'>
         <div className='product-name-and-description-container'>
-          <div className='product-name'>
-            {product.name}
+          <div className='product-name-and-icon-container'>
+            <div className='product-page-icon'
+              style={{mask: 'url(' + image + ') no-repeat center',
+                      WebkitMask: 'url(' + image + ') no-repeat center'}}>
+            </div>
+            <div className='product-name'>{product.name}</div>
           </div>
           <hr/>
           <div className='product-description'>
-            {product.description}
+            <p>{product.description}</p>
+            <p>{product.description}</p>
           </div>
         </div>
         <div className='pricing-and-button-container'>

@@ -24,27 +24,25 @@ class Footer extends React.Component {
           <div className='company-masthead-item'>© 2018 {"Uncle Sam's Club."}</div>
           <div className='company-masthead-item'>All rights reserved.</div>
         </div>
-        <div className='footer-menus-container'>
-          <div className='footer-menu'>
-            <div className='footer-menu-header'>Company</div>
-            <div className='footer-menu-item'>About</div>
-            <div className='footer-menu-item'>Careers</div>
-            <div className='footer-menu-item'>Contact us</div>
-            <div className='footer-menu-item'>Press</div>
-          </div>
-          <div className='footer-menu'>
-            <div className='footer-menu-header'>Social</div>
-            <div className='footer-menu-item'>Facebook</div>
-            <div className='footer-menu-item'>Twitter</div>
-            <div className='footer-menu-item'>Instagram</div>
-          </div>
-          <div className='footer-menu'>
-            <div className='footer-menu-header'>Legal</div>
-            <div className='footer-menu-item'>Terms of Use</div>
-            <div className='footer-menu-item'>Privacy Policy</div>
-            <div className='footer-menu-item'>HIPAA</div>
-            <div className='footer-menu-item'>Nondiscrimination</div>
-          </div>
+        <div className='footer-menu'>
+          <div className='footer-menu-header'>Company</div>
+          <div className='footer-menu-item'><Link to="/about" style={{ color: '#bebfbf'}}>About</Link></div>
+          <div className='footer-menu-item'>Careers</div>
+          <div className='footer-menu-item'>Contact us</div>
+          <div className='footer-menu-item'>Press</div>
+        </div>
+        <div className='footer-menu'>
+          <div className='footer-menu-header'>Social</div>
+          <div className='footer-menu-item'>Facebook</div>
+          <div className='footer-menu-item'>Twitter</div>
+          <div className='footer-menu-item'>Instagram</div>
+        </div>
+        <div className='footer-menu'>
+          <div className='footer-menu-header'>Legal</div>
+          <div className='footer-menu-item'>Terms of Use</div>
+          <div className='footer-menu-item'>Privacy Policy</div>
+          <div className='footer-menu-item'>HIPAA</div>
+          <div className='footer-menu-item'>Nondiscrimination</div>
         </div>
       </div>
     );
