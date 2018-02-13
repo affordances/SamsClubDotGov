@@ -26,7 +26,7 @@ import { withRouter } from 'react-router'
 
 class StateProvider extends React.Component {
   state = {
-    products: null,
+    products: [],
     user: null,
     plan: null,
     ticket: { checkoutStep: 1, appointmentTimes: null, address: null, date: null, time: null },
