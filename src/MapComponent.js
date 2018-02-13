@@ -6,7 +6,7 @@ class MapComponent extends React.Component {
 
   componentDidUpdate = () => {
     setTimeout( () => {
-      if (this.map) {
+      if (this.map && this.props.bounds) {
         this.map.fitBounds(this.props.bounds);
       }
     }, 0)
@@ -14,7 +14,7 @@ class MapComponent extends React.Component {
 
   componentDidMount = () => {
     setTimeout( () => {
-      if (this.map) {
+      if (this.map && this.props.bounds) {
         this.map.fitBounds(this.props.bounds);
       }
     }, 0)
