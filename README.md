@@ -12,4 +12,4 @@
 
 ### Many thanks to [Alexander Podubbny][alexTwitter] for his unnervingly dedicated mentorship.
 
-[alexTwitter][https://twitter.com/apoddubn]
+[alexTwitter]: https://twitter.com/apoddubn
