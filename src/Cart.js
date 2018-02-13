@@ -7,8 +7,8 @@ import { Redirect, Link } from 'react-router-dom'
 class Cart extends React.Component {
   render() {
     if (this.props.loggedIn) {
-      const cart = this.props.cart.map((item) => (
-        <div className='cart-item-container'>
+      const cart = this.props.cart.map((item, index) => (
+        <div key = {index} className='cart-item-container'>
           <div className='cart-item-name-and-list-price-container'>
             <div className='cart-item-name'>{item.name}</div>
             <div className='cart-item-list-price'>${item.listPrice}</div>

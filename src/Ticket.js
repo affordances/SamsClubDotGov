@@ -31,8 +31,8 @@ class Ticket extends React.Component {
     const formattedDate = date.toLocaleDateString();
     const time = this.props.ticket.time;
 
-    const cart = this.props.cart.map((item) => (
-      <div className='cart-item-container'>
+    const cart = this.props.cart.map((item, index) => (
+      <div key = {index} className='cart-item-container'>
         <div className='cart-item-name-and-list-price-container'>
           <div className='cart-item-name'>{item.name}</div>
           <div className='cart-item-list-price'>${item.listPrice}</div>

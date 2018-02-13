@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-import loadGoogleMapsAPI from 'load-google-maps-api';
 
 class LocationSearch extends React.Component {
 
@@ -31,29 +30,27 @@ class LocationSearch extends React.Component {
   }
 
   findPlaces = (location) => {
-    loadGoogleMapsAPI().then((googleMaps) => {
-      const placesService = new googleMaps.places.PlacesService(document.createElement('div'));
-      const bounds = new googleMaps.LatLngBounds(location);
-      placesService.search({
-        location: location,
-        rankBy: googleMaps.places.RankBy.DISTANCE,
-        types: ['fire_station']
-      }, (places, status) => {
-        if (status === googleMaps.places.PlacesServiceStatus.OK && places.length >= 7) {
-          places = [places[0], places[6]];
-          places.forEach(place => {
-            bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
-          });
-          const address = [this.createAddress(), this.createAddress()];
-          this.props.changeLocation(address, location, places, JSON.parse(JSON.stringify(bounds)));
-        } else {
-          const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
-          this.props.changeLocation(null, null, null, null, errorText);
-        }
-      });
-    }).catch((err) => {
-      console.error(err)
-    })
+    const googleMaps = window.google.maps;
+    const placesService = new googleMaps.places.PlacesService(document.createElement('div'));
+    const bounds = new googleMaps.LatLngBounds(location);
+
+    placesService.search({
+      location: location,
+      rankBy: googleMaps.places.RankBy.DISTANCE,
+      types: ['fire_station']
+    }, (places, status) => {
+      if (status === googleMaps.places.PlacesServiceStatus.OK && places.length >= 7) {
+        places = [places[0], places[6]];
+        places.forEach(place => {
+          bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
+        });
+        const address = [this.createAddress(), this.createAddress()];
+        this.props.changeLocation(address, location, places, JSON.parse(JSON.stringify(bounds)));
+      } else {
+        const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
+        this.props.changeLocation(null, null, null, null, errorText);
+      }
+    });
   }
 
   handleChange = (address) => {
