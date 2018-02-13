@@ -981,6 +981,7 @@ input[type=submit]:hover {
   align-items: center;
   justify-content: center;
   color: red;
+  margin-bottom: 20px;
 }
 
 .page-error {
@@ -989,6 +990,7 @@ input[type=submit]:hover {
   align-items: center;
   font-size: 30px;
   width: 400px;
+  margin-bottom: 20px;
 }
 
 .dd-menu {
