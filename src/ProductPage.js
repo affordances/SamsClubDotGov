@@ -13,7 +13,8 @@ class ProductPage extends React.Component {
     if (!product){return (<NoProduct />)}
 
     const alreadyInCart = !!this.props.cart.find(x => x.id === id);
-    const priceCalculation = product.listPrice - (product.listPrice * (this.props.plan.discount / 100));
+    const priceCalculation = product.listPrice - (product.listPrice *
+                             ((this.props.plan ? this.props.plan.discount : 0) / 100));
 
     const image = product.imagePath;
 
