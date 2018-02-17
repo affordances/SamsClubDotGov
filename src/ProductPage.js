@@ -12,7 +12,6 @@ class ProductPage extends React.Component {
 
     if (!product){return (<NoProduct />)}
 
-    const alreadyInCart = !!this.props.cart.find(x => x.id === id);
     const priceCalculation = product.listPrice - (product.listPrice *
                              ((this.props.plan ? this.props.plan.discount : 0) / 100));
 
@@ -62,13 +61,7 @@ class ProductPage extends React.Component {
             </div>}
           {this.props.loggedIn &&
             <div className='add-to-cart-button'>
-              <button
-                className={alreadyInCart ? 'added-to-cart-button' : ''}
-                disabled={alreadyInCart}
-                onClick={this.props.addItemToCart(product)}
-              >
-                {alreadyInCart ? "Added" : "Add"} to cart
-              </button>
+              <button onClick={this.props.proceedToBooking(product)}>Book now</button>
             </div>}
         </div>
       </div>

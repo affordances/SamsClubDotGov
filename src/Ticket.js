@@ -30,29 +30,7 @@ class Ticket extends React.Component {
     const address = formatAddress(this.props.ticket.address);
     const formattedDate = date.toLocaleDateString();
     const time = this.props.ticket.time;
-
-    const cart = this.props.cart.map((item, index) => (
-      <div key = {index} className='cart-item-container'>
-        <div className='cart-item-name-and-list-price-container'>
-          <div className='cart-item-name'>{item.name}</div>
-          <div className='cart-item-list-price'>${item.listPrice}</div>
-        </div>
-        <div className='cart-item-discount-and-final-price-container'>
-          <div className='cart-item-discount'>{this.props.plan.discount}%</div>
-          <div className='cart-item-final-price'>
-            ${item.listPrice - (item.listPrice * (this.props.plan.discount / 100))}
-          </div>
-        </div>
-      </div>
-    ));
-
-    const total = this.props.cart.map((item) => (
-      item.listPrice - (item.listPrice * (this.props.plan.discount / 100))
-    )).reduce((a, b) => a + b, 0);
-
-    const amountSaved = this.props.cart.map((item) => (
-    item.listPrice
-    )).reduce((a, b) => a + b, 0);
+    const product = this.props.ticket.product;
 
     return (
       <div className='final-container-container'>
@@ -94,26 +72,23 @@ class Ticket extends React.Component {
                     </div>
                   </div>
                   <hr/>
-                  {cart}
+                  <div className='cart-item-container'>
+                    <div className='cart-item-name-and-list-price-container'>
+                      <div className='cart-item-name'>{product.name}</div>
+                      <div className='cart-item-list-price'>${product.listPrice}</div>
+                    </div>
+                    <div className='cart-item-discount-and-final-price-container'>
+                      <div className='cart-item-discount'>{this.props.plan.discount}%</div>
+                      <div className='cart-item-final-price'>
+                        ${product.listPrice - (product.listPrice * (this.props.plan.discount / 100))}
+                      </div>
+                    </div>
+                  </div>
                   <hr/>
                   <div className='cart-totals-and-disclaimer-container'>
                     <div className='disclaimer-container'>
-                      <div className='disclaimer-header'>
-                        Disclaimer
-                      </div>
-                      <hr/>
                       <div className='disclaimer-text'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </div>
-                    </div>
-                    <div className='cart-totals-and-checkout-button-container'>
-                      <div className='cart-total-savings-container'>
-                        <div>Sam saved you:</div>
-                        <div className='cart-total-savings'>${amountSaved}</div>
-                      </div>
-                      <div className='cart-total-container'>
-                        <div>You pay:</div>
-                        <div className='cart-total'>${total}</div>
+                        DISCLAIMER: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                       </div>
                     </div>
                   </div>
@@ -123,7 +98,7 @@ class Ticket extends React.Component {
           </div>
         </div>
         <div className='ticket-download-button'>
-          <button onClick={this.makePDF2}>Download</button> or <button onClick={this.props.updateCheckout(1)}>Change</button>
+          <button onClick={this.makePDF2}>Download</button>
         </div>
       </div>
     )

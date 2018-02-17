@@ -3,7 +3,6 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import ProductPage from './ProductPage';
 import ProductList from './ProductList';
-import Cart from './Cart.js';
 import Profile from './Profile.js';
 import Login from './Login.js';
 import Scheduler from './Scheduler.js';
@@ -29,7 +28,7 @@ class StateProvider extends React.Component {
     products: [],
     user: null,
     plan: null,
-    ticket: { checkoutStep: 1, appointmentTimes: null, address: null, date: null, time: null },
+    ticket: { checkoutStep: 1, product: null, appointmentTimes: null, address: null, date: null, time: null },
     locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
   };
 
@@ -53,12 +52,14 @@ class StateProvider extends React.Component {
     this.props.history.push('/login');
   }
 
-  proceedToCheckout = () => {
-    const times = this.generateAppointments();
-    this.setState({ ticket: { checkoutStep: 1, appointmentTimes: times, address: null, date: null, time: null },
-                    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
-                  });
-    this.props.history.push('/scheduler');
+  proceedToBooking = (product) => {
+    return () => {
+      const times = this.generateAppointmentTimes();
+      this.setState({ ticket: { checkoutStep: 1, product: product, appointmentTimes: times, address: null, date: null, time: null },
+                      locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
+                    });
+      this.props.history.push('/scheduler');
+    }
   }
 
   changeLocation = (address, location, places, bounds, errorText) => {
@@ -71,7 +72,7 @@ class StateProvider extends React.Component {
     this.setState({ locationSearch: locationSearch });
   }
 
-  generateAppointments = () => {
+  generateAppointmentTimes = () => {
     let appointments = [];
     while (appointments.length < 3) {
       const appointment = Math.floor(Math.random() * (18 - 7 + 1)) + 7;
@@ -108,28 +109,23 @@ class StateProvider extends React.Component {
     }
   }
 
-  addItemToCart = (item) => {
+  cancelBookingInProgress = () => {
+    return () => {
+      this.setState({ ticket: { checkoutStep: 1, product: null, appointmentTimes: null, address: null, date: null, time: null },
+                      locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
+                    });
+      this.props.history.push('/');
+    }
+  }
+
+  confirmBooking = (ticket) => {
     return () => {
       const user = Object.assign({}, this.state.user);
-      user.cart = user.cart ? user.cart.concat([item]) : [item];
+      user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
       if (this.state.user !== null) {
         this.setState( { user: user });
       }
     }
-  }
-
-  deleteItemFromCart = (itemId) => {
-    return () => {
-      const user = Object.assign({}, this.state.user);
-      user.cart = user.cart.filter(x => x.id !== itemId);
-      this.setState( { user: user });
-    }
-  }
-
-  emptyCart = () => {
-    const user = Object.assign({}, this.state.user);
-    user.cart = [];
-    this.setState( { user: user });
   }
 
   render() {
@@ -140,7 +136,8 @@ class StateProvider extends React.Component {
         <Header loggedIn = {loggedIn}
                 products = {this.state.products}
                 onLogout = {this.onLogout}
-                cart = {this.state.user ? this.state.user.cart : []} />
+                appointments = {this.state.user ? this.state.user.appointments : []} />
+
         <Switch>
           <Route exact path='/' render = { (props) =>
             <Home products = {this.state.products}
@@ -153,33 +150,26 @@ class StateProvider extends React.Component {
           <Route path='/product/:id' render = { (props) =>
             <ProductPage products = {this.state.products}
                          match = {props.match}
-                         addItemToCart = {this.addItemToCart}
-                         cart = {this.state.user ? this.state.user.cart : []}
+                         proceedToBooking = {this.proceedToBooking}
                          loggedIn = {loggedIn}
                          user = {this.state.user}
                          plan = {this.state.plan} />} />
 
-          <Route path='/cart' render = { (props) =>
-            <Cart cart = {this.state.user ? this.state.user.cart : null}
-                  loggedIn = {loggedIn}
-                  deleteItemFromCart = {this.deleteItemFromCart}
-                  proceedToCheckout = {this.proceedToCheckout}
-                  user = {this.state.user}
-                  plan = {this.state.plan} />} />
-
           <Route path='/profile' render = { (props) =>
             <Profile user = {this.state.user}
-                     loggedIn = {loggedIn} />} />
+                     plan = {this.state.plan}
+                     loggedIn = {loggedIn}
+                     appointments = {this.state.user ? this.state.user.appointments : null} />} />
 
           <Route path='/scheduler' render = { (props) =>
-            <Scheduler user = {this.state.user}
+            <Scheduler loggedIn = {loggedIn}
+                       user = {this.state.user}
                        updateCheckout = {this.updateCheckout}
                        ticket = {this.state.ticket}
                        changeLocation = {this.changeLocation}
                        locationSearch = {this.state.locationSearch}
-                       emptyCart = {this.emptyCart}
-                       plan = {this.state.plan}
-                       cart = {this.state.user ? this.state.user.cart : []} />} />
+                       confirmBooking = {this.confirmBooking}
+                       plan = {this.state.plan} />} />
 
           <Route path='/login' render = { (props) =>
             <Login onLogin = {this.onLogin}
@@ -189,6 +179,7 @@ class StateProvider extends React.Component {
 
           <Route component={NoMatch}/>
         </Switch>
+        
         <Footer />
       </div>
     );

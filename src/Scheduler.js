@@ -5,7 +5,6 @@ import MapComponent from './MapComponent.js';
 import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
-import Ticket from './Ticket.js';
 
 import { Redirect } from 'react-router-dom'
 
@@ -17,7 +16,7 @@ class Scheduler extends React.Component {
       )
     }
 
-    if (this.props.cart.length > 0) {
+    if (this.props.loggedIn) {
       const date = new Date(this.props.ticket.date);
 
       return (
@@ -79,16 +78,15 @@ class Scheduler extends React.Component {
                           ticket = {this.props.ticket} />
             </div> : null}
           {this.props.ticket.checkoutStep === 4 ?
-              <Ticket user = {this.props.user}
-                      ticket = {this.props.ticket}
-                      emptyCart = {this.props.emptyCart}
-                      plan = {this.props.plan}
-                      updateCheckout = {this.props.updateCheckout}
-                      cart = {this.props.user ? this.props.user.cart : []} /> : null}
+              <div>
+                Confirm booking
+                <button onClick={this.props.confirmBooking(this.props.ticket)}>Confirm</button>
+                <button onClick={this.props.updateCheckout(1)}>Change</button>
+              </div> : null}
         </div>
       );} else {
         return (
-          <Redirect to='/cart'/>
+          <Redirect to='/'/>
         );
     }
   }

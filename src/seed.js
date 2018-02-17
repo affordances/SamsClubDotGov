@@ -10,7 +10,7 @@ const sampleUser = {
   income: 20000,
   employed: true,
   plan: 'Bronze',
-  cart: [],
+  appointments: [],
 }
 
 const plans = [

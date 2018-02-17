@@ -25,10 +25,10 @@ class Header extends React.Component {
           </div>
 
             {this.props.loggedIn ? <div className='cart-and-user-icon-container'>
-                                     <Link to='/cart' style={{ display: 'inline-block', height: '45px', width: '44px', }}>
-                                       <FontAwesome name='shopping-cart' style={{float:'left'}} size='2x'></FontAwesome>
+                                     <Link to='/profile' style={{ display: 'inline-block', height: '45px', width: '44px', }}>
+                                       <FontAwesome name='calendar' style={{float:'left'}} size='2x'></FontAwesome>
                                        <NotificationBadge
-                                         count={this.props.cart.length}
+                                         count={this.props.appointments.length}
                                          effect={[null, null, {}, {}]}
                                        />
                                      </Link>
