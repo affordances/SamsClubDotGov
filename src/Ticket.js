@@ -4,7 +4,7 @@ import './App.css';
 import html2pdf from 'html2pdf.js';
 
 class Ticket extends React.Component {
-  makePDF2 = () => {
+  makePDF = () => {
     let el = document.getElementById('ticket-container');
 
     html2pdf(el, {
@@ -13,8 +13,6 @@ class Ticket extends React.Component {
       html2canvas: { dpi: 192, letterRendering: true },
       jsPDF: { unit: 'in', orientation: 'landscape', format: [8.5, 11] }
     });
-
-    this.props.emptyCart();
   }
 
   render() {
@@ -98,7 +96,7 @@ class Ticket extends React.Component {
           </div>
         </div>
         <div className='ticket-download-button'>
-          <button onClick={this.makePDF2}>Download</button>
+          <button onClick={this.makePDF}>Download</button>
         </div>
       </div>
     )

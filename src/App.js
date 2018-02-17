@@ -120,11 +120,20 @@ class StateProvider extends React.Component {
 
   confirmBooking = (ticket) => {
     return () => {
+      this.updateCheckout(5);
       const user = Object.assign({}, this.state.user);
       user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
       if (this.state.user !== null) {
         this.setState( { user: user });
       }
+    }
+  }
+
+  cancelAppointment = (appointmentId) => {
+    return () => {
+      const user = Object.assign({}, this.state.user);
+      user.cart = user.appointments.filter(x => x.id !== appointmentId);
+      this.setState( { user: user });
     }
   }
 
@@ -179,7 +188,7 @@ class StateProvider extends React.Component {
 
           <Route component={NoMatch}/>
         </Switch>
-        
+
         <Footer />
       </div>
     );

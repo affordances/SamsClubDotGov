@@ -5,6 +5,7 @@ import MapComponent from './MapComponent.js';
 import LocationResults from './LocationResults.js';
 import DatePicker from './DatePicker.js';
 import TimePicker from './TimePicker.js';
+import Ticket from './Ticket.js';
 
 import { Redirect } from 'react-router-dom'
 
@@ -83,6 +84,11 @@ class Scheduler extends React.Component {
                 <button onClick={this.props.confirmBooking(this.props.ticket)}>Confirm</button>
                 <button onClick={this.props.updateCheckout(1)}>Change</button>
               </div> : null}
+          {this.props.ticket.checkoutStep === 5 ?
+              <Ticket user = {this.props.user}
+                      ticket = {this.props.ticket}
+                      plan = {this.props.plan}
+                      updateCheckout = {this.props.updateCheckout} /> : null}
         </div>
       );} else {
         return (
