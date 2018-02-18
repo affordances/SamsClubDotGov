@@ -6,25 +6,25 @@ class TimePicker extends React.Component {
     return (
       <div className='timepicker-container'>
         <div className='time-option-container'>
-          <div className='time-option'>{this.props.ticket.appointmentTimes[0]}</div>
+          <div className='time-option'>{this.props.appointmentTimes[0]}</div>
             <div className='time-option-button'>
-              <button onClick={this.props.updateCheckout(4, this.props.ticket.appointmentTimes[0], 'time')}>
+              <button onClick={this.props.updateCheckout(4, this.props.appointmentTimes[0], 'time')}>
                 Select
               </button>
             </div>
         </div>
         <div className='time-option-container'>
-          <div className='time-option'>{this.props.ticket.appointmentTimes[1]}</div>
+          <div className='time-option'>{this.props.appointmentTimes[1]}</div>
             <div className='time-option-button'>
-              <button onClick={this.props.updateCheckout(4, this.props.ticket.appointmentTimes[1], 'time')}>
+              <button onClick={this.props.updateCheckout(4, this.props.appointmentTimes[1], 'time')}>
                 Select
               </button>
             </div>
         </div>
         <div className='time-option-container'>
-          <div className='time-option'>{this.props.ticket.appointmentTimes[2]}</div>
+          <div className='time-option'>{this.props.appointmentTimes[2]}</div>
           <div className='time-option-button'>
-            <button onClick={this.props.updateCheckout(4, this.props.ticket.appointmentTimes[2], 'time')}>
+            <button onClick={this.props.updateCheckout(4, this.props.appointmentTimes[2], 'time')}>
               Select
             </button>
           </div>

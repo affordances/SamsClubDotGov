@@ -17,10 +17,10 @@ class Scheduler extends React.Component {
     locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     const times = this.generateAppointmentTimes();
     const ticket = Object.assign({}, this.state.ticket);
-    ticket.product = this.props.chosenProduct;
+    ticket.product = this.props.product;
     this.setState({ appointmentTimes: times, ticket: ticket });
   }
 
@@ -78,9 +78,8 @@ class Scheduler extends React.Component {
 
   confirmBooking = (ticket) => {
     return () => {
-      this.updateCheckout(5);
-      const user = Object.assign({}, this.props.user);
-      user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
+      this.updateCheckout(5)();
+      this.props.updateAppointments(ticket);
     }
   }
 
@@ -91,7 +90,7 @@ class Scheduler extends React.Component {
       )
     }
 
-    if (this.props.loggedIn && this.props.chosenProduct) {
+    if (this.props.loggedIn && this.props.product) {
       const date = new Date(this.state.ticket.date);
 
       return (
@@ -150,6 +149,7 @@ class Scheduler extends React.Component {
           {this.state.checkoutStep === 3 ?
             <div className='timepicker-container-container'>
               <TimePicker updateCheckout = {this.updateCheckout}
+                          appointmentTimes = {this.state.appointmentTimes}
                           ticket = {this.state.ticket} />
             </div> : null}
           {this.state.checkoutStep === 4 ?
@@ -159,11 +159,10 @@ class Scheduler extends React.Component {
                 <button onClick={this.confirmBooking(this.state.ticket)}>Confirm</button>
                 <button onClick={this.updateCheckout(1)}>Change</button>
               </div> : null}
-          {this.state.ticket.checkoutStep === 5 ?
+          {this.state.checkoutStep === 5 ?
               <Ticket user = {this.props.user}
                       ticket = {this.state.ticket}
-                      plan = {this.props.plan}
-                      updateCheckout = {this.updateCheckout} /> : null}
+                      plan = {this.props.plan} /> : null}
         </div>
       );} else {
         return (

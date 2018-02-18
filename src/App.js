@@ -32,7 +32,7 @@ class StateProvider extends React.Component {
   };
 
   componentDidMount = () => {
-    this.setState({ products: products })
+    this.setState({ products: products, chosenProduct: null })
   }
 
   onLogin = (e) => {
@@ -53,6 +53,13 @@ class StateProvider extends React.Component {
     return () => {
       this.setState({ chosenProduct: product })
       this.props.history.push('/scheduler');
+    }
+  }
+
+  updateAppointments = (ticket) => {
+    return () => {
+      const user = Object.assign({}, this.state.user);
+      user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
     }
   }
 
@@ -101,6 +108,7 @@ class StateProvider extends React.Component {
           <Route path='/scheduler' render = { (props) =>
             <Scheduler loggedIn = {loggedIn}
                        product = {this.state.chosenProduct}
+                       updateAppointments = {this.updateAppointments}
                        user = {this.state.user}
                        plan = {this.state.plan} />} />
 
