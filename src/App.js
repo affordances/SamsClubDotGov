@@ -28,8 +28,7 @@ class StateProvider extends React.Component {
     products: [],
     user: null,
     plan: null,
-    ticket: { checkoutStep: 1, product: null, appointmentTimes: null, address: null, date: null, time: null },
-    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
+    chosenProduct: null,
   };
 
   componentDidMount = () => {
@@ -46,86 +45,14 @@ class StateProvider extends React.Component {
   }
 
   onLogout = () => {
-    const ticket = Object.assign({}, this.state.ticket);
-    ticket.checkoutStep = 1;
-    this.setState({ user: null, ticket: ticket });
+    this.setState({ user: null });
     this.props.history.push('/login');
   }
 
   proceedToBooking = (product) => {
     return () => {
-      const times = this.generateAppointmentTimes();
-      this.setState({ ticket: { checkoutStep: 1, product: product, appointmentTimes: times, address: null, date: null, time: null },
-                      locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
-                    });
+      this.setState({ chosenProduct: product })
       this.props.history.push('/scheduler');
-    }
-  }
-
-  changeLocation = (address, location, places, bounds, errorText) => {
-    const locationSearch = Object.assign({}, this.state.locationSearch);
-    locationSearch.address = address;
-    locationSearch.location = location;
-    locationSearch.places = places;
-    locationSearch.bounds = bounds;
-    locationSearch.errorText = errorText;
-    this.setState({ locationSearch: locationSearch });
-  }
-
-  generateAppointmentTimes = () => {
-    let appointments = [];
-    while (appointments.length < 3) {
-      const appointment = Math.floor(Math.random() * (18 - 7 + 1)) + 7;
-      if (!appointments.includes(appointment))
-      appointments.push(appointment);
-    }
-    appointments.sort(function(a, b){return a - b});
-    return appointments.map((appointment) => {
-      let time = ((appointment - 1) % 12) + 1;
-      const amArray = [':00 AM', ':30 AM'];
-      const pmArray = [':00 PM', ':30 PM'];
-      const randomAm = amArray[Math.floor(Math.random() * amArray.length)];
-      const randomPm = pmArray[Math.floor(Math.random() * pmArray.length)];
-      time = time + ((appointment < 12) ? randomAm : randomPm);
-      return time;
-      }
-    )
-  }
-
-  updateCheckout = (step, update, updateType) => {
-    return () => {
-      const ticket = Object.assign({}, this.state.ticket);
-      ticket.checkoutStep = step;
-      if (updateType === 'address') {
-        ticket.address = update;
-      }
-      if (updateType === 'date') {
-        ticket.date = update;
-      }
-      if (updateType === 'time') {
-        ticket.time = update;
-      }
-      this.setState({ ticket: ticket });
-    }
-  }
-
-  cancelBookingInProgress = () => {
-    return () => {
-      this.setState({ ticket: { checkoutStep: 1, product: null, appointmentTimes: null, address: null, date: null, time: null },
-                      locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
-                    });
-      this.props.history.push('/');
-    }
-  }
-
-  confirmBooking = (ticket) => {
-    return () => {
-      this.updateCheckout(5)();
-      const user = Object.assign({}, this.state.user);
-      user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
-      if (this.state.user !== null) {
-        this.setState( { user: user });
-      }
     }
   }
 
@@ -173,12 +100,8 @@ class StateProvider extends React.Component {
 
           <Route path='/scheduler' render = { (props) =>
             <Scheduler loggedIn = {loggedIn}
+                       product = {this.state.chosenProduct}
                        user = {this.state.user}
-                       updateCheckout = {this.updateCheckout}
-                       ticket = {this.state.ticket}
-                       changeLocation = {this.changeLocation}
-                       locationSearch = {this.state.locationSearch}
-                       confirmBooking = {this.confirmBooking}
                        plan = {this.state.plan} />} />
 
           <Route path='/login' render = { (props) =>
