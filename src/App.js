@@ -120,7 +120,7 @@ class StateProvider extends React.Component {
 
   confirmBooking = (ticket) => {
     return () => {
-      this.updateCheckout(5);
+      this.updateCheckout(5)();
       const user = Object.assign({}, this.state.user);
       user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
       if (this.state.user !== null) {
@@ -129,10 +129,10 @@ class StateProvider extends React.Component {
     }
   }
 
-  cancelAppointment = (appointmentId) => {
+  cancelAppointment = (arrayIndex) => {
     return () => {
       const user = Object.assign({}, this.state.user);
-      user.cart = user.appointments.filter(x => x.id !== appointmentId);
+      user.appointments = user.appointments.filter((el, index) => index !== arrayIndex);;
       this.setState( { user: user });
     }
   }
@@ -168,6 +168,7 @@ class StateProvider extends React.Component {
             <Profile user = {this.state.user}
                      plan = {this.state.plan}
                      loggedIn = {loggedIn}
+                     cancelAppointment = {this.cancelAppointment}
                      appointments = {this.state.user ? this.state.user.appointments : null} />} />
 
           <Route path='/scheduler' render = { (props) =>

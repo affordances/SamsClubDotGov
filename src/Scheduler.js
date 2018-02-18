@@ -17,12 +17,12 @@ class Scheduler extends React.Component {
       )
     }
 
-    if (this.props.loggedIn) {
+    if (this.props.loggedIn && this.props.ticket.product) {
       const date = new Date(this.props.ticket.date);
 
       return (
         <div className='scheduler-container'>
-          {this.props.ticket.checkoutStep === 4 ?
+          {this.props.ticket.checkoutStep === 5 ?
             <div>
               <div className='final-step-header'>Your ticket</div>
             </div> :
@@ -80,7 +80,8 @@ class Scheduler extends React.Component {
             </div> : null}
           {this.props.ticket.checkoutStep === 4 ?
               <div>
-                Confirm booking
+                <div>You will receive {this.props.ticket.product.name} at {formatAddress(this.props.ticket.address)} on {date.toLocaleDateString()} at {this.props.ticket.time}.</div>
+                <div>Is this acceptable?</div>
                 <button onClick={this.props.confirmBooking(this.props.ticket)}>Confirm</button>
                 <button onClick={this.props.updateCheckout(1)}>Change</button>
               </div> : null}

@@ -31,9 +31,10 @@ class Profile extends React.Component {
         <div key = {index}>
           <div>{appointment.product.name}</div>
           {formatAddress(appointment.address)}
+          <div>{(new Date(appointment.date)).toLocaleDateString()}</div>
           <div>{appointment.time}</div>
           <button onClick={this.makePDF}>Download ticket</button>
-          <button onClick={this.props.cancelAppointment}>Cancel appointment</button>
+          <button onClick={this.props.cancelAppointment(index)}>Cancel appointment</button>
         </div>
       ));
 
