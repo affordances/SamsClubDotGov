@@ -58,8 +58,10 @@ class StateProvider extends React.Component {
 
   updateAppointments = (ticket) => {
     return () => {
+      console.log(ticket);
       const user = Object.assign({}, this.state.user);
       user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
+      this.setState( { user: user });
     }
   }
 

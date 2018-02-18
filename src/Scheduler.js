@@ -79,7 +79,7 @@ class Scheduler extends React.Component {
   confirmBooking = (ticket) => {
     return () => {
       this.updateCheckout(5)();
-      this.props.updateAppointments(ticket);
+      this.props.updateAppointments(ticket)();
     }
   }
 
@@ -92,6 +92,7 @@ class Scheduler extends React.Component {
 
     if (this.props.loggedIn && this.props.product) {
       const date = new Date(this.state.ticket.date);
+      const ticket = this.state.ticket;
 
       return (
         <div className='scheduler-container'>
