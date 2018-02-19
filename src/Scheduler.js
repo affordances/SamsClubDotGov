@@ -151,11 +151,24 @@ class Scheduler extends React.Component {
                           ticket = {this.state.ticket} />
             </div> : null}
           {this.state.checkoutStep === 4 ?
-              <div>
-                <div>You will receive {this.state.ticket.product.name} at {formatAddress(this.state.ticket.address)} on {date.toLocaleDateString()} at {this.state.ticket.time}.</div>
-                <div>Is this acceptable?</div>
-                <button onClick={this.confirmBooking(this.state.ticket)}>Confirm</button>
-                <button onClick={this.updateCheckout(1)}>Change</button>
+              <div className='confirmation-container-container'>
+                <div className='confirmation-container'>
+                  <div className='confirmation-header'>Your appointment</div>
+                    <div className='confirmation-appointment-info-container'>
+                    <div className='confirmation-info-item'>{this.state.ticket.product.name}</div>
+                    <div className='confirmation-info-item'>{formatAddress(this.state.ticket.address)}</div>
+                    <div className='confirmation-info-item'>{date.toLocaleDateString()}</div>
+                    <div className='confirmation-info-item'>{this.state.ticket.time}</div>
+                  </div>
+                  <div className='confirmation-buttons-container'>
+                    <div className='confirmation-confirm-button'>
+                      <button onClick={this.confirmBooking(this.state.ticket)}>Confirm</button>
+                    </div>
+                    <div className='confirmation-change-button'>
+                      <button onClick={this.updateCheckout(1)}>Change</button>
+                    </div>
+                  </div>
+                </div>
               </div> : null}
           {this.state.checkoutStep === 5 ?
               <Ticket user = {this.props.user}
