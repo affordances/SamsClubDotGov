@@ -19,8 +19,9 @@ class Footer extends React.Component {
             </div>
             <div>{"Uncle Sam's Club"}</div>
           </div>
-          <div className='phone-container'><FontAwesome name='phone' style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>1-800-CALL-SAM</div>
-          <div className='email-container'><FontAwesome name='envelope'style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>help@samsclub.gov</div>
+          <div className='footer-item-with-icon-container'><FontAwesome name='phone' style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>1-800-CALL-SAM</div>
+          <div className='footer-item-with-icon-container'><FontAwesome name='envelope' style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>help@samsclub.gov</div>
+          <div className='footer-item-with-icon-container'><FontAwesome name='hourglass' style={{ width: '30px', marginRight: '8px', textAlign: 'center'}}></FontAwesome>Open 7-7 Mon-Fri</div>
           <div className='company-masthead-item'>© 2018 {"Uncle Sam's Club."}</div>
           <div className='company-masthead-item'>All rights reserved.</div>
         </div>

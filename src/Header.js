@@ -36,10 +36,6 @@ class Header extends React.Component {
                                    </div>
                                   : <div className='sign-in-link'><Link to='/login'>Sign in</Link></div>}
         </div>
-        <div className='hours-and-emergency-container'>
-          <div className='hours'>Open 7-7 Mon-Fri</div>
-        <div className='emergency'>If you are experiencing a medical emergency...&nbsp;<span style={{color: 'red', fontSize: '30px'}}>CALL 911!</span></div>
-        </div>
       </div>
     );
   }
