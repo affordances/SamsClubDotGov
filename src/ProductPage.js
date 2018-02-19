@@ -60,7 +60,7 @@ class ProductPage extends React.Component {
               </div>
             </div>}
           {this.props.loggedIn &&
-            <div className='add-to-cart-button'>
+            <div className='book-now-button'>
               <button onClick={this.props.proceedToBooking(product)}>Book now</button>
             </div>}
         </div>

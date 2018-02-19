@@ -116,7 +116,7 @@ ul {
   width: 650px;
 }
 
-.cart-and-user-icon-container {
+.calendar-and-user-icon-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -422,14 +422,6 @@ ul {
   color: red;
 }
 
-.added-to-cart-button {
-  background-color: #bebfbf;
-}
-
-.added-to-cart-button:hover {
-  background-color: #bebfbf;
-}
-
 .product-page-sign-in-container {
   display: flex;
   flex-direction: column;
@@ -461,38 +453,19 @@ ul {
   background-color: #378ace;
 }
 
-.cart-container {
-  border: 2px solid #5e5f60;
-  width: 1000px;
-  min-height: 250px;
-  margin-bottom: 20px;
-  padding: 20px;
-}
-
-.empty-cart {
-  margin-top: 55px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.your-cart-is-empty {
-  font-size: 30px;
-  color: red;
-}
-
 .continue-shopping {
   font-size: 20px;
   margin-top: 20px;
 }
 
-.cart-titles {
+.product-titles {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   color: #bebfbf;
 }
 
-.cart-item-container {
+.ticket-product-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -501,26 +474,14 @@ ul {
   color: #5e5f60;
 }
 
-.cart-item-remove-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  color: #bebfbf;
-}
-
-.cart-item-remove-button:hover {
-  color: red;
-}
-
-.cart-item-name-and-list-price-container {
+.ticket-product-name-and-list-price-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 700px;
 }
 
-.cart-item-discount-and-final-price-container {
+.ticket-product-discount-and-final-price-container {
   width: 200px;
   margin-left: 30px;
   display: flex;
@@ -528,18 +489,10 @@ ul {
   justify-content: space-between;
 }
 
-.cart-totals-and-disclaimer-container {
+.disclaimer-container-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #5e5f60;
-}
-
-.cart-totals-and-checkout-button-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   color: #5e5f60;
 }
 
@@ -548,32 +501,9 @@ ul {
 }
 
 .disclaimer-text {
+  width: 100%;
   font-size: 10px;
   text-align: justify;
-}
-
-.cart-total-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-bottom: 20px;
-}
-
-.cart-total {
-  font-size: 50px;
-  color: red;
-}
-
-.cart-total-savings-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-bottom: 20px;
-}
-
-.cart-total-savings {
-  font-size: 50px;
-  color: red;
 }
 
 .profile-container {
@@ -961,27 +891,6 @@ input[type=submit]:hover {
 
 .appointment-details-item {
   text-align: center;
-}
-
-.ticket-cart {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.ticket-cart-item {
-  width: 200px;
-  height: 200px;
-  border: 2px solid #5e5f60;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.ticket-cart-item-name {
-  margin-bottom: 15px;
 }
 
 .ticket-download-button {

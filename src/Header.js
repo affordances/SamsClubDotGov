@@ -24,7 +24,7 @@ class Header extends React.Component {
             <Search products = {this.props.products} />
           </div>
 
-            {this.props.loggedIn ? <div className='cart-and-user-icon-container'>
+            {this.props.loggedIn ? <div className='calendar-and-user-icon-container'>
                                      <Link to='/profile' style={{ display: 'inline-block', height: '45px', width: '44px', }}>
                                        <FontAwesome name='calendar' style={{float:'left'}} size='2x'></FontAwesome>
                                        <NotificationBadge
