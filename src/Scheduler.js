@@ -24,6 +24,10 @@ class Scheduler extends React.Component {
     this.setState({ appointmentTimes: times, ticket: ticket });
   }
 
+  componentWillUnmount = () => {
+    this.props.unchooseProduct();
+  }
+
   changeLocation = (address, location, places, bounds, errorText) => {
     const locationSearch = Object.assign({}, this.state.locationSearch);
     locationSearch.address = address;
@@ -70,12 +74,6 @@ class Scheduler extends React.Component {
     }
   }
 
-  cancelBookingInProgress = () => {
-    return () => {
-      this.props.history.push('/');
-    }
-  }
-
   confirmBooking = (ticket) => {
     return () => {
       this.updateCheckout(5)();
@@ -92,7 +90,6 @@ class Scheduler extends React.Component {
 
     if (this.props.loggedIn && this.props.product) {
       const date = new Date(this.state.ticket.date);
-      const ticket = this.state.ticket;
 
       return (
         <div className='scheduler-container'>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Ticket from './Ticket.js';
 
 import html2pdf from 'html2pdf.js';
 
@@ -35,6 +36,10 @@ class Profile extends React.Component {
           <div>{appointment.time}</div>
           <button onClick={this.makePDF}>Download ticket</button>
           <button onClick={this.props.cancelAppointment(index)}>Cancel appointment</button>
+          <Ticket style={{ display: 'none', visibility: 'hidden' }}
+                  user = {this.props.user}
+                  ticket = {appointment}
+                  plan = {this.props.plan} />
         </div>
       ));
 

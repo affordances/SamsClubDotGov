@@ -65,6 +65,10 @@ class StateProvider extends React.Component {
     }
   }
 
+  unchooseProduct = () => {
+    this.setState({ chosenProduct: null })
+  }
+
   cancelAppointment = (arrayIndex) => {
     return () => {
       const user = Object.assign({}, this.state.user);
@@ -110,6 +114,7 @@ class StateProvider extends React.Component {
           <Route path='/scheduler' render = { (props) =>
             <Scheduler loggedIn = {loggedIn}
                        product = {this.state.chosenProduct}
+                       unchooseProduct = {this.unchooseProduct}
                        updateAppointments = {this.updateAppointments}
                        user = {this.state.user}
                        plan = {this.state.plan} />} />
