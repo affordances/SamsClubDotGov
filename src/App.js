@@ -33,7 +33,7 @@ class StateProvider extends React.Component {
   };
 
   componentDidMount = () => {
-    this.setState({ products: products, chosenProduct: null })
+    this.setState({ products: products, chosenProduct: null, searchedLocations: [] })
   }
 
   onLogin = (e) => {
@@ -61,12 +61,10 @@ class StateProvider extends React.Component {
     var searchedLocations = this.state.searchedLocations;
     searchedLocations = searchedLocations.length > 0 ? searchedLocations.concat([searchedLocation]) : [searchedLocation];
     this.setState({ searchedLocations: searchedLocations });
-    console.log(this.state.searchedLocations);
   }
 
   updateAppointments = (ticket) => {
     return () => {
-      console.log(ticket);
       const user = Object.assign({}, this.state.user);
       user.appointments = user.appointments ? user.appointments.concat([ticket]) : [ticket];
       this.setState( { user: user });

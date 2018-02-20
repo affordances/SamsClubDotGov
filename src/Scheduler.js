@@ -37,8 +37,6 @@ class Scheduler extends React.Component {
     locationSearch.bounds = bounds;
     locationSearch.errorText = errorText;
     this.setState({ locationSearch: locationSearch });
-    this.props.updateSearchedLocations(locationSearch);
-    console.log(locationSearch);
   }
 
   generateAppointmentTimes = () => {
@@ -131,6 +129,7 @@ class Scheduler extends React.Component {
             <div className='location-search-and-results-container-container'>
               <div className='location-search-and-results-container'>
                 <LocationSearch changeLocation = {this.changeLocation}
+                                updateSearchedLocations = {this.props.updateSearchedLocations}
                                 searchedLocations = {this.props.searchedLocations}
                                 errorText = {this.state.locationSearch.errorText}/>
                               {this.state.locationSearch.places ? <LocationResults address = {this.state.locationSearch.address}

@@ -6,28 +6,22 @@ class LocationSearch extends React.Component {
 
   state = {
     address: '',
-    lastAddress: '',
   }
 
   handleSelect = (address) => {
-    if (address.replace(', USA', '') === this.state.lastAddress.replace(', USA', '')) {
-      return;
-    };
-
     this.setState({
       address: address,
-      lastAddress: address,
     })
 
-    if (this.props.searchedLocations.find(x => x.query === address).length) {
-      console.log(this.props.searchedLocations.find(x => x.query === address));
-      const searchedLocation = this.props.searchedLocations.find(x => x.query === address);
+    if (this.props.searchedLocations && this.props.searchedLocations.find(x => x.query === this.state.address)) {
+      const searchedLocation = this.props.searchedLocations.find(x => x.query === this.state.address);
       const query = searchedLocation.query;
       const address = searchedLocation.address;
       const location = searchedLocation.location;
       const places = searchedLocation.places;
       const bounds = searchedLocation.bounds;
       this.props.changeLocation(query, address, location, places, JSON.parse(JSON.stringify(bounds)));
+      return;
     }
 
     geocodeByAddress(address)
@@ -58,9 +52,11 @@ class LocationSearch extends React.Component {
         const address = [this.createAddress(), this.createAddress()];
         const query = this.state.address;
         this.props.changeLocation(query, address, location, places, JSON.parse(JSON.stringify(bounds)));
+        const locationSearch = { query: query, address: address, location: location, places: places, bounds: bounds };
+        this.props.updateSearchedLocations(locationSearch);
       } else {
         const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
-        this.props.changeLocation(null, null, null, null, errorText);
+        this.props.changeLocation(null, null, null, null, null, errorText);
       }
     });
   }
