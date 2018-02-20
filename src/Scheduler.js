@@ -14,7 +14,7 @@ class Scheduler extends React.Component {
     checkoutStep: 1,
     appointmentTimes: null,
     ticket: { product: null, address: null, date: null, time: null },
-    locationSearch: { address: null, location: null, places: null, bounds: null, errorText: null },
+    locationSearch: { query: null, address: null, location: null, places: null, bounds: null, errorText: null },
   }
 
   componentWillMount = () => {
@@ -28,14 +28,17 @@ class Scheduler extends React.Component {
     this.props.unchooseProduct();
   }
 
-  changeLocation = (address, location, places, bounds, errorText) => {
+  changeLocation = (query, address, location, places, bounds, errorText) => {
     const locationSearch = Object.assign({}, this.state.locationSearch);
+    locationSearch.query = query;
     locationSearch.address = address;
     locationSearch.location = location;
     locationSearch.places = places;
     locationSearch.bounds = bounds;
     locationSearch.errorText = errorText;
     this.setState({ locationSearch: locationSearch });
+    this.props.updateSearchedLocations(locationSearch);
+    console.log(locationSearch);
   }
 
   generateAppointmentTimes = () => {
@@ -128,6 +131,7 @@ class Scheduler extends React.Component {
             <div className='location-search-and-results-container-container'>
               <div className='location-search-and-results-container'>
                 <LocationSearch changeLocation = {this.changeLocation}
+                                searchedLocations = {this.props.searchedLocations}
                                 errorText = {this.state.locationSearch.errorText}/>
                               {this.state.locationSearch.places ? <LocationResults address = {this.state.locationSearch.address}
                                                                     updateCheckout = {this.updateCheckout} /> : null}

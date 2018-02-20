@@ -29,6 +29,7 @@ class StateProvider extends React.Component {
     user: null,
     plan: null,
     chosenProduct: null,
+    searchedLocations: [],
   };
 
   componentDidMount = () => {
@@ -54,6 +55,13 @@ class StateProvider extends React.Component {
       this.setState({ chosenProduct: product })
       this.props.history.push('/scheduler');
     }
+  }
+
+  updateSearchedLocations = (searchedLocation) => {
+    var searchedLocations = this.state.searchedLocations;
+    searchedLocations = searchedLocations.length > 0 ? searchedLocations.concat([searchedLocation]) : [searchedLocation];
+    this.setState({ searchedLocations: searchedLocations });
+    console.log(this.state.searchedLocations);
   }
 
   updateAppointments = (ticket) => {
@@ -116,6 +124,8 @@ class StateProvider extends React.Component {
                        product = {this.state.chosenProduct}
                        unchooseProduct = {this.unchooseProduct}
                        updateAppointments = {this.updateAppointments}
+                       updateSearchedLocations = {this.updateSearchedLocations}
+                       searchedLocations = {this.state.searchedLocations}
                        user = {this.state.user}
                        plan = {this.state.plan} />} />
 

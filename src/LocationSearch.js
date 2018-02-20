@@ -19,6 +19,17 @@ class LocationSearch extends React.Component {
       lastAddress: address,
     })
 
+    if (this.props.searchedLocations.find(x => x.query === address).length) {
+      console.log(this.props.searchedLocations.find(x => x.query === address));
+      const searchedLocation = this.props.searchedLocations.find(x => x.query === address);
+      const query = searchedLocation.query;
+      const address = searchedLocation.address;
+      const location = searchedLocation.location;
+      const places = searchedLocation.places;
+      const bounds = searchedLocation.bounds;
+      this.props.changeLocation(query, address, location, places, JSON.parse(JSON.stringify(bounds)));
+    }
+
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
       .then(({ lat, lng }) => {
@@ -45,7 +56,8 @@ class LocationSearch extends React.Component {
           bounds.extend(JSON.parse(JSON.stringify(place.geometry.location)));
         });
         const address = [this.createAddress(), this.createAddress()];
-        this.props.changeLocation(address, location, places, JSON.parse(JSON.stringify(bounds)));
+        const query = this.state.address;
+        this.props.changeLocation(query, address, location, places, JSON.parse(JSON.stringify(bounds)));
       } else {
         const errorText = "Sorry, we don't have a store in this area! Please try a different location.";
         this.props.changeLocation(null, null, null, null, errorText);
