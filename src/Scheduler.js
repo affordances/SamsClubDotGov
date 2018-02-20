@@ -145,6 +145,7 @@ class Scheduler extends React.Component {
           {this.state.checkoutStep === 2 ?
             <div className='datepicker-container'>
               <DatePicker updateCheckout = {this.updateCheckout}
+                          appointments = {this.props.user.appointments}
                           ticket = {this.state.ticket} />
             </div> : null}
           {this.state.checkoutStep === 3 ?
