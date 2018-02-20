@@ -494,10 +494,36 @@ ul {
 .profile-container {
   width: 1000px;
   min-height: 310px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  color: #5e5f60;
+  border: 2px solid #5e5f60;
+}
+
+.tab-headers-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid #5e5f60;
+}
+
+.tab-header {
+  margin: 20px;
+  font-size: 25px;
+}
+
+.tab-body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tab-body {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .login-form-container {

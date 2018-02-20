@@ -9,6 +9,16 @@ import {
 } from 'react-router-dom'
 
 class Profile extends React.Component {
+  state = {
+    currentTab: 'userInfo',
+  }
+
+  changeTab = (tab) => {
+    return () => {
+      this.setState({ currentTab: tab });
+    }
+  }
+
   makePDF = () => {
     let el = document.getElementById('ticket-container');
 
@@ -45,8 +55,21 @@ class Profile extends React.Component {
 
     return (
       <div className='profile-container'>
-        {(appointments.length > 0) ?
-          appointments : <div>No appointments</div>}
+        <div className='tab-headers-container'>
+          <div className='tab-header' onClick={this.changeTab('userInfo')}>User info</div>
+          <div className='tab-header' onClick={this.changeTab('appointments')}>Appointments</div>
+        </div>
+        <div className='tab-body-container'>
+          {this.state.currentTab === 'userInfo' ?
+            <div className='tab-body' >
+              Blah blah blah
+            </div> : null}
+          {this.state.currentTab === 'appointments' ?
+            (appointments.length > 0) ?
+            <div className='tab-body'>
+              {appointments}
+            </div> : <div className='no-appointments-tab'>No appointments</div> : null}
+        </div>
       </div>
     );}
     else {return (

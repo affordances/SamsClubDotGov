@@ -21,7 +21,6 @@ class DatePicker extends React.Component {
     this.props.appointments.forEach(function(appointment) {
       dates.push(new Date(appointment.date));
     });
-    console.log(dates);
     return dates;
   }
 
