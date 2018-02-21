@@ -3,7 +3,7 @@ const sampleUser = {
   email: 'email@website.com',
   password: 'password',
   name: 'John Smith',
-  sex: 'male',
+  sex: 'M',
   dependents: 0,
   marital_status: true,
   pregnant: false,

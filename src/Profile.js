@@ -10,7 +10,7 @@ import {
 
 class Profile extends React.Component {
   state = {
-    currentTab: 'userInfo',
+    currentTab: 'profile',
   }
 
   changeTab = (tab) => {
@@ -56,19 +56,45 @@ class Profile extends React.Component {
     return (
       <div className='profile-container'>
         <div className='tab-headers-container'>
-          <div className='tab-header' onClick={this.changeTab('userInfo')}>User info</div>
-          <div className='tab-header' onClick={this.changeTab('appointments')}>Appointments</div>
+          {this.state.currentTab === 'profile' ?
+            <div className='tab-header' onClick={this.changeTab('profile')}>Profile</div> :
+            <div className='tab-header selected' onClick={this.changeTab('profile')}>Profile</div>
+          }
+          {this.state.currentTab === 'plan' ?
+            <div className='tab-header' onClick={this.changeTab('plan')}>Plan</div> :
+            <div className='tab-header selected' onClick={this.changeTab('plan')}>Plan</div>
+          }
+          {this.state.currentTab === 'medication' ?
+            <div className='tab-header' onClick={this.changeTab('medication')}>Medication</div> :
+            <div className='tab-header selected' onClick={this.changeTab('medication')}>Medication</div>
+          }
+          {this.state.currentTab === 'appointments' ?
+            <div className='tab-header' onClick={this.changeTab('appointments')}>Appointments</div> :
+            <div className='tab-header selected' onClick={this.changeTab('appointments')}>Appointments</div>
+          }
         </div>
         <div className='tab-body-container'>
-          {this.state.currentTab === 'userInfo' ?
+          {this.state.currentTab === 'profile' ?
             <div className='tab-body' >
-              Blah blah blah
+              <div>{this.props.user.name}</div>
+              <div>Sex: {this.props.user.sex}</div>
+              <div>Income: ${this.props.user.income}/year</div>
+            </div> : null}
+          {this.state.currentTab === 'plan' ?
+            <div className='tab-body' >
+              <div>{this.props.plan.name}</div>
+              <div>{this.props.plan.discount}% off</div>
+              <div>{this.props.plan.description}</div>
+            </div> : null}
+          {this.state.currentTab === 'medication' ?
+            <div className='tab-body' >
+              Some drugs
             </div> : null}
           {this.state.currentTab === 'appointments' ?
             (appointments.length > 0) ?
             <div className='tab-body'>
               {appointments}
-            </div> : <div className='no-appointments-tab'>No appointments</div> : null}
+            </div> : <div className='tab-body'>No appointments</div> : null}
         </div>
       </div>
     );}
