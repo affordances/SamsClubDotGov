@@ -30,10 +30,14 @@ class StateProvider extends React.Component {
     plan: null,
     chosenProduct: null,
     searchedLocations: [],
+    linkedFromIcon: false,
   };
 
   componentDidMount = () => {
-    this.setState({ products: products, chosenProduct: null, searchedLocations: [] })
+    this.setState({ products: products,
+                    chosenProduct: null,
+                    searchedLocations: [],
+                    linkedFromIcon: false, })
   }
 
   onLogin = (e) => {
@@ -78,9 +82,21 @@ class StateProvider extends React.Component {
   cancelAppointment = (arrayIndex) => {
     return () => {
       const user = Object.assign({}, this.state.user);
-      user.appointments = user.appointments.filter((el, index) => index !== arrayIndex);;
+      user.appointments = user.appointments.filter((el, index) => index !== arrayIndex);
       this.setState( { user: user });
     }
+  }
+
+  activateLinkedFromIcon = () => {
+    return () => {
+      this.setState({ linkedFromIcon: true });
+      console.log('activateLinkedFromIcon');
+    }
+  }
+
+  deactivateLinkedFromIcon = () => {
+    this.setState({ linkedFromIcon: false });
+    console.log('deactivateLinkedFromIcon');
   }
 
   render() {
@@ -91,6 +107,7 @@ class StateProvider extends React.Component {
         <Header loggedIn = {loggedIn}
                 products = {this.state.products}
                 onLogout = {this.onLogout}
+                activateLinkedFromIcon = {this.activateLinkedFromIcon}
                 appointments = {this.state.user ? this.state.user.appointments : []} />
 
         <Switch>
@@ -114,6 +131,9 @@ class StateProvider extends React.Component {
             <Profile user = {this.state.user}
                      plan = {this.state.plan}
                      loggedIn = {loggedIn}
+                     linkedFromIcon = {this.state.linkedFromIcon}
+                     activateLinkedFromIcon = {this.activateLinkedFromIcon}
+                     deactivateLinkedFromIcon = {this.deactivateLinkedFromIcon}
                      cancelAppointment = {this.cancelAppointment}
                      appointments = {this.state.user ? this.state.user.appointments : null} />} />
 

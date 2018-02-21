@@ -518,6 +518,11 @@ ul {
   border-right: 2px solid #5e5f60;
   border-left: 2px solid #5e5f60;
   background-color: white;
+  cursor: pointer;
+}
+
+.tab-header:hover {
+  color: #378ace;
 }
 
 .tab-header.selected {

@@ -13,6 +13,15 @@ class Profile extends React.Component {
     currentTab: 'profile',
   }
 
+  componentWillMount = () => {
+    if (this.props.linkedFromIcon === true) {
+      this.setState({ currentTab: 'appointments' });
+      this.props.deactivateLinkedFromIcon();
+    } else {
+      this.setState({ currentTab: 'profile' });
+    }
+  }
+
   changeTab = (tab) => {
     return () => {
       this.setState({ currentTab: tab });
@@ -77,6 +86,7 @@ class Profile extends React.Component {
           {this.state.currentTab === 'profile' ?
             <div className='tab-body' >
               <div>{this.props.user.name}</div>
+              <div>{this.props.user.hin}</div>
               <div>Sex: {this.props.user.sex}</div>
               <div>Income: ${this.props.user.income}/year</div>
             </div> : null}
