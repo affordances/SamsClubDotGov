@@ -30,14 +30,14 @@ class StateProvider extends React.Component {
     plan: null,
     chosenProduct: null,
     searchedLocations: [],
-    linkedFromIcon: false,
+    profileTab: 'profile',
   };
 
   componentDidMount = () => {
     this.setState({ products: products,
                     chosenProduct: null,
                     searchedLocations: [],
-                    linkedFromIcon: false, })
+                    profileTab: 'profile', })
   }
 
   onLogin = (e) => {
@@ -87,16 +87,10 @@ class StateProvider extends React.Component {
     }
   }
 
-  activateLinkedFromIcon = () => {
+  changeTab = (tab) => {
     return () => {
-      this.setState({ linkedFromIcon: true });
-      console.log('activateLinkedFromIcon');
+      this.setState({ profileTab: tab });
     }
-  }
-
-  deactivateLinkedFromIcon = () => {
-    this.setState({ linkedFromIcon: false });
-    console.log('deactivateLinkedFromIcon');
   }
 
   render() {
@@ -107,7 +101,7 @@ class StateProvider extends React.Component {
         <Header loggedIn = {loggedIn}
                 products = {this.state.products}
                 onLogout = {this.onLogout}
-                activateLinkedFromIcon = {this.activateLinkedFromIcon}
+                changeTab = {this.changeTab}
                 appointments = {this.state.user ? this.state.user.appointments : []} />
 
         <Switch>
@@ -131,9 +125,8 @@ class StateProvider extends React.Component {
             <Profile user = {this.state.user}
                      plan = {this.state.plan}
                      loggedIn = {loggedIn}
-                     linkedFromIcon = {this.state.linkedFromIcon}
-                     activateLinkedFromIcon = {this.activateLinkedFromIcon}
-                     deactivateLinkedFromIcon = {this.deactivateLinkedFromIcon}
+                     changeTab = {this.changeTab}
+                     profileTab = {this.state.profileTab}
                      cancelAppointment = {this.cancelAppointment}
                      appointments = {this.state.user ? this.state.user.appointments : null} />} />
 

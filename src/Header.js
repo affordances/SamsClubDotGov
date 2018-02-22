@@ -25,7 +25,7 @@ class Header extends React.Component {
           </div>
 
             {this.props.loggedIn ? <div className='calendar-and-user-icon-container'>
-                                     <Link to='/profile' onClick = {this.props.activateLinkedFromIcon()} style={{ display: 'inline-block', height: '45px', width: '44px' }}>
+                                     <Link to='/profile' onClick = {this.props.changeTab('appointments')} style={{ display: 'inline-block', height: '45px', width: '44px' }}>
                                        <FontAwesome
                                          name='calendar'
                                          style={{ float:'left' }}
@@ -37,7 +37,10 @@ class Header extends React.Component {
                                          effect={[null, null, {}, {}]}
                                        />
                                      </Link>
-                                     <UserDropdown onLogout={this.props.onLogout} />
+                                     <UserDropdown
+                                       onLogout={this.props.onLogout}
+                                       changeTab={this.props.changeTab}
+                                     />
                                    </div>
                                   : <div className='sign-in-link'><Link to='/login'>Sign in</Link></div>}
         </div>
