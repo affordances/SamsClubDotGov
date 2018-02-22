@@ -36,7 +36,7 @@ class UserDropdown extends React.Component {
 
     return (
       <DropdownMenu {...menuOptions}>
-        <li><Link to='/profile' className='on-click-link' onClick={this.props.changeTab('profile')}>My profile</Link></li>
+        <li><Link to='/profile' className='on-click-link' onClick={this.props.changeTab('myInfo')}>My profile</Link></li>
         <li><div className='on-click-link' onClick={this.props.onLogout}>Sign out</div></li>
       </DropdownMenu>
       );

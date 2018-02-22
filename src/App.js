@@ -30,14 +30,14 @@ class StateProvider extends React.Component {
     plan: null,
     chosenProduct: null,
     searchedLocations: [],
-    profileTab: 'profile',
+    profileTab: 'myInfo',
   };
 
   componentDidMount = () => {
     this.setState({ products: products,
                     chosenProduct: null,
                     searchedLocations: [],
-                    profileTab: 'profile', })
+                    profileTab: 'myInfo', })
   }
 
   onLogin = (e) => {
