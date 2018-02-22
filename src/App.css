@@ -124,6 +124,15 @@ ul {
   width: 100px;
 }
 
+.user-icon {
+  color: #5e5f60;
+  cursor: pointer;
+}
+
+.user-icon:hover {
+  color: #378ace;
+}
+
 .logo {
   font-size: 40px;
 }
