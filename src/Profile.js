@@ -2,10 +2,12 @@ import React from 'react';
 import './App.css';
 import Ticket from './Ticket.js';
 
+import FontAwesome from 'react-fontawesome';
 import html2pdf from 'html2pdf.js';
 
 import {
   Redirect,
+  Link,
 } from 'react-router-dom'
 
 class Profile extends React.Component {
@@ -25,30 +27,34 @@ class Profile extends React.Component {
       const formatAddress = ({ number, street, streetType, townAndCity }) => {
         return (
           <div className='profile-ticket-address'>
-            <div>{number + ' ' + street + ' ' + streetType}</div>
-            <div>{townAndCity}</div>
+            <div style={{ textAlign: 'right' }}>{number + ' ' + street + ' ' + streetType}</div>
+            <div style={{ textAlign: 'right' }}>{townAndCity}</div>
           </div>
         )
       }
 
       const sortedAppointments = this.props.appointments.sort(function(a, b){
-        return new Date(b.date) - new Date(a.date);
+        return new Date(a.date) - new Date(b.date);
       });
 
       const formattedAppointments = sortedAppointments.map((appointment, index) => (
         <div key = {index} className='profile-ticket-container'>
           <div className='profile-ticket-details-container'>
-            <div className='profile-ticket-name'>{appointment.product.name}</div>
-            {formatAddress(appointment.address)}
-            <div className='profile-ticket-date'>{(new Date(appointment.date)).toLocaleDateString()}</div>
-            <div className='profile-ticket-time'>{appointment.time}</div>
+            <div className='profile-ticket-name-and-address-container'>
+              <div className='profile-ticket-name'>{appointment.product.name}</div>
+              {formatAddress(appointment.address)}
+            </div>
+            <div className='profile-ticket-date-and-time-container'>
+              <div className='profile-ticket-date'>{(new Date(appointment.date)).toLocaleDateString()}</div>
+              <div className='profile-ticket-time'>{appointment.time}</div>
+            </div>
           </div>
           <div className='profile-ticket-button-container'>
             <div className='profile-ticket-button'>
-              <button onClick={this.makePDF}>Download ticket</button>
+              <FontAwesome name='arrow-down' size='2x' style={{ cursor: 'pointer' }} onClick={this.makePDF}></FontAwesome>
             </div>
             <div className='profile-ticket-button'>
-              <button onClick={this.props.cancelAppointment(index)}>Cancel appointment</button>
+              <FontAwesome name='ban' size='2x' style={{ cursor: 'pointer' }} onClick={this.props.cancelAppointment(index)}></FontAwesome>
             </div>
           </div>
           <Ticket style={{ display: 'none', visibility: 'hidden' }}
@@ -93,22 +99,44 @@ class Profile extends React.Component {
               <div>{this.props.plan.discount}% off</div>
             </div> : null}
           {this.props.profileTab === 'payments' ?
-            <div className='tab-body' >
-              Some payments
+            <div className='tab-body'>
             </div> : null}
           {this.props.profileTab === 'medication' ?
-            <div className='tab-body' >
-              Some drugs
+            <div className='tab-body'>
             </div> : null}
           {this.props.profileTab === 'testResults' ?
-            <div className='tab-body' >
-              Some test results
+            <div className='tab-body'>
             </div> : null}
           {this.props.profileTab === 'appointments' ?
             (formattedAppointments.length > 0) ?
             <div className='tab-body'>
-              <div className='profile-ticket-container-container'>{formattedAppointments}</div>
-            </div> : <div className='tab-body'>No appointments</div> : null}
+              <div className='profile-ticket-container-container'>
+                <div className='profile-ticket-header-container'>
+                  <div className='profile-ticket-header'>
+                    <div className='profile-ticket-details-container'>
+                      <div className='profile-ticket-name-and-address-container'>
+                        <div>Procedure</div>
+                        <div>Location</div>
+                      </div>
+                      <div className='profile-ticket-date-and-time-container'>
+                        <div>Date</div>
+                        <div>Time</div>
+                      </div>
+                    </div>
+                    <div className='profile-ticket-button-container'>
+                      <div>Download</div>
+                      <div>Cancel</div>
+                    </div>
+                  </div>
+                  <hr/>
+                </div>
+                {formattedAppointments}
+              </div>
+            </div> :
+            <div className='page-error-container' style={{ border: 'none' }}>
+              <div className='page-error'>No appointments</div>
+              <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
+            </div> : null}
         </div>
       </div>
     );}
