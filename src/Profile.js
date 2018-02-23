@@ -94,7 +94,6 @@ class Profile extends React.Component {
               <div>{this.props.user.name}</div>
               <div>{this.props.user.hin}</div>
               <div>Sex: {this.props.user.sex}</div>
-              <div>Income: ${this.props.user.income}/year</div>
               <div>{this.props.plan.name}</div>
               <div>{this.props.plan.discount}% off</div>
             </div> : null}
@@ -133,7 +132,7 @@ class Profile extends React.Component {
                 {formattedAppointments}
               </div>
             </div> :
-            <div className='page-error-container' style={{ border: 'none' }}>
+            <div className='page-error-container' style={{ border: 'none', marginBottom: '0px' }}>
               <div className='page-error'>No appointments</div>
               <div className='continue-shopping'><Link to='/'>Continue shopping</Link></div>
             </div> : null}
