@@ -91,11 +91,26 @@ class Profile extends React.Component {
         <div className='tab-body-container'>
           {this.props.profileTab === 'myInfo' ?
             <div className='tab-body' >
-              <div>{this.props.user.name}</div>
-              <div>{this.props.user.hin}</div>
-              <div>Sex: {this.props.user.sex}</div>
-              <div>{this.props.plan.name}</div>
-              <div>{this.props.plan.discount}% off</div>
+              <div className='my-info-container-container'>
+                <div className='personal-info-container'>
+                  <div className='my-info-item-container'>{this.props.user.name}</div>
+                  <div className='my-info-item-container'>HIN: {this.props.user.hin}</div>
+                  <div className='my-info-item-container'>Sex: {this.props.user.sex}</div>
+                  <div className='my-info-item-container'>Age: {this.props.user.age}</div>
+                  <div className='my-info-item-container'>Plan: {this.props.plan.name}</div>
+                  <div className='my-info-item-container'>Married: {this.props.user.maritalStatus ? 'Yes' : 'No'}</div>
+                  <div className='my-info-item-container'>Dependents: {this.props.user.dependents}</div>
+                  <div className='my-info-item-container'>Pregnant: {this.props.user.pregnant ? 'Yes' : (this.props.user.sex === 'F' ? 'No' : 'N/A')}</div>
+                  <div className='my-info-item-container'>Accomodations: {this.props.user.accomodations.length > 0 ? 'Yes' : 'None'}</div>
+                  <div className='my-info-item-container'>Employed: {this.props.user.employed ? 'Yes' : 'No'}</div>
+                </div>
+                <div className='health-info-container'>
+                  <div className='my-info-item-container'>Blood Type: {this.props.user.bloodType}</div>
+                  <div className='my-info-item-container'>Weight: {this.props.user.weight}</div>
+                  <div className='my-info-item-container'>Blood Pressure: {this.props.user.bloodPressure}</div>
+                  <div className='my-info-item-container'>Allergies: {this.props.user.allergies.join(', ')}</div>
+                </div>
+              </div>
             </div> : null}
           {this.props.profileTab === 'payments' ?
             <div className='tab-body'>

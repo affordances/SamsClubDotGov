@@ -159,7 +159,7 @@ class Scheduler extends React.Component {
                 <div className='confirmation-container'>
                   <div className='confirmation-header'>Your appointment</div>
                     <div className='confirmation-appointment-info-container'>
-                    <div className='confirmation-info-item'>{this.state.ticket.product.name}</div>
+                    <div className='confirmation-info-item' style={{ fontSize: '20px', fontWeight: 'bold' }}>{this.state.ticket.product.name}</div>
                     <div className='confirmation-info-item'>{formatAddress(this.state.ticket.address)}</div>
                     <div className='confirmation-info-item'>{date.toLocaleDateString()}</div>
                     <div className='confirmation-info-item'>{this.state.ticket.time}</div>
