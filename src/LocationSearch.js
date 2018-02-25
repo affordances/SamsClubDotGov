@@ -76,8 +76,8 @@ class LocationSearch extends React.Component {
     const number = Math.floor(Math.random() * 1000) + 1;
     const street = streetNames[Math.floor(Math.random() * streetNames.length)];
     const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
-    const townAndCity = this.state.address.replace(', USA', '');
-    const address = { number: number, street: street, streetType: streetType, townAndCity: townAndCity }
+    const cityAndState = this.state.address.replace(', USA', '');
+    const address = { number: number, street: street, streetType: streetType, cityAndState: cityAndState }
     return address;
   }
 

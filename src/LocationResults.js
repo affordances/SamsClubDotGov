@@ -3,11 +3,11 @@ import './App.css';
 
 class LocationResults extends React.Component {
   render() {
-    const formatAddress = ({ number, street, streetType, townAndCity }) => {
+    const formatAddress = ({ number, street, streetType, cityAndState }) => {
       return (
         <div>
           <div>{number + ' ' + street + ' ' + streetType}</div>
-          <div>{townAndCity}</div>
+          <div>{cityAndState}</div>
         </div>
       )
     }

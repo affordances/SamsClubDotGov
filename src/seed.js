@@ -4,6 +4,8 @@ const sampleUser = {
   password: 'password',
   name: 'John Smith',
   sex: 'M',
+  address: { street: '123 Main St', cityAndState: 'Cambridge, MA' },
+  phone: '617 555 1234',
   dependents: '0',
   maritalStatus: true,
   pregnant: false,

@@ -16,9 +16,9 @@ class Ticket extends React.Component {
   }
 
   render() {
-    const formatAddress = ({ number, street, streetType, townAndCity }) => {
+    const formatAddress = ({ number, street, streetType, cityAndState }) => {
       return (
-        <div>{number + ' ' + street + ' ' + streetType + ', ' + townAndCity}</div>
+        <div>{number + ' ' + street + ' ' + streetType + ', ' + cityAndState}</div>
       )
     }
 
