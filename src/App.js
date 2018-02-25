@@ -93,6 +93,14 @@ class StateProvider extends React.Component {
     }
   }
 
+  updateEmploymentStatus = () => {
+    return () => {
+      const user = Object.assign({}, this.state.user);
+      user.employed ? user.employed = false : user.employed = true;
+      this.setState({ user: user });
+    }
+  }
+
   render() {
     const loggedIn = this.state.user ? true : false;
 
@@ -128,6 +136,7 @@ class StateProvider extends React.Component {
                      changeTab = {this.changeTab}
                      profileTab = {this.state.profileTab}
                      cancelAppointment = {this.cancelAppointment}
+                     updateEmploymentStatus = {this.updateEmploymentStatus}
                      appointments = {this.state.user ? this.state.user.appointments : null} />} />
 
           <Route path='/scheduler' render = { (props) =>

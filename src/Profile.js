@@ -4,6 +4,8 @@ import Ticket from './Ticket.js';
 
 import FontAwesome from 'react-fontawesome';
 import html2pdf from 'html2pdf.js';
+import Toggle from 'react-toggle';
+import "react-toggle/style.css";
 
 import {
   Redirect,
@@ -93,25 +95,37 @@ class Profile extends React.Component {
             <div className='tab-body' >
               <div className='my-info-container-container'>
                 <div className='my-info-container'>
-                  <div className='my-info-item'>Name: {this.props.user.name}</div>
-                  <div className='my-info-item'>Address: {this.props.user.address.street}, {this.props.user.address.cityAndState}</div>
-                  <div className='my-info-item'>HIN: {this.props.user.hin}</div>
-                  <div className='my-info-item' style={{ marginBottom: '0px' }}>Plan: {this.props.plan.name}</div>
+                  <div className='my-info-name-container'>
+                    <div className='my-info-header'>Name:</div>
+                    {this.props.user.name}
+                  </div>
+                  <div className='my-info-address-container'>
+                    <div className='my-info-header'>Address:</div>
+                    {this.props.user.address.street}, {this.props.user.address.cityAndState}
+                  </div>
+                  <div className='my-info-hin-container'>
+                    <div className='my-info-header'>HIN:</div>
+                    {this.props.user.hin}
+                  </div>
+                  <div className='my-info-plan-container'>
+                    <div className='my-info-header'>Plan:</div>
+                    {this.props.plan.name}
+                  </div>
                 </div>
-                <div className='my-info-container'>
-                  <div className='my-info-item'>Sex: {this.props.user.sex}</div>
-                  <div className='my-info-item'>Age: {this.props.user.age}</div>
-                  <div className='my-info-item'>Married: {this.props.user.maritalStatus ? 'Yes' : 'No'}</div>
-                  <div className='my-info-item'>Dependents: {this.props.user.dependents}</div>
-                  <div className='my-info-item'>Pregnant: {this.props.user.pregnant ? 'Yes' : (this.props.user.sex === 'F' ? 'No' : 'N/A')}</div>
-                  <div className='my-info-item'>Accomodations: {this.props.user.accomodations.length > 0 ? 'Yes' : 'None'}</div>
-                  <div className='my-info-item' style={{ marginBottom: '0px' }}>Employed: {this.props.user.employed ? 'Yes' : 'No'}</div>
-                </div>
-                <div className='my-info-container'>
-                  <div className='my-info-item'>Blood Type: {this.props.user.bloodType}</div>
-                  <div className='my-info-item'>Weight: {this.props.user.weight}</div>
-                  <div className='my-info-item'>Blood Pressure: {this.props.user.bloodPressure}</div>
-                  <div className='my-info-item' style={{ marginBottom: '0px' }}>Allergies: {this.props.user.allergies.join(', ')}</div>
+                <div className='employment-info-container'>
+                  <div className='employment-info-header-container'>
+                    <div className='employment-info-header'>Employed: </div>
+                    {this.props.user.employed ?
+                      <div className='employment-info-header-item'>Yes</div> :
+                      <div className='employment-info-header-item'>No</div>}
+                  </div>
+                  <div className='employment-toggle-container'>
+                    <Toggle
+                      checked={this.props.user.employed}
+                      onChange={this.props.updateEmploymentStatus()}
+                    />
+                  </div>
+                  <div className='employment-warning'>(Please don't lie. We will check.)</div>
                 </div>
               </div>
             </div> : null}
