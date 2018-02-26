@@ -31,6 +31,7 @@ class StateProvider extends React.Component {
     chosenProduct: null,
     searchedLocations: [],
     profileTab: 'myInfo',
+    employmentIsToggleable: false,
   };
 
   componentDidMount = () => {
@@ -93,11 +94,17 @@ class StateProvider extends React.Component {
     }
   }
 
+  toggleEmploymentToggle = () => {
+    const togglePosition = this.state.employmentIsToggleable ? false : true;
+    this.setState({ employmentIsToggleable: togglePosition });
+  }
+
   updateEmploymentStatus = () => {
     return () => {
       const user = Object.assign({}, this.state.user);
       user.employed ? user.employed = false : user.employed = true;
       this.setState({ user: user });
+      this.toggleEmploymentToggle();
     }
   }
 
@@ -136,6 +143,8 @@ class StateProvider extends React.Component {
                      changeTab = {this.changeTab}
                      profileTab = {this.state.profileTab}
                      cancelAppointment = {this.cancelAppointment}
+                     toggleEmploymentToggle = {this.toggleEmploymentToggle}
+                     employmentIsToggleable = {this.state.employmentIsToggleable}
                      updateEmploymentStatus = {this.updateEmploymentStatus}
                      appointments = {this.state.user ? this.state.user.appointments : null} />} />
 

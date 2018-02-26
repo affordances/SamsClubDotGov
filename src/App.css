@@ -568,7 +568,7 @@ ul {
 
 .my-info-name-container {
   border: 2px solid #5e5f60;
-  font-size: 25px;
+  font-size: 29px;
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 20px;
@@ -582,7 +582,7 @@ ul {
 
 .my-info-address-container {
   border: 2px solid #5e5f60;
-  font-size: 25px;
+  font-size: 29px;
   padding: 10px;
   margin-right: 10px;
   margin-left: 10px;
@@ -591,7 +591,7 @@ ul {
 
 .my-info-hin-container {
   border: 2px solid #5e5f60;
-  font-size: 25px;
+  font-size: 29px;
   padding: 10px;
   margin-right: 10px;
   margin-left: 10px;
@@ -600,7 +600,7 @@ ul {
 
 .my-info-plan-container {
   border: 2px solid #5e5f60;
-  font-size: 25px;
+  font-size: 29px;
   padding: 10px;
   margin-left: 10px;
   margin-bottom: 20px;
@@ -620,6 +620,7 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .employment-info-header {
@@ -636,6 +637,13 @@ ul {
 
 .employment-toggle-container {
   margin: 5px;
+}
+
+.change-employment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .employment-warning {
@@ -766,6 +774,14 @@ ul {
 
 .profile-ticket-button {
   margin: 5px;
+}
+
+.profile-ticket-icon {
+  cursor: pointer;
+}
+
+.profile-ticket-icon:hover {
+  color: #378ace;
 }
 
 .login-form-container {

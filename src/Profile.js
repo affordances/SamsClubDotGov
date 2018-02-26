@@ -53,10 +53,10 @@ class Profile extends React.Component {
           </div>
           <div className='profile-ticket-button-container'>
             <div className='profile-ticket-button'>
-              <FontAwesome name='arrow-down' size='2x' style={{ cursor: 'pointer' }} onClick={this.makePDF}></FontAwesome>
+              <FontAwesome name='arrow-down' size='2x' className='profile-ticket-icon' onClick={this.makePDF}></FontAwesome>
             </div>
             <div className='profile-ticket-button'>
-              <FontAwesome name='ban' size='2x' style={{ cursor: 'pointer' }} onClick={this.props.cancelAppointment(index)}></FontAwesome>
+              <FontAwesome name='ban' size='2x' className='profile-ticket-icon' onClick={this.props.cancelAppointment(index)}></FontAwesome>
             </div>
           </div>
           <Ticket style={{ display: 'none', visibility: 'hidden' }}
@@ -119,13 +119,19 @@ class Profile extends React.Component {
                       <div className='employment-info-header-item'>Yes</div> :
                       <div className='employment-info-header-item'>No</div>}
                   </div>
-                  <div className='employment-toggle-container'>
-                    <Toggle
-                      checked={this.props.user.employed}
-                      onChange={this.props.updateEmploymentStatus()}
-                    />
-                  </div>
-                  <div className='employment-warning'>(Please don't lie. We will check.)</div>
+                  {this.props.employmentIsToggleable ?
+                    <div className='change-employment-container'>
+                      <div className='employment-toggle-container'>
+                        <Toggle
+                          checked={this.props.user.employed}
+                          onChange={this.props.updateEmploymentStatus()}
+                        />
+                      </div>
+                      <div className='employment-warning'>(Please don't lie. We will check.)</div>
+                    </div> :
+                    <div className='on-click-link'
+                         style={{ fontSize: '13px', color: '#bebfbf' }}
+                         onClick={this.props.toggleEmploymentToggle}>Change</div>}
                 </div>
               </div>
             </div> : null}
