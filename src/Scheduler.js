@@ -177,7 +177,7 @@ class Scheduler extends React.Component {
           {this.state.checkoutStep === 5 ?
               <Ticket user = {this.props.user}
                       ticket = {this.state.ticket}
-                      plan = {this.props.plan} /> : null}
+                      discount = {this.props.discount} /> : null}
         </div>
       );} else {
         return (

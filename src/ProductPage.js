@@ -13,7 +13,7 @@ class ProductPage extends React.Component {
     if (!product){return (<NoProduct />)}
 
     const priceCalculation = product.listPrice - (product.listPrice *
-                             ((this.props.plan ? this.props.plan.discount : 0) / 100));
+                             ((this.props.discount ? this.props.discount : 0) / 100));
 
     const image = product.imagePath;
 
@@ -52,7 +52,7 @@ class ProductPage extends React.Component {
               </div>
               <div className='product-page-discount-container'>
                 <div>Sam pays:</div>
-                <div className='product-page-discount'>{this.props.plan.discount}%</div>
+                <div className='product-page-discount'>{this.props.discount}%</div>
               </div>
               <div className='product-page-final-price-container'>
                 <div>You pay:</div>

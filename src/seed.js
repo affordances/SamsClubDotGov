@@ -6,12 +6,6 @@ const sampleUser = {
   sex: 'M',
   address: { street: '123 Main St', cityAndState: 'Cambridge, MA' },
   phone: '617 555 1234',
-  dependents: 0,
-  maritalStatus: false,
-  pregnant: false,
-  employed: true,
-  accomodations: [],
-  plan: 'Bronze',
   bloodType: 'O+',
   weight: 170,
   bloodPressure: '110/70',
@@ -26,14 +20,6 @@ const sampleUser = {
   appointments: [],
 }
 
-const plans = [
-  {
-    name: 'Bronze',
-    discount: 100,
-    description: "Enjoy some health care... on us!",
-  },
-]
-
 const products = [
   {
     id: 1,
@@ -46,7 +32,7 @@ const products = [
     id: 2,
     name: 'Blood Test',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab. Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
-    listPrice: 75,
+    listPrice: 100,
     imagePath: '/bloodtest.svg',
   },
   {
@@ -60,7 +46,7 @@ const products = [
     id: 4,
     name: 'Vaccinations',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab. Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
-    listPrice: 250,
+    listPrice: 200,
     imagePath: '/vaccinations.svg',
   },
   {
@@ -88,9 +74,9 @@ const products = [
     id: 8,
     name: 'Dentist',
     description: 'Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab. Dolore veritatis veniam rem soluta reprehenderit cumque atque sunt. Aut sit unde repudiandae impedit qui. Soluta qui et adipisci aliquid culpa quo voluptate mollitia. Non nobis cum natus qui facere soluta ab.',
-    listPrice: 350,
+    listPrice: 300,
     imagePath: '/dentist.svg',
   },
 ];
 
-export { sampleUser, products, plans };
+export { sampleUser, products };

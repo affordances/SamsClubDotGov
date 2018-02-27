@@ -8,7 +8,6 @@ class ProductList extends React.Component {
       <ProductPreview
         loggedIn = {this.props.loggedIn}
         user = {this.props.user}
-        plan = {this.props.plan}
         product = {product}
         key = {index}
       />

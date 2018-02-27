@@ -8,7 +8,7 @@ import Login from './Login.js';
 import Scheduler from './Scheduler.js';
 import About from './About.js';
 import Register from './Register';
-import { sampleUser, products, plans } from './seed.js';
+import { sampleUser, products } from './seed.js';
 
 import './App.css';
 
@@ -27,11 +27,10 @@ class StateProvider extends React.Component {
   state = {
     products: [],
     user: null,
-    plan: null,
+    discount: 60,
     chosenProduct: null,
     searchedLocations: [],
     profileTab: 'myInfo',
-    employmentIsToggleable: false,
   };
 
   componentDidMount = () => {
@@ -44,9 +43,7 @@ class StateProvider extends React.Component {
   onLogin = (e) => {
     e.preventDefault();
     const user = Object.assign({}, sampleUser);
-    const userPlan = user.plan;
-    const plan = plans.find(x => x.name === userPlan);
-    this.setState({ plan: plan, user: user });
+    this.setState({ user: user });
     this.props.history.goBack();
   }
 
@@ -94,20 +91,6 @@ class StateProvider extends React.Component {
     }
   }
 
-  toggleEmploymentToggle = () => {
-    const togglePosition = this.state.employmentIsToggleable ? false : true;
-    this.setState({ employmentIsToggleable: togglePosition });
-  }
-
-  updateEmploymentStatus = () => {
-    return () => {
-      const user = Object.assign({}, this.state.user);
-      user.employed ? user.employed = false : user.employed = true;
-      this.setState({ user: user });
-      this.toggleEmploymentToggle();
-    }
-  }
-
   render() {
     const loggedIn = this.state.user ? true : false;
 
@@ -124,7 +107,7 @@ class StateProvider extends React.Component {
             <Home products = {this.state.products}
                   loggedIn = {loggedIn}
                   user = {this.state.user}
-                  plan = {this.state.plan} />} />
+                  discount = {this.state.discount} />} />
 
           <Route path='/about' component={About} />
 
@@ -134,18 +117,15 @@ class StateProvider extends React.Component {
                          proceedToBooking = {this.proceedToBooking}
                          loggedIn = {loggedIn}
                          user = {this.state.user}
-                         plan = {this.state.plan} />} />
+                         discount = {this.state.discount} />} />
 
           <Route path='/profile' render = { (props) =>
             <Profile user = {this.state.user}
-                     plan = {this.state.plan}
                      loggedIn = {loggedIn}
                      changeTab = {this.changeTab}
+                     discount = {this.state.discount}
                      profileTab = {this.state.profileTab}
                      cancelAppointment = {this.cancelAppointment}
-                     toggleEmploymentToggle = {this.toggleEmploymentToggle}
-                     employmentIsToggleable = {this.state.employmentIsToggleable}
-                     updateEmploymentStatus = {this.updateEmploymentStatus}
                      appointments = {this.state.user ? this.state.user.appointments : null} />} />
 
           <Route path='/scheduler' render = { (props) =>
@@ -156,7 +136,7 @@ class StateProvider extends React.Component {
                        updateSearchedLocations = {this.updateSearchedLocations}
                        searchedLocations = {this.state.searchedLocations}
                        user = {this.state.user}
-                       plan = {this.state.plan} />} />
+                       discount = {this.state.discount} />} />
 
           <Route path='/login' render = { (props) =>
             <Login onLogin = {this.onLogin}
@@ -195,7 +175,7 @@ class Home extends React.Component {
         <ProductList products = {this.props.products}
                      loggedIn = {this.props.loggedIn}
                      user = {this.props.user}
-                     plan = {this.props.plan} />
+                     discount = {this.props.discount} />
       </div>
     );
   }

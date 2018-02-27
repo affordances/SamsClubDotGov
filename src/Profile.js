@@ -4,8 +4,6 @@ import Ticket from './Ticket.js';
 
 import FontAwesome from 'react-fontawesome';
 import html2pdf from 'html2pdf.js';
-import Toggle from 'react-toggle';
-import "react-toggle/style.css";
 
 import {
   Redirect,
@@ -62,7 +60,7 @@ class Profile extends React.Component {
           <Ticket style={{ display: 'none', visibility: 'hidden' }}
                   user = {this.props.user}
                   ticket = {appointment}
-                    plan = {this.props.plan} />
+                  discount = {this.props.discount}/>
         </div>
       ));
 
@@ -94,44 +92,49 @@ class Profile extends React.Component {
           {this.props.profileTab === 'myInfo' ?
             <div className='tab-body' >
               <div className='my-info-container-container'>
-                <div className='my-info-container'>
-                  <div className='my-info-name-container'>
+                <div className='my-info-left-container'>
+                  <div className='my-info-left-item-container'>
                     <div className='my-info-header'>Name:</div>
-                    {this.props.user.name}
+                    <div>{this.props.user.name}</div>
                   </div>
-                  <div className='my-info-address-container'>
-                    <div className='my-info-header'>Address:</div>
-                    {this.props.user.address.street}, {this.props.user.address.cityAndState}
-                  </div>
-                  <div className='my-info-hin-container'>
+                  <div className='my-info-left-item-container'>
                     <div className='my-info-header'>HIN:</div>
-                    {this.props.user.hin}
+                    <div>{this.props.user.hin}</div>
                   </div>
-                  <div className='my-info-plan-container'>
-                    <div className='my-info-header'>Plan:</div>
-                    {this.props.plan.name}
+                  <div className='my-info-left-item-container'>
+                    <div className='my-info-header'>Address:</div>
+                    <div>{this.props.user.address.street}, {this.props.user.address.cityAndState}</div>
+                  </div>
+                  <div className='my-info-left-item-container'>
+                    <div className='my-info-header'>Phone:</div>
+                    <div>{this.props.user.phone}</div>
+                  </div>
+                  <div className='my-info-left-item-container'>
+                    <div className='my-info-header'>Sex:</div>
+                    <div>{this.props.user.sex}</div>
                   </div>
                 </div>
-                <div className='employment-info-container'>
-                  <div className='employment-info-header-container'>
-                    <div className='employment-info-header'>Employed: </div>
-                    {this.props.user.employed ?
-                      <div className='employment-info-header-item'>Yes</div> :
-                      <div className='employment-info-header-item'>No</div>}
+                <div className='my-info-right-container'>
+                  <div className='my-info-right-item-container'>
+                    <div className='my-info-header'>Age:</div>
+                    <div>{this.props.user.age}</div>
                   </div>
-                  {this.props.employmentIsToggleable ?
-                    <div className='change-employment-container'>
-                      <div className='employment-toggle-container'>
-                        <Toggle
-                          checked={this.props.user.employed}
-                          onChange={this.props.updateEmploymentStatus()}
-                        />
-                      </div>
-                      <div className='employment-warning'>(Please don't lie. We will check.)</div>
-                    </div> :
-                    <div className='on-click-link'
-                         style={{ fontSize: '13px', color: '#bebfbf' }}
-                         onClick={this.props.toggleEmploymentToggle}>Change</div>}
+                  <div className='my-info-right-item-container'>
+                    <div className='my-info-header'>Blood type:</div>
+                    <div>{this.props.user.bloodType}</div>
+                  </div>
+                  <div className='my-info-right-item-container'>
+                    <div className='my-info-header'>Weight:</div>
+                    <div>{this.props.user.weight}</div>
+                  </div>
+                  <div className='my-info-right-item-container'>
+                    <div className='my-info-header'>Blood pressure:</div>
+                    <div>{this.props.user.bloodPressure}</div>
+                  </div>
+                  <div className='my-info-right-item-container'>
+                    <div className='my-info-header'>Allergies:</div>
+                    <div>{this.props.user.allergies.join(', ')}</div>
+                  </div>
                 </div>
               </div>
             </div> : null}

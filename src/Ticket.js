@@ -75,9 +75,9 @@ class Ticket extends React.Component {
                       <div className='ticket-product-list-price'>${product.listPrice}</div>
                     </div>
                     <div className='ticket-product-discount-and-final-price-container'>
-                      <div className='ticket-product-discount'>{this.props.plan.discount}%</div>
+                      <div className='ticket-product-discount'>{this.props.discount}%</div>
                       <div className='ticket-product-final-price'>
-                        ${product.listPrice - (product.listPrice * (this.props.plan.discount / 100))}
+                        ${product.listPrice - (product.listPrice * (this.props.discount / 100))}
                       </div>
                     </div>
                   </div>
