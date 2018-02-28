@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Ticket from './Ticket.js';
+import MyInfo from './MyInfo.js';
 
 import FontAwesome from 'react-fontawesome';
 import html2pdf from 'html2pdf.js';
@@ -71,9 +72,9 @@ class Profile extends React.Component {
             <div className='tab-header' onClick={this.props.changeTab('myInfo')}>My Info</div> :
             <div className='tab-header selected' onClick={this.props.changeTab('myInfo')}>My Info</div>
           }
-          {this.props.profileTab === 'payments' ?
-            <div className='tab-header' onClick={this.props.changeTab('payments')}>Payments</div> :
-            <div className='tab-header selected' onClick={this.props.changeTab('payments')}>Payments</div>
+          {this.props.profileTab === 'billing' ?
+            <div className='tab-header' onClick={this.props.changeTab('billing')}>Billing</div> :
+            <div className='tab-header selected' onClick={this.props.changeTab('billing')}>Billing</div>
           }
           {this.props.profileTab === 'medication' ?
             <div className='tab-header' onClick={this.props.changeTab('medication')}>Medication</div> :
@@ -91,54 +92,9 @@ class Profile extends React.Component {
         <div className='tab-body-container'>
           {this.props.profileTab === 'myInfo' ?
             <div className='tab-body' >
-              <div className='my-info-container-container'>
-                <div className='my-info-left-container'>
-                  <div className='my-info-left-item-container'>
-                    <div className='my-info-header'>Name:</div>
-                    <div>{this.props.user.name}</div>
-                  </div>
-                  <div className='my-info-left-item-container'>
-                    <div className='my-info-header'>HIN:</div>
-                    <div>{this.props.user.hin}</div>
-                  </div>
-                  <div className='my-info-left-item-container'>
-                    <div className='my-info-header'>Address:</div>
-                    <div>{this.props.user.address.street}, {this.props.user.address.cityAndState}</div>
-                  </div>
-                  <div className='my-info-left-item-container'>
-                    <div className='my-info-header'>Phone:</div>
-                    <div>{this.props.user.phone}</div>
-                  </div>
-                  <div className='my-info-left-item-container'>
-                    <div className='my-info-header'>Sex:</div>
-                    <div>{this.props.user.sex}</div>
-                  </div>
-                </div>
-                <div className='my-info-right-container'>
-                  <div className='my-info-right-item-container'>
-                    <div className='my-info-header'>Age:</div>
-                    <div>{this.props.user.age}</div>
-                  </div>
-                  <div className='my-info-right-item-container'>
-                    <div className='my-info-header'>Blood type:</div>
-                    <div>{this.props.user.bloodType}</div>
-                  </div>
-                  <div className='my-info-right-item-container'>
-                    <div className='my-info-header'>Weight:</div>
-                    <div>{this.props.user.weight}</div>
-                  </div>
-                  <div className='my-info-right-item-container'>
-                    <div className='my-info-header'>Blood pressure:</div>
-                    <div>{this.props.user.bloodPressure}</div>
-                  </div>
-                  <div className='my-info-right-item-container'>
-                    <div className='my-info-header'>Allergies:</div>
-                    <div>{this.props.user.allergies.join(', ')}</div>
-                  </div>
-                </div>
-              </div>
+              <MyInfo user={this.props.user} />
             </div> : null}
-          {this.props.profileTab === 'payments' ?
+          {this.props.profileTab === 'billing' ?
             <div className='tab-body'>
             </div> : null}
           {this.props.profileTab === 'medication' ?
