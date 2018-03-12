@@ -33,7 +33,7 @@ class Header extends React.Component {
                                        >
                                        </FontAwesome>
                                        <NotificationBadge
-                                         count={this.props.appointments.length ? this.props.appointments.length : null}
+                                         count={this.props.appointments ? this.props.appointments.length : null}
                                          effect={[null, null, {}, {}]}
                                        />
                                      </Link>
