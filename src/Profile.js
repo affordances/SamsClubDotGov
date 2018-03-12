@@ -34,7 +34,7 @@ class Profile extends React.Component {
         )
       }
 
-      const sortedAppointments = !this.props.appointments ? null : this.props.appointments.sort(function(a, b){
+      const sortedAppointments = !this.props.appointments ? [] : this.props.appointments.sort(function(a, b){
         return new Date(a.date) - new Date(b.date);
       });
 
