@@ -72,18 +72,6 @@ class Profile extends React.Component {
             <div className='tab-header' onClick={this.props.changeTab('myInfo')}>My Info</div> :
             <div className='tab-header selected' onClick={this.props.changeTab('myInfo')}>My Info</div>
           }
-          {this.props.profileTab === 'billing' ?
-            <div className='tab-header' onClick={this.props.changeTab('billing')}>Billing</div> :
-            <div className='tab-header selected' onClick={this.props.changeTab('billing')}>Billing</div>
-          }
-          {this.props.profileTab === 'medication' ?
-            <div className='tab-header' onClick={this.props.changeTab('medication')}>Medication</div> :
-            <div className='tab-header selected' onClick={this.props.changeTab('medication')}>Medication</div>
-          }
-          {this.props.profileTab === 'testResults' ?
-            <div className='tab-header' onClick={this.props.changeTab('testResults')}>Test Results</div> :
-            <div className='tab-header selected' onClick={this.props.changeTab('testResults')}>Test Results</div>
-          }
           {this.props.profileTab === 'appointments' ?
             <div className='tab-header' onClick={this.props.changeTab('appointments')}>Appointments</div> :
             <div className='tab-header selected' onClick={this.props.changeTab('appointments')}>Appointments</div>
@@ -93,15 +81,6 @@ class Profile extends React.Component {
           {this.props.profileTab === 'myInfo' ?
             <div className='tab-body' >
               <MyInfo user={this.props.user} />
-            </div> : null}
-          {this.props.profileTab === 'billing' ?
-            <div className='tab-body'>
-            </div> : null}
-          {this.props.profileTab === 'medication' ?
-            <div className='tab-body'>
-            </div> : null}
-          {this.props.profileTab === 'testResults' ?
-            <div className='tab-body'>
             </div> : null}
           {this.props.profileTab === 'appointments' ?
             (formattedAppointments.length > 0) ?
