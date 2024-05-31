@@ -1,4 +1,4 @@
-# Uncle Sam's Club (under construction)
+# Uncle Sam's Club
 
 ## A fantasy of what government-subsidized health care could be.
 
