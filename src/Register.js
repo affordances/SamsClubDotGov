@@ -1,16 +1,14 @@
-import React from 'react';
-import isEmail from 'validator/lib/isEmail';
-import './App.css';
+import React from "react";
+import isEmail from "validator/lib/isEmail";
+import "./App.css";
 
-import {
-  Link,
-} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class Register extends React.Component {
   state = {
     fields: {
-      name: '',
-      email: '',
+      name: "",
+      email: "",
     },
     fieldErrors: {},
   };
@@ -25,8 +23,8 @@ class Register extends React.Component {
 
     this.setState({
       fields: {
-        name: '',
-        email: '',
+        name: "",
+        email: "",
       },
     });
   };
@@ -39,44 +37,43 @@ class Register extends React.Component {
 
   validate = (person) => {
     const errors = {};
-    if (!person.name) errors.name = 'Name Required';
-    if (!person.email) errors.email = 'Email Required';
-    if (person.email && !isEmail(person.email)) errors.email = 'Invalid Email';
+    if (!person.name) errors.name = "Name Required";
+    if (!person.email) errors.email = "Email Required";
+    if (person.email && !isEmail(person.email)) errors.email = "Invalid Email";
     return errors;
   };
 
   render() {
     return (
-      <div className='login-form'>
+      <div className="login-form">
         Create account
         <form onSubmit={this.onFormSubmit}>
-
           <input
-            placeholder='Name'
-            name='name'
+            placeholder="Name"
+            name="name"
             value={this.state.fields.name}
             onChange={this.onInputChange}
           />
 
-          <span style={{ color: 'red' }}>{ this.state.fieldErrors.name }</span>
+          <span style={{ color: "red" }}>{this.state.fieldErrors.name}</span>
 
           <br />
 
           <input
-            placeholder='Email'
-            name='email'
+            placeholder="Email"
+            name="email"
             value={this.state.fields.email}
             onChange={this.onInputChange}
           />
 
-          <span style={{ color: 'red' }}>{ this.state.fieldErrors.email }</span>
+          <span style={{ color: "red" }}>{this.state.fieldErrors.email}</span>
 
           <br />
 
-          <input type='submit' />
+          <input type="submit" />
         </form>
         <div>
-          Already have an account? <Link to='/login'>Sign in</Link>
+          Already have an account? <Link to="/login">Sign in</Link>
         </div>
       </div>
     );

@@ -1,46 +1,47 @@
-import React from 'react';
-import './App.css';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import React from "react";
+import "./App.css";
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class MapComponent extends React.Component {
-
   componentDidUpdate = () => {
-    setTimeout( () => {
+    setTimeout(() => {
       if (this.map && this.props.bounds) {
         this.map.fitBounds(this.props.bounds);
       }
-    }, 0)
-  }
+    }, 0);
+  };
 
   componentDidMount = () => {
-    setTimeout( () => {
+    setTimeout(() => {
       if (this.map && this.props.bounds) {
         this.map.fitBounds(this.props.bounds);
       }
-    }, 0)
-  }
+    }, 0);
+  };
 
   render() {
-    const Map = withGoogleMap((props) =>
+    const Map = withGoogleMap((props) => (
       <GoogleMap
-        ref={(ref) => {this.map = ref;}}
+        ref={(ref) => {
+          this.map = ref;
+        }}
         options={{
           styles: [
             {
-              featureType: 'all',
-              stylers: [{ saturation: -100 }]
+              featureType: "all",
+              stylers: [{ saturation: -100 }],
             },
             {
-              featureType: 'poi.business',
-              stylers: [{visibility: 'off'}]
+              featureType: "poi.business",
+              stylers: [{ visibility: "off" }],
             },
             {
-              featureType: 'transit',
-              elementType: 'labels.icon',
-              stylers: [{visibility: 'off'}]
+              featureType: "transit",
+              elementType: "labels.icon",
+              stylers: [{ visibility: "off" }],
             },
           ],
-          gestureHandling: 'greedy',
+          gestureHandling: "greedy",
           fullscreenControl: false,
           clickableIcons: false,
           mapTypeControl: false,
@@ -53,22 +54,35 @@ class MapComponent extends React.Component {
         defaultZoom={16}
         center={this.props.center}
       >
-        {this.props.places && <Marker label={'1'} position={JSON.parse(JSON.stringify(this.props.places[0].geometry.location))} />}
-        {this.props.places && <Marker label={'2'} position={JSON.parse(JSON.stringify(this.props.places[1].geometry.location))} />}
-      </GoogleMap>
-
-    ); return (
-      <div>
-        {(this.props.errorText) ?
-          <div className='map-error-text'>
-            {this.props.errorText}
-          </div> :
-          <Map
-            loadingElement={<div className='loadingElement'/>}
-            containerElement={<div className='containerElement'/>}
-            mapElement={<div className='mapElement'/>}
+        {this.props.places && (
+          <Marker
+            label={"1"}
+            position={JSON.parse(
+              JSON.stringify(this.props.places[0].geometry.location)
+            )}
           />
-        }
+        )}
+        {this.props.places && (
+          <Marker
+            label={"2"}
+            position={JSON.parse(
+              JSON.stringify(this.props.places[1].geometry.location)
+            )}
+          />
+        )}
+      </GoogleMap>
+    ));
+    return (
+      <div>
+        {this.props.errorText ? (
+          <div className="map-error-text">{this.props.errorText}</div>
+        ) : (
+          <Map
+            loadingElement={<div className="loadingElement" />}
+            containerElement={<div className="containerElement" />}
+            mapElement={<div className="mapElement" />}
+          />
+        )}
       </div>
     );
   }

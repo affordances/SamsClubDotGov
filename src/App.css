@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 * {
@@ -53,7 +53,8 @@ button a {
   color: white !important;
 }
 
-a, .on-click-link {
+a,
+.on-click-link {
   cursor: pointer;
   color: #5e5f60;
   text-decoration: none;
@@ -76,7 +77,6 @@ a:hover {
   color: #378ace !important;
   text-decoration: none;
 }
-
 
 ul {
   list-style-type: none;
@@ -440,7 +440,7 @@ ul {
   font-size: 25px;
 }
 
-.product-page-sign-in-container:hover .product-page-sign-in{
+.product-page-sign-in-container:hover .product-page-sign-in {
   color: #378ace !important;
 }
 
@@ -583,7 +583,6 @@ ul {
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 20px;
-
 }
 
 .my-info-header {
@@ -730,14 +729,14 @@ ul {
   padding-bottom: 50px;
 }
 
-input[type=submit] {
+input[type="submit"] {
   height: 50px;
   cursor: pointer;
   font-size: 30px;
   color: #5e5f60;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   color: #378ace;
 }
 
@@ -827,7 +826,7 @@ input[type=submit]:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100%
+  height: 100%;
 }
 
 .location-search-result-container-container {
@@ -891,7 +890,7 @@ input[type=submit]:hover {
 }
 
 .gm-style {
- background-color: white;
+  background-color: white;
 }
 
 .form-group {
@@ -934,14 +933,18 @@ input[type=submit]:hover {
   font-weight: normal !important;
 }
 
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(
+    .DayPicker-Day--outside
+  ) {
   color: white !important;
   background-color: #378ace !important;
   border-radius: 0 !important;
 }
 
 .DayPicker:not(.DayPicker--interactionDisabled)
-  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(
+    .DayPicker-Day--selected
+  ):not(.DayPicker-Day--outside):hover {
   background-color: #378ace !important;
   color: white !important;
   border-radius: 0 !important;
@@ -1180,7 +1183,8 @@ input[type=submit]:hover {
   margin: 0.5em 0 0 0;
 }
 
-.dd-menu .dd-menu-items ul, .dd-menu .dd-menu-items ol {
+.dd-menu .dd-menu-items ul,
+.dd-menu .dd-menu-items ol {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1190,26 +1194,31 @@ input[type=submit]:hover {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.29);
 }
 
-.dd-menu .dd-menu-items ul.dd-items-right li > *, .dd-menu .dd-menu-items ol.dd-items-right li > * {
+.dd-menu .dd-menu-items ul.dd-items-right li > *,
+.dd-menu .dd-menu-items ol.dd-items-right li > * {
   text-align: right;
 }
 
-.dd-menu .dd-menu-items ul.dd-items-left li > *, .dd-menu .dd-menu-items ol.dd-items-left li > * {
+.dd-menu .dd-menu-items ul.dd-items-left li > *,
+.dd-menu .dd-menu-items ol.dd-items-left li > * {
   text-align: left;
 }
 
-.dd-menu .dd-menu-items ul.dd-items-center li > *, .dd-menu .dd-menu-items ol.dd-items-center li > * {
+.dd-menu .dd-menu-items ul.dd-items-center li > *,
+.dd-menu .dd-menu-items ol.dd-items-center li > * {
   text-align: center;
 }
 
 .dd-menu .dd-menu-items ul li:hover:not([role="separator"]):not(.separator),
-.dd-menu .dd-menu-items ul li > *:focus, .dd-menu .dd-menu-items ol li:hover:not([role="separator"]):not(.separator),
+.dd-menu .dd-menu-items ul li > *:focus,
+.dd-menu .dd-menu-items ol li:hover:not([role="separator"]):not(.separator),
 .dd-menu .dd-menu-items ol li > *:focus {
   color: #000;
   outline: none;
 }
 
-.dd-menu .dd-menu-items ul li > *:not(.dd-item-ignore), .dd-menu .dd-menu-items ol li > *:not(.dd-item-ignore) {
+.dd-menu .dd-menu-items ul li > *:not(.dd-item-ignore),
+.dd-menu .dd-menu-items ol li > *:not(.dd-item-ignore) {
   display: block;
   width: auto;
   min-width: 100%;
@@ -1221,13 +1230,15 @@ input[type=submit]:hover {
   font-size: inherit;
 }
 
-.dd-menu .dd-menu-items ul li > button, .dd-menu .dd-menu-items ol li > button {
+.dd-menu .dd-menu-items ul li > button,
+.dd-menu .dd-menu-items ol li > button {
   border: none;
   background: transparent;
 }
 
-.dd-menu [role="separator"], .dd-menu .separator {
-  content: '';
+.dd-menu [role="separator"],
+.dd-menu .separator {
+  content: "";
   display: block;
   height: 2px;
   background-color: rgba(0, 0, 0, 0.15);

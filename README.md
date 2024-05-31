@@ -2,10 +2,6 @@
 
 ## A fantasy of what government-subsidized health care could be.
 
-## [Take a tour!][heroku]
-
-[heroku]: https://samsclubdotgov.herokuapp.com/
-
 (I do not object to the existence of government-subsidized health care. I just wish it had better UX.)
 
 Many thanks to [Alexander Poddubny][alexTwitter] for his unnervingly dedicated mentorship.
