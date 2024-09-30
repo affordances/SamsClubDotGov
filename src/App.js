@@ -12,6 +12,8 @@ import { sampleUser, products } from "./seed.js";
 
 import "./App.css";
 
+// test change
+
 import persist from "react-localstorage-hoc";
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
